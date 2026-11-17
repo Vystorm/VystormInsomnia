@@ -1,0 +1,612 @@
+# VystormInsomnia – deutsche Texte (Vystorm Core Lokalisierung). Legacy-Farbcodes (&7) und MiniMessage gehen beide.
+# Chat-Meldungen bekommen "prefix" vorangestellt. Platzhalter in {geschweiften Klammern}.
+prefix: '&8[&5Insomnia&8] '
+
+# Chat-Meldungen (bis 0.4.x in messages.yml)
+status: '&7Müdigkeit: &f{fatigue}% &8| &7Schlafschuld: &f{debt}% &8| &7Stufe: &f{stage} &8| &7Ausgeruht: &f{rested}'
+stage_tired: '&eDu wirst langsam müde.'
+stage_exhausted: '&6Deine Konzentration lässt deutlich nach.'
+stage_overmuedet: '&cDu bist stark übermüdet. Deine Wahrnehmung beginnt dir Streiche zu spielen.'
+stage_sleep_deprivation: '&4Du leidest unter massivem Schlafentzug.'
+sleep_start: '&7Du versuchst einzuschlafen...'
+dream:
+  name_cloud_ruins: 'Wolkenruinen'
+  name_crystal_vault: 'Kristallgewölbe'
+  name_nightmare_keep: 'Nachtmahrfeste'
+  dungeon_direction: '&b{name} &7– Eingang bei &f{x}, {y}, {z}&7. Erdspuren führen vom Start dorthin. &f/dream &7zeigt die Ziele erneut.'
+  hint_cloud_ruins: '&aWolkenruinen: Erkunde die Bodenmarkierungen der Reihe nach vom Eingang aus. Am Ende wartet der goldene Belohnungsstein.'
+  hint_crystal_vault: '&bKristallgewölbe: Klicke die vier Kristallsteine im Boden vom Eingang bis zur letzten Kammer mit rechts an. Eine falsche Reihenfolge setzt das Rätsel zurück.'
+  hint_nightmare_keep: '&5Nachtmahrfeste: Betritt die Arenamitte und besiege deine Wächterwellen. Nur deine eigenen Siege zählen; die Beute landet sicher im Traumbeutel.'
+  tower_departing: '&dDer Turm richtet deinen Traum neu aus. Bleib kurz stehen.'
+  tower_arrived: '&bDu bist auf der Spiegelseite {side}. Deine Traumzeit läuft weiter.'
+  tower_failed: '&eDer Wechsel war nicht möglich. Du bleibst auf dieser Seite.'
+  tower_unavailable: '&eDer Turm ist gerade nicht bereit. Beende den Kampf und warte kurz.'
+  napping: '&7Du schläfst jetzt auch tagsüber. Über Aufstehen oder /wake wachst du auf; /dream führt dich in die Traumweite.'
+  choice: '&7Du kannst hier ausruhen oder mit /dream bewusst die Traumweite betreten. Mit /wake kommst du zurück.'
+  exit_tool: '&5Traumfaden · /wake'
+  mob_name: '&5Traumwächter'
+  disabled: '&cDie Traumweite ist derzeit nicht verfügbar.'
+  survival_only: '&cEine Traumreise ist nur im Überlebensmodus möglich.'
+  in_combat: '&cNach einem Kampf musst du erst zur Ruhe kommen, bevor du träumen kannst.'
+  recovery_pending: '&cDein letzter Weltenbesuch wird noch wiederhergestellt.'
+  not_tired: '&7Du bist noch nicht müde genug für eine Traumreise ({fatigue}%).'
+  world_denied: '&cVon dieser Welt aus kannst du keine Traumreise beginnen.'
+  clear_cursor: '&cLeere zuerst den Gegenstand auf deinem Cursor.'
+  clear_crafting: '&cEntferne zuerst Gegenstände aus dem offenen Handwerksfeld.'
+  bed_required: '&7Stell dich in die Nähe eines sicheren Bettes und versuche es erneut mit &f/dream&7.'
+  storage_unavailable: '&cDeine Traumbeute kann gerade nicht sicher gelesen werden. Es wurde keine Reise begonnen.'
+  pouch_recovery: '&eEine frühere Beuteübergabe wartet auf Wiederherstellung. Nutze zuerst &f/dreamloot&e.'
+  entry_failed: '&cDie Traumreise konnte nicht sicher gestartet werden.'
+  entry_refused: '&cCore hat die Traumreise abgelehnt ({reason}).'
+  entered: '&bDu betrittst die Traumweite. Dir bleiben etwa {minutes} Minuten; &f/wake &bbringt dich sicher zurück.'
+  not_visiting: '&7Du befindest dich gerade nicht in der Traumweite.'
+  waking: '&bDu wachst auf und kehrst sicher zurück...'
+  time_warning: '&eNoch {seconds} Sekunden Traumzeit.'
+  time_bar: '&fTraumzeit: {time}'
+  time_left: '&7Verbleibende Traumzeit: etwa {minutes} min.'
+  cloud_waypoint: '&aWegpunkt {step}/{total} erkundet.'
+  cloud_ready: '&aDie Wolkenruinen sind erkundet. Suche den goldenen Sammelpunkt.'
+  cloud_need_waypoints: '&7Erkunde zuerst die markierten Wegpunkte in der richtigen Reihenfolge.'
+  reward_marker: '&7Berühre den goldenen Sammelpunkt.'
+  crystal_progress: '&bKristallfolge {step}/{total}.'
+  crystal_reset: '&cDie Kristalle verstummen. Die Folge beginnt von vorn.'
+  nightmare_wave: '&5Nachtmahrwelle {wave}/{total}!'
+  reward_unconfigured: '&cFür diesen Traumort ist keine gültige Belohnung konfiguriert.'
+  dungeon_complete: '&aTraumort abgeschlossen: {dungeon}.'
+  loot_pouched: '&dDie Beute aus {dungeon} wurde dauerhaft in deine Traumbeutetasche gelegt.'
+  loot_delivered: '&aEine Traumbeute wurde sicher in dein Inventar übergeben.'
+  loot_empty: '&7Deine Traumbeutetasche ist leer.'
+  loot_full: '&eDein Inventar ist voll; die Beute wartet weiter in der Traumbeutetasche.'
+  loot_busy: '&cBeute kann während eines Besuchs oder einer Wiederherstellung nicht entnommen werden.'
+  loot_recovery: '&cDie Beuteübergabe braucht Wiederherstellung. Versuche es nach erneutem Anmelden erneut.'
+sleep_preview: '&7Aktuelle Schlafqualität: &f{quality}x&7. Vollständige Erholung gewährt {rested_minutes} min Ausgeruht und {xp_multiplier}x XP.'
+fatigue:
+  paused_creative: '&eMüdigkeitsanstieg ist im Kreativmodus pausiert.'
+  paused_spectator: '&eMüdigkeitsanstieg ist im Zuschauermodus pausiert.'
+  paused_local_afk: '&eMüdigkeitsanstieg pausiert nach {seconds}s ohne lokale Spielereingabe.'
+history:
+  page: '&7Seite {page}/{pages}'
+  invalid_page: '&cWähle eine Seite zwischen 1 und {pages}.'
+  title: '&7Letzter Verlauf von Müdigkeit und Schlafschuld:'
+  triggers_title: '&7Letzte Halluzinationen und ihr beobachteter Auslöser:'
+  entry: '&8{at} &7Müdigkeit {fatigue}% / Schuld {debt}% — {event}'
+  sample: 'Messpunkt'
+  sleep_started: 'Schlaf begonnen'
+  sleep_completed: 'Schlaf abgeschlossen'
+  rest_started: 'Rast am Lagerfeuer'
+  stimulant: 'Stimulanz verwendet: {detail}'
+  hallucination: 'Halluzination {effect}; Stufe {stage}, Müdigkeit {fatigue}%, Schlafschuld {debt}%'
+  empty: '&7Kein aktueller Verlauf.'
+  no_triggers: '&7In dieser Sitzung wurden keine Halluzinationen aufgezeichnet.'
+  memory_only: '&8Der Verlauf liegt nur im Arbeitsspeicher und wird bei Logout/Neustart gelöscht.'
+sleep_deep: '&bDu bist in den Tiefschlaf gefallen.'
+sleep_rested: '&aDu wachst vollständig erholt auf.'
+sleep_summary: '&7Du hast {seconds} s geschlafen: Müdigkeit &f{fatigue_before}% → {fatigue_after}%&7, Schlafschuld &f{debt_before}% → {debt_after}%&7. Schlaf, bis du ganz erholt bist, für die volle Wirkung.'
+status_stimulant: '&eKoffein: noch {minutes} min {seconds} s; {uses} Einnahmen seit dem Ausschlafen. Müdigkeit nach dem Absturz anhand aktueller Werte: &f{fatigue}%&e (Aktivität und Schlaf können das ändern).'
+stimulant: '&eDas Koffein unterdrückt deine Müdigkeit vorübergehend.'
+stimulant_weak: '&6Die Wirkung fällt wegen deiner Toleranz deutlich schwächer aus.'
+stimulant_crash: '&cDie Wirkung lässt nach – der Müdigkeits-Crash setzt ein.'
+microsleep: '&4Für einen Moment fallen dir die Augen zu...'
+no_permission: '&cDafür fehlt dir die Berechtigung.'
+player_only: '&cDieser Befehl ist nur als Spieler verfügbar.'
+data_loading: '&7Die Müdigkeitsdaten werden noch geladen, versuch es gleich noch einmal.'
+player_not_found: '&cSpieler nicht gefunden oder nicht online.'
+invalid_number: '&cUngültiger Zahlenwert.'
+reloaded: '&aKonfiguration neu geladen.'
+config_invalid: '&cKonfiguration ungültig, die bisherigen Werte bleiben aktiv: {errors}. Zahlen müssen endlich sein (kein NaN oder Unendlich).'
+
+admin:
+  set_fatigue: '&7Müdigkeit von {player} = {value}'
+  set_debt: '&7Schlafschuld von {player} = {value}'
+  rested: '&a{player} wurde vollständig erholt.'
+  effect_unknown: '&cUnbekannter Effekt: {effects}'
+  effect_done: '&aEffekt ausgelöst.'
+  mob_spawned: '&aInsomnia-Mob gespawnt.'
+  mob_refused: '&cSpawn abgelehnt.'
+
+stage_name:
+  rested: 'Ausgeruht'
+  tired: 'Müde'
+  exhausted: 'Erschöpft'
+  overmuedet: 'Übermüdet'
+  sleep_deprivation: 'Schlafentzug'
+
+hint:
+  rested: 'Schlaf in einem Bett unter Dach und im Dunkeln erholt am besten.'
+  exhausted: 'Deine Konzentration lässt nach – such dir bald ein sicheres Bett.'
+  overmuedet: 'Deine Wahrnehmung spielt dir Streiche. Schlaf so bald wie möglich!'
+  sleep_deprivation: 'Massiver Schlafentzug: Sekundenschlaf und Albträume drohen.'
+
+rested_left:
+  none: 'nein'
+  minutes: '{minutes} min'
+
+menu:
+  title: 'Müdigkeit'
+  description: 'Deine Müdigkeit, Schlafschuld und dein Ausgeruht-Bonus'
+  chat_button: 'Müdigkeit'
+
+dialog:
+  title: 'Müdigkeit'
+  state: '<gray>Zustand: </gray>{stage}'
+  fatigue: 'Müdigkeit: {bar} {value} %'
+  debt: 'Schlafschuld: {bar} {value} %'
+  rested: 'Ausgeruht-Bonus: {rested}'
+  stimulant: '<yellow>Stimulanz wirkt noch {minutes} min – danach folgt ein Müdigkeits-Crash.</yellow>'
+  sleeping: '<aqua>Du schläfst gerade.</aqua>'
+  refresh: '↻ Aktualisieren'
+  close: 'Schließen'
+  web: 'Web-Seite'
+
+settings:
+  title: 'Müdigkeit & Schlaf'
+  description: 'Müdigkeit, Schlaf, Halluzinationen und Sekundenschlaf. Änderungen gelten sofort.'
+
+# Server-Einstellungen (Einstellungen → Server → Müdigkeit & Schlaf): setting.<Config-Pfad>.label|desc
+debt_reminder:
+  message: '&6Deine Schlafschuld beträgt {debt}%. Kaffee und Lagerfeuer bauen sie nicht ab. Erhole dich im Bett. Erinnerungen lassen sich unter /vsettings → Schlafen abschalten.'
+  preference: 'Schlafschuld-Erinnerungen'
+  preference_desc: 'Bei hoher Schlafschuld ans Schlafen erinnern'
+
+setting:
+  debt_reminder:
+    enabled:
+      label: 'Schlafschuld-Erinnerungen'
+      desc: 'Wache Spieler bei hoher Schlafschuld ans Schlafen erinnern'
+    threshold:
+      label: 'Schlafschuld-Schwelle'
+      desc: 'Minimale Schlafschuld in Prozent für eine Erinnerung'
+    interval_minutes:
+      label: 'Erinnerungsabstand (Minuten)'
+      desc: 'Mindestabstand zwischen Erinnerungen je Spieler in dieser Sitzung'
+  fatigue:
+    enabled:
+      label: 'Müdigkeit steigt'
+      desc: 'Aus = Müdigkeit und Schlafschuld wachsen nicht mehr'
+    base_per_minute:
+      label: 'Müdigkeit pro Minute'
+      desc: 'Anstieg bei normaler Aktivität (0,125 ≈ 160 min je Stufe)'
+    debt_per_minute:
+      label: 'Schlafschuld pro Minute'
+      desc: 'Anstieg der Schlafschuld'
+  sleep:
+    fatigue_recovery_per_second:
+      label: 'Erholung im Schlaf /s'
+      desc: 'Abbau der Müdigkeit pro Sekunde Schlaf'
+    debt_recovery_per_second:
+      label: 'Schuldabbau im Schlaf /s'
+      desc: 'Abbau der Schlafschuld pro Sekunde Schlaf'
+    cancel_vanilla_night_skip:
+      label: 'Vanilla-Nachtsprung verhindern'
+      desc: 'Schlafen überspringt die Nacht nicht'
+    dialog:
+      enabled:
+        label: 'Schlafdialog'
+        desc: 'Beim Hinlegen fragen: bis wann schlafen, Traumweite oder aufstehen'
+      day_naps:
+        label: 'Dialog beim Mittagsschlaf'
+        desc: 'Auch tagsüber fragen (nur wenn die Traumweite offensteht)'
+      custom_time:
+        label: 'Eigene Weckzeit'
+        desc: 'Im Schlafdialog eine Uhrzeit zur Auswahl anbieten'
+    wake_summary:
+      label: 'Aufwach-Bilanz'
+      desc: 'Wer früher aufsteht, sieht, wie lange er geschlafen hat und was es gebracht hat'
+    acceleration:
+      enabled:
+        label: 'Zeitraffer'
+        desc: 'Die Zeit läuft schneller, je mehr Spieler schlafen, statt die Nacht zu überspringen'
+      min_speed:
+        label: 'Tempo bei wenigen Schläfern'
+        desc: 'So viel schneller beim ersten von mehreren Schläfern (1-100)'
+      max_speed:
+        label: 'Tempo, wenn alle schlafen'
+        desc: 'So viel schneller, wenn alle schlafen (1-100); 10 ≈ eine Minute pro Nacht'
+      curve:
+        label: 'Tempokurve'
+        desc: '1 = gleichmäßig, 2 = erst schnell, wenn fast alle schlafen, 0.5 = schon früh schnell'
+      action_bar:
+        label: 'Aktionsleiste'
+        desc: 'Allen in der Welt Schläfer und Tempo anzeigen'
+  stimulants:
+    enabled:
+      label: 'Stimulanzien'
+      desc: 'Koffein & Co. unterdrücken die Müdigkeit'
+  hallucinations:
+    enabled:
+      label: 'Halluzinationen'
+      desc: 'Geräusche und Sichtstörungen bei starker Müdigkeit'
+    chance_exhausted:
+      label: 'Halluzination: erschöpft'
+      desc: 'Chance je Prüfung'
+    chance_overmuedet:
+      label: 'Halluzination: übermüdet'
+      desc: 'Chance je Prüfung'
+    chance_sleep_deprivation:
+      label: 'Halluzination: Schlafentzug'
+      desc: 'Chance je Prüfung'
+  microsleep_grace: "Sekundenschlaf-Schonfrist: noch {seconds} Sekunden."
+  microsleep_recovered: "Unterbrochener Sekundenschlaf: Rückkehr geprüft. {seconds} Sekunden Schonfrist; Müdigkeit und Schlafschuld bleiben erhalten."
+  microsleep:
+    enabled:
+      label: 'Sekundenschlaf'
+      desc: 'Kurzes Wegnicken ab hoher Müdigkeit'
+    min_fatigue:
+      label: 'Sekundenschlaf ab Müdigkeit'
+      desc: 'Müdigkeit in %'
+    chance_per_check:
+      label: 'Sekundenschlaf-Chance'
+      desc: 'Chance je Prüfung'
+    cooldown_seconds:
+      label: 'Sekundenschlaf-Pause (s)'
+      desc: 'Mindestabstand zwischen zwei Sekundenschlaf-Phasen'
+  insomnia_mobs:
+    enabled:
+      label: 'Insomnia-Mobs'
+      desc: 'Albtraum-Monster bei starker Müdigkeit'
+    min_fatigue:
+      label: 'Insomnia-Mobs ab Müdigkeit'
+      desc: 'Müdigkeit in %'
+    base_spawn_chance:
+      label: 'Insomnia-Mob-Chance'
+      desc: 'Chance je Prüfung'
+  rested:
+    enabled:
+      label: 'Ausgeruht-Bonus'
+      desc: 'Bonus nach vollständigem Schlaf'
+    duration_minutes:
+      label: 'Ausgeruht-Dauer (min)'
+      desc: 'Dauer des Bonus'
+    xp_multiplier:
+      label: 'Ausgeruht-XP'
+      desc: 'XP-Multiplikator des Bonus'
+  integrations:
+    cityclaim:
+      label: 'Städte-Anbindung'
+      desc: 'Schlafqualität in Städten; erst nach Neustart wirksam'
+    bloodmoon:
+      label: 'Blutmond-Anbindung'
+      desc: 'Schlechterer Schlaf im Blutmond; erst nach Neustart wirksam'
+  rest:
+    campfire:
+      enabled:
+        label: 'Rast am Lagerfeuer'
+        desc: 'Wer neben einem brennenden Lagerfeuer stillsteht, wird langsam weniger müde'
+      fatigue_per_second:
+        label: 'Lagerfeuer-Rast pro Sekunde'
+        desc: 'Müdigkeitsabbau pro Sekunde Rast (ein Bett schafft 1,0)'
+      min_fatigue:
+        label: 'Lagerfeuer-Rast bis'
+        desc: 'Unter diesen Wert senkt ein Lagerfeuer die Müdigkeit nie'
+  player_menu:
+    enabled:
+      label: 'Eintrag im Spielermenü'
+      desc: 'Müdigkeit beim Schleichen-Rechtsklick auf einen Spieler (Core 0.43+)'
+    show_stage_to_players:
+      label: 'Andere sehen die Stufe'
+      desc: 'Spieler sehen, wie müde jemand aussieht (ohne Zahlen)'
+
+# Client-Mod (HUD-Balken und natives Panel)
+hud:
+  rested: 'Ausgeruht'
+  fatigue: 'Müdigkeit {value} % · {stage}'
+  debt: 'Schlafschuld {value} %'
+panel:
+  loading: 'Deine Müdigkeitsdaten werden noch geladen.'
+  state: 'Zustand'
+  rested: 'Ausgeruht-Bonus'
+  fatigue: 'Müdigkeit {value} %'
+  debt: 'Schlafschuld {value} %'
+  stimulant: 'Stimulanz wirkt noch {minutes} min – danach folgt ein Müdigkeits-Crash.'
+  sleeping: 'Du schläfst gerade.'
+  settings: 'Server-Einstellungen'
+  settings-unavailable: 'Einstellungen nicht verfügbar.'
+
+# Web-Seite in Cores Web-UI (/app/insomnia); web.ui.* ohne MiniMessage (roh gesendet)
+web:
+  module:
+    title: 'Müdigkeit'
+    description: 'Müdigkeit, Schlafschuld und Verlauf'
+  ui:
+    loading: 'Lädt …'
+    offline: 'Du bist nicht im Spiel. Die Werte erscheinen, sobald du online bist.'
+    not-loaded: 'Deine Müdigkeitsdaten werden noch geladen.'
+    stage: 'Zustand'
+    fatigue: 'Müdigkeit'
+    debt: 'Schlafschuld'
+    rested: 'Ausgeruht-Bonus'
+    rested-none: 'keiner'
+    rested-minutes: 'noch {minutes} min'
+    stimulant: 'Stimulanz wirkt noch {minutes} min – danach folgt ein Müdigkeits-Crash.'
+    sleeping: 'Du schläfst gerade.'
+    history: 'Verlauf'
+    history-empty: 'Noch kein Verlauf – ein Messpunkt pro Minute, solange du online bist.'
+    history-hint: 'Letzte {count} Minuten (ein Messpunkt pro Minute, nur diese Spielsitzung).'
+    thresholds: 'Stufen ab {values} % Müdigkeit'
+    legend-fatigue: 'Müdigkeit'
+    legend-debt: 'Schlafschuld'
+admin_usage: '&7/insomnia admin <get|setfatigue|setdebt|sleep|effect|spawnmob|overview|reload>'
+sleep_cozy: '&7Gemütlichkeit: &f{count}/{max} &7(+{bonus}% Schlafqualität): &f{found}&7. Noch möglich: {missing}.'
+status_cozy: '&7Gemütlichkeit am Bett: &f{count}/{max} &7(+{bonus}% Schlafqualität): &f{found}&7. Noch möglich: {missing}.'
+status_next:
+  minutes: '&7Nächste Stufe: &f{stage} &7in etwa &f{minutes} Min. &7bei normalem Spielen.'
+  hours: '&7Nächste Stufe: &f{stage} &7in etwa &f{hours} Std. {minutes} Min. &7bei normalem Spielen.'
+cozy:
+  soft: Teppich oder Wolle
+  plant: Topfpflanze
+  books: Bücherregal
+  light: Laterne oder Kerze
+  art: Bild oder Rahmen
+  storage: Truhe oder Fass
+  none: nichts
+rest:
+  started: '&6Du machst es dir am Lagerfeuer bequem. Deine Müdigkeit sinkt langsam, bis auf {floor}%. Bewegung oder Kampf beendet die Rast.'
+  bar: '&6Rast am Feuer &8· &7Müdigkeit &f{fatigue}% &8→ &7{floor}%'
+  floor: '&7Mehr Erholung als hier ({floor}%) schenkt dir ein Lagerfeuer nicht. Für den Rest brauchst du ein Bett.'
+  stopped: '&7Du beendest deine Rast.'
+  status: '&6Du rastest gerade am Lagerfeuer.'
+overview:
+  button: 'Alle Spieler'
+  title: 'Müdigkeit aller Spieler'
+  intro: '{count} Spieler online, die müdesten zuerst. Klick auf einen Spieler zeigt Werte und Schnellaktionen.'
+  empty: 'Kein Spieler mit geladenen Müdigkeitsdaten ist online.'
+  more: '…und {count} weitere (nur die 40 müdesten werden gezeigt).'
+  row: '{player} · {stage} · {fatigue} % {state}'
+  row_hover: 'Schlafschuld {debt} %'
+  sleeping: '(schläft)'
+  resting: '(am Lagerfeuer)'
+  activity: 'Gerade: {state}'
+  player_title: 'Müdigkeit: {player}'
+  back: '← Alle Spieler'
+  back_menu: '← Müdigkeit'
+  chat_title: '&7Müdigkeit aller Spieler ({count}), die müdesten zuerst:'
+  chat_line: '&f{player} &8· &7{stage} &8· &7Müdigkeit &f{fatigue}% &8· &7Schuld &f{debt}% {state}'
+  action:
+    rest: 'Ausschlafen lassen'
+    clear_debt: 'Schlafschuld löschen'
+    less: 'Müdigkeit −20'
+    more: 'Müdigkeit +20'
+player_menu:
+  admin_name: '&dMüdigkeit: {player}'
+  admin_lore: "&7Stufe: &f{stage}\n&7Müdigkeit: &f{fatigue} %\n&7Schlafschuld: &f{debt} %\n&eKlick: Werte und Schnellaktionen"
+  name: '&d{player} &8· &f{stage}'
+  lore:
+    rested: '&7Hellwach und gut ausgeschlafen.'
+    tired: '&7Gähnt ab und zu.'
+    exhausted: '&7Hat dunkle Ringe unter den Augen.'
+    overmuedet: '&7Kann kaum noch die Augen offen halten.'
+    sleep_deprivation: '&7Braucht dringend ein Bett – vielleicht bietest du eins an?'
+
+# Schlafdialog und Zeitraffer (0.18.0)
+sleep_choice:
+  title: 'Schlafen'
+  nap_title: 'Mittagsschlaf'
+  now: 'Es ist <white>{time}</white> Uhr. Wie lange möchtest du schlafen?'
+  nap_now: 'Es ist <white>{time}</white> Uhr. Tagsüber läuft die Zeit nicht schneller; du ruhst, bis du aufstehst.'
+  faster: '<gray>Je mehr Spieler schlafen, desto schneller vergeht die Zeit.</gray>'
+  no_acceleration: '<gray>Die Nacht endet am Morgen.</gray>'
+  dream_ready: '<light_purple>Traumweite: steht dir offen (Müdigkeit {fatigue} %).</light_purple>'
+  dream_not_tired: '<gray>Traumweite: ab {min} % Müdigkeit (du: {fatigue} %).</gray>'
+  hour_label: 'Eigene Weckzeit'
+  remember: 'Nicht mehr fragen (änderbar in /vsettings)'
+  keep_sleeping: 'Weiterschlafen'
+  keep_napping: 'Weiter dösen'
+  button:
+    morning: 'Bis zum Morgen ({time})'
+    noon: 'Bis Mittag ({time})'
+    evening: 'Bis zum Abend ({time})'
+    night: 'Bis zur nächsten Nacht ({time})'
+    custom: 'Bis zur eigenen Weckzeit'
+    sleep: 'Schlafen'
+    dream: 'In die Traumweite'
+    get_up: 'Aufstehen'
+  sleeping_until: '&7Du schläfst bis &f{time} Uhr&7. Je mehr Spieler schlafen, desto schneller vergeht die Zeit.'
+  sleeping: '&7Du schläfst bis zum Morgen.'
+  auto: '&7Du schläfst bis &f{time} Uhr &7(deine gespeicherte Wahl, änderbar in /vsettings).'
+  remembered: '&7Gespeichert. Du wirst nicht mehr gefragt; ändern kannst du das in /vsettings → Schlafen.'
+  woke: '&7Du wachst auf. Es ist &f{time} Uhr&7.'
+  chat_night: '&7Es ist &f{time} Uhr&7. Schlafen:'
+  chat_nap: '&7Du döst. Traumweite oder aufstehen?'
+  chat_button: '&b[{label}]'
+  chat_hover: 'Zum Auswählen klicken'
+  chat_settings: '&8[Einstellungen]'
+  action_bar: '&7{sleeping}/{players} schlafen &8– &fZeit läuft {speed}× schneller'
+  settings:
+    title: 'Schlafen'
+    description: 'Was passiert, wenn du dich ins Bett legst'
+    mode: 'Beim Hinlegen'
+    mode_desc: 'Jedes Mal fragen, gespeicherte Wahl nutzen oder im Chat fragen'
+    mode_ask: 'Mit Dialog fragen'
+    mode_auto: 'Gespeicherte Wahl nutzen, nicht fragen'
+    mode_chat: 'Im Chat fragen'
+    choice: 'Gespeicherte Wahl'
+    choice_desc: 'Gilt, wenn du nicht gefragt wirst; deine Wahl im Dialog landet hier'
+    choice_morning: 'Bis zum Morgen'
+    choice_noon: 'Bis Mittag'
+    choice_evening: 'Bis zum Abend'
+    choice_night: 'Bis zur nächsten Nacht'
+    choice_custom: 'Bis zur eigenen Weckzeit'
+    choice_dream: 'Traumweite'
+    hour: 'Eigene Weckzeit (Stunde)'
+    hour_desc: 'Stunde (0-23) für „bis zur eigenen Weckzeit“'
+
+# /insomnia, /dream, /wake und /dreamloot über Vystorm Core 0.45.0+: Beschreibung, Hilfe und Tab-Vervollständigung je
+# Spieler. "aliases" unter commands.<befehl> sind zusätzliche Hauptbefehle (serverweit, der Admin wählt die Sprachen:
+# Core-Konfig commands.localized-aliases); "name" und "aliases" eines Unterbefehls werden in jeder Sprache verstanden,
+# Englisch geht immer.
+commands:
+  insomnia:
+    description: "Müdigkeit und Schlaf: Menü, Status, Verlauf, Auslöser und Verwaltung"
+    aliases: [schlaflos]
+    sub:
+      menu:
+        name: menü
+        aliases: [menue]
+        description: "Das Müdigkeits-Menü öffnen"
+      status:
+        name: status
+        aliases: []
+        description: "Deine Müdigkeit, Schlafschuld, Stufe und dein Ausgeruht-Bonus"
+      history:
+        name: verlauf
+        aliases: []
+        description: "Deine letzten Müdigkeitswerte und Schlafereignisse"
+      triggers:
+        name: auslöser
+        aliases: [ausloeser]
+        description: "Deine letzten Halluzinationen und was sie ausgelöst hat"
+      admin:
+        name: admin
+        aliases: [verwaltung]
+        description: "Verwaltung: Werte, Schlaf, Effekte, Mobs, Übersicht und neu laden"
+        sub:
+          get:
+            name: abfragen
+            aliases: []
+            description: "Den Müdigkeitsstatus eines Spielers zeigen"
+            usage: "SPIELER"
+            args:
+              player: SPIELER
+          setfatigue:
+            name: müdigkeit
+            aliases: [muedigkeit]
+            description: "Die Müdigkeit eines Spielers setzen (+n/-n ändert sie)"
+            usage: "SPIELER 0-100|+n|-n"
+            args:
+              player: SPIELER
+              value: "0-100|+n|-n"
+          setdebt:
+            name: schlafschuld
+            aliases: []
+            description: "Die Schlafschuld eines Spielers setzen (+n/-n ändert sie)"
+            usage: "SPIELER 0-100|+n|-n"
+            args:
+              player: SPIELER
+              value: "0-100|+n|-n"
+          sleep:
+            name: ausruhen
+            aliases: []
+            description: "Einen Spieler sofort ausruhen lassen"
+            usage: "SPIELER"
+            args:
+              player: SPIELER
+          effect:
+            name: effekt
+            aliases: []
+            description: "Eine Halluzination für einen Spieler auslösen (ohne Namen: Effekte auflisten)"
+            usage: "SPIELER [EFFEKT]"
+            args:
+              player: SPIELER
+              value: EFFEKT
+          spawnmob:
+            name: mob
+            aliases: []
+            description: "Einen Insomnia-Mob einer Stufe bei einem Spieler erscheinen lassen"
+            usage: "SPIELER STUFE"
+            args:
+              player: SPIELER
+              value: STUFE
+          reload:
+            name: neuladen
+            aliases: []
+            description: "Konfiguration prüfen und neu laden"
+          overview:
+            name: übersicht
+            aliases: [uebersicht]
+            description: "Müdigkeits-Übersicht aller Spieler online"
+  dream:
+    description: "Von einem sicheren Bett in der Nähe die Traumweite betreten"
+    aliases: [traumreise]
+    sub:
+      quest:
+        name: "quest"
+        aliases: []
+        description: "Deiner gespeicherten verzweigten Traumgeschichte folgen"
+        args:
+          action: "AUSWAHL"
+      invite:
+        name: "einladen"
+        aliases: []
+        description: "Einen anderen Träumer in deinen Traum einladen"
+        args:
+          player: "PLAYER"
+      join:
+        name: "beitreten"
+        aliases: []
+        description: "Einem Traum beitreten, zu dem du eingeladen wurdest"
+        args:
+          player: "PLAYER"
+      leave:
+        name: "verlassen"
+        aliases: []
+        description: "Den geteilten Traum verlassen"
+      weekly:
+        name: "woche"
+        aliases: []
+        description: "Die Albtraum-Herausforderung der Woche und ihre schnellsten Zeiten"
+
+    values:
+      status: "status"
+      start: "start"
+      pause: "pause"
+      mercy: "gnade"
+      courage: "mut"
+      restore: "heilen"
+      master: "meistern"
+
+  wake:
+    description: "Die Traumweite sicher verlassen"
+    aliases: [aufwachen]
+  dreamloot:
+    description: "Deine gespeicherten Traum-Belohnungen abholen"
+    aliases: [traumbeute]
+
+# Free feature release: quest
+quest:
+  unavailable: "Traumquests sind deaktiviert oder dir fehlt die Berechtigung."
+  usage: "/dream quest status|start|pause|mercy|courage|restore|master"
+  paused: "Der zerbrochene Traum wartet. /dream quest start beginnt oder setzt deine Geschichte fort; pause hält den Fortschritt an."
+  chapter_0: "Kapitel I — Eine Stimme im Kristall bittet um ihre Erinnerung. Schließe das Kristallgewölbe ab."
+  chapter_1: "Die Erinnerung zeigt einen verlorenen Wächter. mercy schützt sein Volk, courage stellt seinen Entführer: /dream quest mercy|courage."
+  chapter_2: "Kapitel II — Deine erste Wahl bestimmt den Weg. Berge das Traumherz im genannten Verlies."
+  chapter_3: "Das Herz kann den Traum heilen oder dein Kompass werden. Wähle restore oder master: /dream quest restore|master."
+  chapter_4: "Kapitel III — Eine letzte Prüfung bleibt. Schließe das letzte Verlies für dein gewähltes Ende ab."
+  objective: "Nächstes Ziel: {dungeon}. Fortschritt bleibt nach Aufwachen, Abmelden und Neustarts erhalten."
+  ending_guardian: "Ende — Wächter der Morgenröte. Du hast die Verlorenen geschützt und ihre Heimat geheilt. Der Traum erinnert sich an deine Güte."
+  ending_wanderer: "Ende — Sternenwanderer. Du hast die Verlorenen gerettet und das Herz zu fremden Himmeln getragen. Neue Horizonte warten."
+  ending_liberator: "Ende — Traumbefreier. Du hast dich dem Albtraum gestellt und sein gestohlenes Herz zurückgebracht. Angst beherrscht dieses Reich nicht mehr."
+  ending_sovereign: "Ende — Herrscher der Dämmerung. Du hast den Albtraum bezwungen und sein Herz gebunden. Eine mächtige, einsame Krone gehört dir."
+  reward: "Dieses Ende bleibt gespeichert. Einmalige Belohnung außerhalb des Traums mit /dreamloot abholen."
+weekly:
+  disabled: 'Die wöchentliche Albtraum-Herausforderung ist ausgeschaltet.'
+  started: '&5Albtraum der Woche: &d{modifiers}&5. Die Zeit läuft!'
+  cleared: '&dAlbtraum in &f{time}&d bezwungen (Platz {rank} von {count} diese Woche).'
+  record: '&6Neue Wochenbestzeit: &f{time}&6 – Platz {rank} von {count}!'
+  reward: '&aErster Sieg dieser Woche: die Wochenbelohnung liegt in deinem Traumbeutel (/dreamloot).'
+  header: '&5Albtraum der Woche: &d{modifiers} &7(endet in {days} T {hours} Std)'
+  empty: '&7Diese Woche hat ihn noch niemand bezwungen.'
+  row: '&7{rank}. &f{player} &7– {time}'
+  own: '&7Deine Bestzeit: &f{time} &7(Platz {rank})'
+  own-none: '&7Du hast den Albtraum dieser Woche noch nicht bezwungen.'
+  modifier:
+    swift: 'Flinke Wächter'
+    armored: 'Gepanzerte Wächter'
+    ferocious: 'Wilde Wächter'
+    horde: 'Horde'
+    darkness: 'Dunkelheit'
+companion:
+  disabled: 'Geteilte Träume sind auf diesem Server ausgeschaltet.'
+  not-dreaming: 'Du musst im Traum sein, um jemanden einzuladen.'
+  target-not-dreaming: '{player} ist gerade nicht im Traum.'
+  invited: 'Du hast {player} in deinen Traum eingeladen (60 Sekunden gültig).'
+  invitation: '&d{player} lädt dich in den eigenen Traum ein – bekämpft den Albtraum gemeinsam. &f[Klicken zum Beitreten]'
+  joined: 'Du teilst jetzt den Traum von {player}. Seine Wächter sind für dich sichtbar; deine Treffer zählen mit.'
+  joined-host: '{player} ist deinem Traum beigetreten.'
+  ended: 'Der geteilte Traum mit {player} ist vorbei.'
+  none: 'Du teilst keinen Traum.'
+  error-self: 'Du kannst dich nicht selbst einladen.'
+  error-already: '{player} teilt deinen Traum schon.'
+  error-host-busy: 'Du bist Begleiter in einem anderen Traum; nutze zuerst /dream leave.'
+  error-target-busy: '{player} teilt schon einen anderen Traum.'
+  error-full: 'Höchstens {max} Begleiter können einen Traum teilen.'
+  error-no-invite: 'Es gibt keine offene Einladung für dich.'

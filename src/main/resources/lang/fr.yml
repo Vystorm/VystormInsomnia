@@ -1,0 +1,605 @@
+# Français — UTF-8. Keep keys, placeholders and formatting tokens unchanged.
+prefix: '&8[&5Insomnie&8] '
+status: '&7Fatigue: &f{fatigue}% &8| &7Dette de sommeil: &f{debt}% &8| &7Étape: &f{stage} &8| &7Repos: &f{rested}'
+stage_tired: '&eVous commencez à vous sentir fatigué.'
+stage_exhausted: '&6Votre concentration diminue sensiblement.'
+stage_overmuedet: '&cTu es trop fatigué. Tes sens commencent à jouer des tours sur toi.'
+stage_sleep_deprivation: '&4Vous souffrez d''une grave privation de sommeil.'
+sleep_start: '&7Tu essaies de t''endormir...'
+dream:
+  name_cloud_ruins: Ruines nuageuses
+  name_crystal_vault: Cristal Vault
+  name_nightmare_keep: Garder un cauchemar
+  dungeon_direction: '&b{name} &7– entrée à &f{x}, {y}, {z}&7. Les sentiers terrestres y mènent depuis l''arrivée. Utilisation
+    &f/dream &7pour réénumérer ces sites.'
+  hint_cloud_ruins: '&aRuines nuageuses : Explorez les marqueurs du sol en ordre depuis l''entrée. Interagir avec la pierre
+    de récompense dorée à la fin.'
+  hint_crystal_vault: '&bCristal Vault: Faites un clic droit sur les quatre pierres de plancher en cristal afin de passer
+    de l''entrée à la dernière chambre. Une mauvaise pierre réinitialise la séquence.'
+  hint_nightmare_keep: '&5Nightmare Keep: Entrez dans le centre de l''arène et de vaincre vos vagues de gardien. Seuls vos
+    propres meurtres comptent; récompenses aller en toute sécurité dans votre Rêve Pouch.'
+  tower_departing: '&dLa tour tourne votre rêve. Ne bougez pas un instant.'
+  tower_arrived: '&bVous avez atteint le côté miroir {side}. Ton minuteur de rêve continue de courir.'
+  tower_failed: '&eLe transfert a échoué. Vous restez de ce côté.'
+  tower_unavailable: '&eLa tour n''est pas prête. Finissez le combat et attendez un moment.'
+  napping: '&7Vous pouvez maintenant dormir pendant la journée. Laisser le lit ou /wake te réveille; /dream entre dans le
+    royaume des rêves.'
+  choice: '&7Reposez-vous ici ou choisissez /dream pour entrer dans le royaume des rêves. Utilisation /wake retour.'
+  exit_tool: '&5Fils de rêve · /wake'
+  mob_name: '&5Directeur de rêve'
+  disabled: '&cLe Rêve Realm est actuellement indisponible.'
+  survival_only: '&cUn voyage de rêve est seulement disponible en mode Survival.'
+  in_combat: '&cAttendez que vous soyez hors du combat avant d''entrer dans un rêve.'
+  recovery_pending: '&cVotre précédente visite du monde géré est toujours en cours de récupération.'
+  not_tired: '&7Vous n''êtes pas encore assez fatigué pour rêver ({fatigue}%).'
+  world_denied: '&cVous ne pouvez pas commencer un voyage de rêve de ce monde.'
+  clear_cursor: '&cEffacez d''abord l''élément sur votre curseur.'
+  clear_crafting: '&cEnlevez d''abord les éléments de la grille d''artisanat ouverte.'
+  bed_required: '&7Tenez-vous près d''un lit sûr, puis essayez &f/dream &7Encore.'
+  storage_unavailable: '&cVos récompenses de rêve ne pouvaient pas être lues en toute sécurité. Aucun voyage n''a commencé.'
+  pouch_recovery: '&eUne autre récompense doit être remise. Utilisation &f/dreamloot &eD''abord.'
+  entry_failed: '&cLe voyage de rêve ne pouvait pas être commencé en toute sécurité.'
+  entry_refused: '&cCore a refusé le voyage de rêve ({reason}).'
+  entered: '&bVous entrez dans le royaume des rêves. Vous avez environ {minutes} minutes; utiliser &f/wake &bde revenir en
+    toute sécurité.'
+  not_visiting: '&7Vous n''êtes pas actuellement dans le royaume des rêves.'
+  waking: '&bTu te réveilles et tu reviens en toute sécurité...'
+  time_warning: '&eIl vous reste {seconds} secondes de temps de rêve.'
+  time_bar: '&fHeure du rêve: {time}'
+  time_left: '&7Temps de rêve restant: environ {minutes} min.'
+  cloud_waypoint: '&aPoint de départ {step}/{total} exploré.'
+  cloud_ready: '&aLes ruines nuageuses sont explorées. Trouvez le marqueur de récompense doré.'
+  cloud_need_waypoints: '&7Explorez d''abord les points marqués.'
+  reward_marker: '&7Interagir avec le marqueur de récompense doré.'
+  crystal_progress: '&bSéquence cristalline {step}/{total}.'
+  crystal_reset: '&cLes cristaux sont silencieux. La séquence commence.'
+  nightmare_wave: '&5Onde de cauchemar {wave}/{total}!'
+  reward_unconfigured: '&cAucune récompense valable n''est configurée pour ce site de rêve.'
+  dungeon_complete: '&aSite de rêve terminé: {dungeon}.'
+  loot_pouched: '&dLe butin de {dungeon} a été ajouté durablement à votre Rêve Pouch.'
+  loot_delivered: '&aUne récompense de rêve a été livrée en toute sécurité à votre inventaire.'
+  loot_empty: '&7Ta pochette de rêve est vide.'
+  loot_full: '&eVotre inventaire est complet; la récompense reste dans le Dream Pouch.'
+  loot_busy: '&cLes récompenses ne peuvent pas être réclamées lors d''une visite ou d''un rétablissement.'
+  loot_recovery: '&cLa récompense doit être remise. Essayez encore après avoir reconnecté.'
+sleep_preview: '&7Qualité actuelle du sommeil: &f{quality}x&7. Une subvention de repos complète {rested_minutes} min reposée
+  et {xp_multiplier}x XP.'
+fatigue:
+  paused_creative: '&eLa croissance de la fatigue est interrompue en mode Créatif.'
+  paused_spectator: '&eLa croissance de la fatigue est interrompue en mode Spectator.'
+  paused_local_afk: '&eLa croissance de la fatigue est interrompue après {seconds}s sans entrée du joueur local.'
+history:
+  page: '&7Page {page}/{pages}'
+  invalid_page: '&cChoisissez une page entre 1 et {pages}.'
+  title: '&7La fatigue récente et l''histoire de la dette de sommeil:'
+  triggers_title: '&7Les hallucinations récentes et leur cause observée:'
+  entry: '&8{at} &7Fatigue {fatigue}% / Dette {debt}% — {event}'
+  sample: échantillon
+  sleep_started: sommeil commencé
+  sleep_completed: sommeil terminé
+  rest_started: reposée par un feu de camp
+  stimulant: 'stimulant utilisé: {detail}'
+  hallucination: hallucination {effect}; stade {stage}, fatigue {fatigue}%, dette de sommeil {debt}%
+  empty: '&7Aucune histoire récente.'
+  no_triggers: '&7Aucune hallucination n''a enregistré cette session.'
+  memory_only: '&8L''historique récent n''est que mémoire et est effacé lors de la déconnection/redémarrage.'
+sleep_deep: '&bVous êtes tombé dans le sommeil profond.'
+sleep_rested: '&aTu te réveilles complètement reposé.'
+sleep_summary: '&7Vous avez dormi {seconds} s: fatigue &f{fatigue_before}% → {fatigue_after}%&7, dette de sommeil &f{debt_before}%
+  → {debt_after}%&7. Dormir jusqu''à ce que vous soyez complètement reposé pour l''effet complet.'
+status_stimulant: '&eCaféine: {minutes} min {seconds} s restant; {uses} doses depuis le repos complet. Fatigue après le crash
+  basée sur les valeurs actuelles: &f{fatigue}%&e (l''activité et le sommeil peuvent changer cela).'
+stimulant: '&eLa caféine supprime votre fatigue pendant un moment.'
+stimulant_weak: '&6En raison de votre tolérance, l''effet est beaucoup plus faible.'
+stimulant_crash: '&cL''effet s''éteint – l''accident de fatigue s''installe.'
+microsleep: '&4Vos yeux se ferment un instant...'
+no_permission: '&cVous n''avez pas la permission de faire ça.'
+player_only: '&cCette commande n''est disponible que pour les joueurs.'
+data_loading: '&7Vos données de fatigue sont toujours en cours de chargement, veuillez réessayer dans un instant.'
+player_not_found: '&cJoueur non trouvé ou pas en ligne.'
+invalid_number: '&cNuméro invalide.'
+reloaded: '&aConfiguration rechargée.'
+config_invalid: '&cConfiguration invalide, les valeurs précédentes restent actives: {errors}. Les nombres doivent être finis (ni NaN ni infini).'
+admin:
+  set_fatigue: '&7Fatigue de {player} = {value}'
+  set_debt: '&7Dette de sommeil de {player} = {value}'
+  rested: '&a{player} est maintenant entièrement reposé.'
+  effect_unknown: '&cEffet inconnu: {effects}'
+  effect_done: '&aEffet déclenché.'
+  mob_spawned: '&aLa créature insomnie est née.'
+  mob_refused: '&cJ''ai refusé.'
+stage_name:
+  rested: Repéré
+  tired: Fatigué
+  exhausted: Épuisé
+  overmuedet: Surmenés
+  sleep_deprivation: Défaut de sommeil
+hint:
+  rested: Dormir dans un lit sous le toit et dans l'obscurité se rétablit mieux.
+  exhausted: Votre concentration s'estompe – trouvez un lit sûr bientôt.
+  overmuedet: Tes sens jouent des tours sur toi. Dors dès que tu peux !
+  sleep_deprivation: 'Grave privation de sommeil : microsleep et cauchemars arrivent.'
+rested_left:
+  none: non
+  minutes: '{minutes} min'
+menu:
+  title: Fatigue
+  description: Votre fatigue, votre dette de sommeil et votre bonus reposé
+  chat_button: Fatigue
+dialog:
+  title: Fatigue
+  state: '<gray>État : </gray>{stage}'
+  fatigue: 'Fatigue: {bar} {value} %'
+  debt: 'Dette de sommeil: {bar} {value} %'
+  rested: 'Prime reposée: {rested}'
+  stimulant: <yellow>Stimulant actif pendant {minutes} min – un accident de fatigue suit.</yellow>
+  sleeping: <aqua>Tu dors.</aqua>
+  refresh: Actualiser
+  close: Fermer
+  web: Page Web
+settings:
+  title: Fatigue et sommeil
+  description: Fatigue, sommeil, hallucinations et microsleep. Les modifications s'appliquent immédiatement.
+debt_reminder:
+  message: '&6Votre dette de sommeil est de {debt}%. Le café et les feux de camp ne peuvent pas le réduire. Dormir dans un
+    lit pour récupérer. Les rappels peuvent être désactivés en /vsettings → Dors.'
+  preference: Rappels de dettes de sommeil
+  preference_desc: Rappelez-moi de dormir quand ma dette est élevée
+setting:
+  debt_reminder:
+    enabled:
+      label: Rappels de dettes de sommeil
+      desc: Envoyer des rappels aux joueurs éveillés avec une dette élevée de sommeil
+    threshold:
+      label: Seuil d'endettement du sommeil
+      desc: Pourcentage minimal de la dette de sommeil pour un rappel
+    interval_minutes:
+      label: Intervalle de rappel (minutes)
+      desc: Temps minimum entre les rappels pour chaque joueur pendant cette session
+  fatigue:
+    enabled:
+      label: Augmentation de la fatigue
+      desc: Hors = la fatigue et la dette de sommeil ne grandissent plus
+    base_per_minute:
+      label: Fatigue par minute
+      desc: Augmentation de l'activité normale (0.125 160 min par étape)
+    debt_per_minute:
+      label: Dette de sommeil par minute
+      desc: Augmentation de la dette de sommeil
+  sleep:
+    fatigue_recovery_per_second:
+      label: Récupération dans le sommeil /s
+      desc: Réduction de la fatigue par seconde de sommeil
+    debt_recovery_per_second:
+      label: Réduction de la dette en matière de sommeil /s
+      desc: Réduction de la dette de sommeil par seconde de sommeil
+    cancel_vanilla_night_skip:
+      label: Prévenir la vanille nuit skip
+      desc: Le sommeil ne passe pas la nuit
+    dialog:
+      enabled:
+        label: Boîte de dialogue « Sommeil »
+        desc: 'Demandez aux dormeurs: dormez jusqu''à un moment, rêvez royaume ou levez-vous'
+      day_naps:
+        label: Boîte de dialogue pour les siestes de jour
+        desc: Demandez aussi sur les siestes de jour (seulement lorsque le royaume des rêves est ouvert)
+      custom_time:
+        label: Temps de réveil
+        desc: Offrez une heure de sélection dans le dialogue de sommeil
+    wake_summary:
+      label: Résumé du réveil
+      desc: Se lever tôt montre combien de temps tu as dormi et ce qu'il a pris
+    acceleration:
+      enabled:
+        label: Accélération du temps
+        desc: Le temps court plus vite plus les joueurs dorment, au lieu de sauter la nuit
+      min_speed:
+        label: Vitesse avec quelques dormants
+        desc: Temps plus rapides avec la première de plusieurs dormeurs (1-100)
+      max_speed:
+        label: Vitesse avec tout le monde endormi
+        desc: Temps plus rapides lorsque tout le monde dort (1-100); 10 Une minute par nuit
+      curve:
+        label: Courbe de vitesse
+        desc: 1 = linéaire, 2 = lent jusqu'à la majorité du sommeil, 0.5 = rapide tôt
+      action_bar:
+        label: Barre d' action
+        desc: Montrez des dormeurs et de la vitesse à tout le monde
+  stimulants:
+    enabled:
+      label: Stimulants
+      desc: La caféine et les produits similaires suppriment la fatigue
+  hallucinations:
+    enabled:
+      label: hallucinations
+      desc: Sons et troubles visuels très fatigués
+    chance_exhausted:
+      label: 'hallucination: épuisée'
+      desc: Possibilité par chèque
+    chance_overmuedet:
+      label: 'hallucination: trop fatiguée'
+      desc: Possibilité par chèque
+    chance_sleep_deprivation:
+      label: 'hallucination: privation de sommeil'
+      desc: Possibilité par chèque
+  microsleep_grace: 'Grâce de récupération de microsleep: {seconds} secondes restantes.'
+  microsleep_recovered: 'Microsleep interrompu : contrôle de récupération. {seconds} secondes de grâce ; la fatigue et la
+    dette de sommeil sont préservées.'
+  microsleep:
+    enabled:
+      label: Microsleep
+      desc: Brèvement assombri à haute fatigue
+    min_fatigue:
+      label: Microsleep de fatigue
+      desc: Fatigue en %
+    chance_per_check:
+      label: Possibilité de micro-sommeil
+      desc: Possibilité par chèque
+    cooldown_seconds:
+      label: pause microsleep (s)
+      desc: Temps minimum entre deux microsleeps
+  insomnia_mobs:
+    enabled:
+      label: Insomnie
+      desc: Monstres de cauchemar à haute fatigue
+    min_fatigue:
+      label: Insomnie des créatures de fatigue
+      desc: Fatigue en %
+    base_spawn_chance:
+      label: Insomnie créature chance
+      desc: Possibilité par chèque
+  rested:
+    enabled:
+      label: Prime reposée
+      desc: Bonus après un sommeil complet
+    duration_minutes:
+      label: Durée du repos (min)
+      desc: Durée du bonus
+    xp_multiplier:
+      label: Reposé XP
+      desc: XP multiplicateur du bonus
+  integrations:
+    cityclaim:
+      label: Intégration urbaine
+      desc: Qualité du sommeil dans les villes; prend effet après un redémarrage
+    bloodmoon:
+      label: Intégration de la lune de sang
+      desc: Pire sommeil pendant une lune de sang; prend effet après un redémarrage
+  rest:
+    campfire:
+      enabled:
+        label: Repos des feux de camp
+        desc: Rester à côté d'un feu de camp allumé réduit lentement la fatigue
+      fatigue_per_second:
+        label: Repos des feux de camp par seconde
+        desc: Fatigue perdue par seconde de repos (un lit récupère 1.0)
+      min_fatigue:
+        label: Le feu de camp repose jusqu'à
+        desc: Un feu de camp ne diminue jamais la fatigue en dessous de cette valeur
+  player_menu:
+    enabled:
+      label: Entrée du menu du lecteur
+      desc: Entrée de fatigue lorsque vous cliquez à droite sur un joueur (Core 0.43+)
+    show_stage_to_players:
+      label: D'autres voient la scène
+      desc: Les joueurs voient à quel point un autre joueur semble fatigué (pas de nombres)
+hud:
+  rested: Repéré
+  fatigue: Fatigue {value} % · {stage}
+  debt: Dette de sommeil {value} %
+panel:
+  loading: Vos données de fatigue sont toujours chargées.
+  state: État
+  rested: Prime reposée
+  fatigue: Fatigue {value} %
+  debt: Dette de sommeil {value} %
+  stimulant: Stimulant actif pendant {minutes} min – un accident de fatigue suit.
+  sleeping: Tu dors.
+  settings: Paramètres du serveur
+  settings-unavailable: Paramètres non disponibles.
+web:
+  module:
+    title: Fatigue
+    description: Fatigue, dette de sommeil et histoire
+  ui:
+    loading: Chargement...
+    offline: Tu n'es pas dans le jeu. Vos valeurs apparaissent dès que vous êtes en ligne.
+    not-loaded: Vos données de fatigue sont toujours chargées.
+    stage: État
+    fatigue: Fatigue
+    debt: Dette de sommeil
+    rested: Prime reposée
+    rested-none: aucun
+    rested-minutes: '{minutes} min à gauche'
+    stimulant: Stimulant actif pendant {minutes} min – un accident de fatigue suit.
+    sleeping: Tu dors.
+    history: Historique
+    history-empty: Pas encore d'historique – un échantillon par minute pendant que vous êtes en ligne.
+    history-hint: Dernières {count} minutes (un échantillon par minute, cette séance de jeu seulement).
+    thresholds: Étapes à partir de {values} % fatigue
+    legend-fatigue: Fatigue
+    legend-debt: Dette de sommeil
+admin_usage: '&7/insomnia admin <get|setfatigue|setdebt|sleep|effect|spawnmob|overview|reload>'
+sleep_cozy: '&7Cozicité: &f{count}/{max} &7(+{bonus}% qualité du sommeil): &f{found}&7. Toujours possible: {missing}.'
+status_cozy: '&7La douceur au lit: &f{count}/{max} &7(+{bonus}% qualité du sommeil): &f{found}&7. Toujours possible: {missing}.'
+status_next:
+  minutes: '&7Prochaine étape: &f{stage} &7dans les environs &f{minutes} min &7de jeu normal.'
+  hours: '&7Prochaine étape: &f{stage} &7dans les environs &f{hours} h {minutes} min &7de jeu normal.'
+cozy:
+  soft: tapis ou laine
+  plant: plante en pot
+  books: bibliothèque
+  light: lanterne ou bougie
+  art: peinture ou cadre
+  storage: poitrine ou baril
+  none: rien
+rest:
+  started: '&6Vous vous installez près du feu de camp. Votre fatigue diminue lentement, jusqu''à {floor}%. Se déplacer ou
+    se battre finit le reste.'
+  bar: '&6Se reposer près du feu &8· &7Fatigue &f{fatigue}% &8→ &7{floor}%'
+  floor: '&7Vous vous êtes reposé autant qu''un feu de camp le permet ({floor}%). Pour plus, dormez dans un lit.'
+  stopped: '&7Arrête de te reposer.'
+  status: '&6Vous vous reposez près d''un feu de camp.'
+overview:
+  button: Tous les joueurs
+  title: Fatigue de tous les joueurs
+  intro: '{count} joueurs en ligne, les plus fatigués en premier. Cliquez sur un joueur pour des valeurs et des actions rapides.'
+  empty: Aucun joueur avec des données de fatigue chargées n'est en ligne.
+  more: '...et {count} plus (seuls les 40 les plus fatigués sont montrés).'
+  row: '{player} · {stage} · {fatigue} % {state}'
+  row_hover: Dette de sommeil {debt} %
+  sleeping: (sommeil)
+  resting: (au feu de camp)
+  activity: 'En ce moment: {state}'
+  player_title: 'Fatigue: {player}'
+  back: ← Tous les joueurs
+  back_menu: ← Fatigue
+  chat_title: '&7Fatigue de tous les joueurs ({count}), les plus fatigués d''abord:'
+  chat_line: '&f{player} &8· &7{stage} &8· &7fatigue &f{fatigue}% &8· &7dette &f{debt}% {state}'
+  action:
+    rest: Repos complet
+    clear_debt: Dette nette de sommeil
+    less: Fatigue −20
+    more: Fatigue +20
+player_menu:
+  admin_name: '&dFatigue: {player}'
+  admin_lore: |-
+    &7Étape: &f{stage}
+    &7Fatigue: &f{fatigue} %
+    &7Dette de sommeil: &f{debt} %
+    &eCliquez sur : valeurs et actions rapides
+  name: '&d{player} &8· &f{stage}'
+  lore:
+    rested: '&7Grand éveillé et bien reposé.'
+    tired: '&7Yawns de temps en temps.'
+    exhausted: '&7Il a des cernes sous les yeux.'
+    overmuedet: '&7Ils peuvent à peine garder les yeux ouverts.'
+    sleep_deprivation: '&7Mauvais besoin d''un lit – peut-être en offrir un?'
+sleep_choice:
+  title: Dormir
+  nap_title: Nap
+  now: C'est <white>{time}</white>. Tu veux dormir combien de temps ?
+  nap_now: C'est <white>{time}</white>. L'horloge ne fonctionne pas plus vite pour une sieste de jour; vous vous reposez jusqu'à
+    ce que vous vous leviez.
+  faster: <gray>Plus les joueurs dorment, plus le temps passe vite.</gray>
+  no_acceleration: <gray>La nuit se termine le matin.</gray>
+  dream_ready: '<light_purple>Rêve : ouvert à vous (fatigue {fatigue} %).</light_purple>'
+  dream_not_tired: '<gray>Domaine de rêve: de {min} % fatigue (vous: {fatigue} %).</gray>'
+  hour_label: Temps de réveil
+  remember: Ne redemande pas (change it in /vsettings)
+  keep_sleeping: Continuez à dormir
+  keep_napping: N'arrête pas de taper
+  button:
+    morning: Jusqu'au matin ({time})
+    noon: Jusqu'à midi ({time})
+    evening: Jusqu'au soir ({time})
+    night: Jusqu'à la nuit suivante ({time})
+    custom: Jusqu'à mon temps
+    sleep: Dormir
+    dream: Entrez dans le royaume des rêves
+    get_up: Lève-toi
+  sleeping_until: '&7Tu dors jusqu''à ce que &f{time}&7. Plus les joueurs dorment, plus le temps passe vite.'
+  sleeping: '&7Tu dors jusqu''au matin.'
+  auto: '&7Tu dors jusqu''à ce que &f{time}&7 (votre choix sauvegardé, changez-le en /vsettings).'
+  remembered: '&7Sauvé. Vous ne serez pas demandé à nouveau; changez-le en /vsettings → Dormir.'
+  woke: '&7Tu te réveilles. C''est &f{time}&7.'
+  chat_night: '&7C''est &f{time}&7. Sommeil:'
+  chat_nap: '&7Coucher. Le royaume des rêves ou se lever ?'
+  chat_button: '&b[{label}]'
+  chat_hover: Cliquez pour choisir
+  chat_settings: '&8[Settings]'
+  action_bar: '&7{sleeping}/{players} sommeil &8– &fdurée {speed}× plus vite'
+  settings:
+    title: Dormir
+    description: Ce qui se passe quand on se couche dans un lit
+    mode: Quand je me couche
+    mode_desc: Demandez à chaque fois, utilisez mon choix sauvegardé, ou demandez dans le chat
+    mode_ask: Demander avec une boîte de dialogue
+    mode_auto: Utilisez mon choix sauvegardé, ne demandez pas
+    mode_chat: Demandez dans le chat
+    choice: Sélection enregistrée
+    choice_desc: Utilisé lorsque vous n'êtes pas demandé; votre choix dans la boîte de dialogue est enregistré ici
+    choice_morning: Jusqu'au matin
+    choice_noon: Jusqu'à midi
+    choice_evening: Jusqu'au soir
+    choice_night: Jusqu'à la nuit suivante
+    choice_custom: Jusqu'à mon temps
+    choice_dream: Le royaume des rêves
+    hour: Une heure de réveil
+    hour_desc: Heure (0-23) pour "jusqu'à mon temps"
+commands:
+  insomnia:
+    description: 'Fatigue et sommeil: menu, état, historique, déclencheurs et administration'
+    aliases: []
+    sub:
+      menu:
+        name: menu
+        aliases: []
+        description: Ouvrir le menu fatigue
+      status:
+        name: status
+        aliases: []
+        description: Votre fatigue, votre dette de sommeil, étape et bonus reposés
+      history:
+        name: history
+        aliases: []
+        description: Vos derniers échantillons de fatigue et de sommeil
+      triggers:
+        name: triggers
+        aliases: []
+        description: Vos dernières hallucinations et ce qui les a déclenchées
+      admin:
+        name: admin
+        aliases: []
+        description: 'Administration: valeurs, sommeil, effets, créatures, aperçu et recharge'
+        sub:
+          get:
+            name: get
+            aliases: []
+            description: Afficher l'état de fatigue d'un joueur
+            usage: PLAYER
+            args:
+              player: PLAYER
+          setfatigue:
+            name: setfatigue
+            aliases: []
+            description: Régler la fatigue d'un joueur (+n/-n la change)
+            usage: PLAYER 0-100+ N
+            args:
+              player: PLAYER
+              value: 0-100+n-n
+          setdebt:
+            name: setdebt
+            aliases: []
+            description: Définissez la dette de sommeil d'un joueur (+n/-n la change)
+            usage: PLAYER 0-100+ N
+            args:
+              player: PLAYER
+              value: 0-100+n-n
+          sleep:
+            name: sleep
+            aliases: []
+            description: Laissez un joueur se reposer immédiatement
+            usage: PLAYER
+            args:
+              player: PLAYER
+          effect:
+            name: effect
+            aliases: []
+            description: 'Déclencher une hallucination pour un joueur (sans nom : liste des effets)'
+            usage: PLAYER [EFFECT]
+            args:
+              player: PLAYER
+              value: EFFECT
+          spawnmob:
+            name: spawnmob
+            aliases: []
+            description: Creature d'insomnie d'un rang près d'un joueur
+            usage: PLAYER TIER
+            args:
+              player: PLAYER
+              value: TIER
+          reload:
+            name: reload
+            aliases: []
+            description: Vérifier et recharger la configuration
+          overview:
+            name: overview
+            aliases: []
+            description: Aperçu de la fatigue de tous les joueurs en ligne
+  dream:
+    description: Entrez dans le royaume des rêves d'un lit sûr à proximité
+    aliases: []
+    sub:
+      quest:
+        name: "quest"
+        aliases: []
+        description: "Suivre votre histoire onirique à embranchements sauvegardée"
+        args:
+          action: "CHOIX"
+      invite:
+        name: "invite"
+        aliases: []
+        description: "Inviter un autre rêveur dans ton rêve"
+        args:
+          player: "PLAYER"
+      join:
+        name: "join"
+        aliases: []
+        description: "Rejoindre un rêve auquel tu es invité"
+        args:
+          player: "PLAYER"
+      leave:
+        name: "leave"
+        aliases: []
+        description: "Quitter le rêve partagé"
+      weekly:
+        name: "weekly"
+        aliases: []
+        description: "Le défi cauchemar de la semaine et ses meilleurs temps"
+
+    values:
+      status: "statut"
+      start: "commencer"
+      pause: "pause"
+      mercy: "clemence"
+      courage: "courage"
+      restore: "restaurer"
+      master: "maitriser"
+
+  wake:
+    description: Laissez le royaume des rêves en sécurité
+    aliases: []
+  dreamloot:
+    description: Réclamez vos récompenses de rêve stockées
+    aliases: []
+
+# Free feature release: quest
+quest:
+  unavailable: "Les quêtes oniriques sont désactivées ou non autorisées."
+  usage: "/dream quest status|start|pause|mercy|courage|restore|master"
+  paused: "Le Rêve brisé vous attend. /dream quest start commence ou reprend votre histoire ; pause suspend la progression."
+  chapter_0: "Chapitre I — Une voix enfermée dans le cristal réclame sa mémoire. Terminez la Crypte de cristal."
+  chapter_1: "La mémoire révèle un gardien perdu. mercy protège son peuple ; courage affronte son ravisseur : /dream quest mercy|courage."
+  chapter_2: "Chapitre II — Votre choix trace la route. Terminez le donjon indiqué pour retrouver le cœur du rêve."
+  chapter_3: "Le cœur peut guérir le rêve ou devenir votre boussole. Choisissez restore ou master : /dream quest restore|master."
+  chapter_4: "Chapitre III — Une dernière épreuve. Terminez le dernier donjon pour sceller votre dénouement."
+  objective: "Objectif suivant : {dungeon}. Progression conservée après réveil, déconnexion et redémarrage."
+  ending_guardian: "Fin — Gardien de l’aube. Vous avez protégé les égarés et restauré leur foyer. Le rêve se souvient de votre bonté."
+  ending_wanderer: "Fin — Voyageur des étoiles. Vous avez sauvé les égarés, puis emporté le cœur vers de nouveaux cieux."
+  ending_liberator: "Fin — Libérateur du rêve. Vous avez affronté le cauchemar et rendu le cœur volé. La peur ne règne plus."
+  ending_sovereign: "Fin — Souverain du crépuscule. Vous avez conquis le cauchemar et lié son cœur à votre volonté. Une couronne puissante et solitaire est vôtre."
+  reward: "Ce dénouement est permanent. Récupérez sa récompense unique hors du rêve avec /dreamloot."
+weekly:
+  disabled: 'Le défi cauchemar hebdomadaire est désactivé.'
+  started: '&5Cauchemar de la semaine : &d{modifiers}&5. Le chrono tourne !'
+  cleared: '&dCauchemar vaincu en &f{time}&d (place {rank} sur {count} cette semaine).'
+  record: '&6Nouveau record de la semaine : &f{time}&6 – place {rank} sur {count} !'
+  reward: '&aPremière victoire de la semaine : la récompense t’attend dans ta bourse de rêve (/dreamloot).'
+  header: '&5Cauchemar de la semaine : &d{modifiers} &7(fin dans {days} j {hours} h)'
+  empty: '&7Personne ne l’a encore vaincu cette semaine.'
+  row: '&7{rank}. &f{player} &7– {time}'
+  own: '&7Ton meilleur temps : &f{time} &7(place {rank})'
+  own-none: '&7Tu n’as pas encore vaincu le cauchemar de la semaine.'
+  modifier:
+    swift: 'Gardiens rapides'
+    armored: 'Gardiens blindés'
+    ferocious: 'Gardiens féroces'
+    horde: 'Horde'
+    darkness: 'Ténèbres'
+companion:
+  disabled: 'Les rêves partagés sont désactivés sur ce serveur.'
+  not-dreaming: 'Tu dois être dans le rêve pour inviter quelqu’un.'
+  target-not-dreaming: '{player} n’est pas dans le rêve en ce moment.'
+  invited: 'Tu as invité {player} dans ton rêve (valable 60 secondes).'
+  invitation: '&d{player} t’invite dans son rêve – combattez le cauchemar ensemble. &f[Clique pour rejoindre]'
+  joined: 'Tu partages maintenant le rêve de {player}. Ses gardiens te sont visibles ; tes éliminations comptent pour lui.'
+  joined-host: '{player} a rejoint ton rêve.'
+  ended: 'Le rêve partagé avec {player} est terminé.'
+  none: 'Tu ne partages aucun rêve.'
+  error-self: 'Tu ne peux pas t’inviter toi-même.'
+  error-already: '{player} partage déjà ton rêve.'
+  error-host-busy: 'Tu es compagnon dans un autre rêve ; utilise d’abord /dream leave.'
+  error-target-busy: '{player} partage déjà un autre rêve.'
+  error-full: 'Au plus {max} compagnons peuvent partager un rêve.'
+  error-no-invite: 'Aucune invitation ouverte pour toi.'

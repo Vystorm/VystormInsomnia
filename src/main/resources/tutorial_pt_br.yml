@@ -1,0 +1,36 @@
+# Português (Brasil) — UTF-8. Keep keys, placeholders and formatting tokens unchanged.
+title: Fadiga e sono
+permission: insomnia.use
+pages:
+- title: Fadiga e dívida de sono
+  text: |
+    1. Enquanto você está acordado, fadiga e sono dívidas lentamente subir; atividades extenuantes acelerar isso.
+    2. No menu Vystorm (/vmenu) em "Caracter" → "Fadiga" (also /insomnia) Você vê seu estado, fadiga, dívida de sono e bônus descansados.
+    3. Os estágios: descanso, cansaço, cansaço, cansaço, privação de sono. Cada mudança de palco envia uma mensagem com um botão para o status.
+- title: Dormindo bem
+  text: |
+    1. Deite-se numa cama. Você dorme primeiro, depois o sono profundo segue, que se recupera mais.
+    2. Uma cama sob o teto e no escuro se recupera melhor, em cidades e terrenos alugados você dorme melhor.
+    3. Se você acordar completamente descansado, você recebe o bônus descansado por um tempo.
+- title: Estimulantes
+  text: |
+    1. Cafeína e como suprimir a fadiga por um tempo.
+    2. Cada uso antes de seu próximo sono aumenta sua tolerância e enfraquece o efeito.
+    3. Quando o efeito passa, uma fadiga cai.
+- title: Descansando em uma fogueira
+  text: |
+    1. Sair sem uma cama? Fique parado ao lado de uma fogueira acesa ou uma fogueira de alma por alguns segundos.
+    2. Sua fadiga cai lentamente, mas apenas até um limite (30 % por padrão). A barra de ação mostra o progresso.
+    3. Mover ou lutar acaba com o resto. Dívida de sono e o bônus ainda precisa de uma cama.
+- title: Ficar acordado por muito tempo
+  text: |
+    1. De "Exaustado" em diante, sons e distúrbios visuais pregam peças em você.
+    2. Quando muito cansado você se arrisca a dormir: você cochila brevemente e seu corpo fica para trás, vulnerável.
+    3. Monstros de pesadelo aparecem apenas para você e atacam apenas você. Durma antes que chegue tão longe.
+- title: Administração
+  permission: insomnia.admin
+  text: |
+    1. Configurações do servidor: Configurações → Servidor → Fadiga & sono; economizando recargas imediatamente.
+    2. /insomnia admin overview (ou o botão "Todos os jogadores" no menu fadiga, ou sneatch + botão direito de um jogador) lista todos os jogadores com ações rápidas.
+    3. Comandos: /insomnia admin get|setfatigue|setdebt|sleep|effect|spawnmob <player> e /insomnia admin reload.
+    4. Os textos vivem plugins/VystormInsomnia/lang/de.Yml e en.yml.

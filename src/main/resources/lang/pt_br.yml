@@ -1,0 +1,600 @@
+# Português (Brasil) — UTF-8. Keep keys, placeholders and formatting tokens unchanged.
+prefix: '&8[&5Insônia&8] '
+status: '&7Fadiga: &f{fatigue}% &8| &7Dívida de sono: &f{debt}% &8| &7Etapa: &f{stage} &8| &7Descansado: &f{rested}'
+stage_tired: '&eVocê está começando a se sentir cansado.'
+stage_exhausted: '&6Sua concentração está desaparecendo visivelmente.'
+stage_overmuedet: '&cVocê está muito cansado. Seus sentidos estão começando a te enganar.'
+stage_sleep_deprivation: '&4Você está sofrendo de grave privação de sono.'
+sleep_start: '&7Você tenta dormir...'
+dream:
+  name_cloud_ruins: Nuvem Ruínas
+  name_crystal_vault: Cristal Vault
+  name_nightmare_keep: Mantendo o Pesadelo
+  dungeon_direction: '&b{name} &7- Entrada na &f{x}, {y}, {z}&7. As trilhas terrestres levam lá desde a chegada. Use &f/dream
+    &7para listar esses sites novamente.'
+  hint_cloud_ruins: '&aExplore os marcadores do chão em ordem da entrada. Interaja com a pedra de ouro no final.'
+  hint_crystal_vault: '&bCristal VaultClique com o botão direito das quatro pedras de cristal em ordem da entrada para a última
+    câmara. Uma pedra errada reinicia a sequência.'
+  hint_nightmare_keep: '&5Entre no centro da arena e derrote suas ondas. Apenas suas próprias mortes contam, recompensas vão
+    em segurança para seu Dream Pouch.'
+  tower_departing: '&dA torre está virando seu sonho. Fique parado por um momento.'
+  tower_arrived: '&bVocê chegou ao lado do espelho {side}. Seu temporizador de sonhos continua correndo.'
+  tower_failed: '&eA transferência falhou. Você fica deste lado.'
+  tower_unavailable: '&eA torre não está pronta. Termine o combate e espere um momento.'
+  napping: '&7Agora você pode dormir durante o dia. Saia da cama ou /wake Acorda você; /dream Entra no reino dos sonhos.'
+  choice: '&7Descanse aqui, ou escolha /dream para entrar no reino dos sonhos. Use /wake Para voltar.'
+  exit_tool: '&5Linha dos Sonhos · /wake'
+  mob_name: '&5Diretor dos Sonhos'
+  disabled: '&cO Reino dos Sonhos não está disponível.'
+  survival_only: '&cUma jornada de sonho só está disponível no modo Sobrevivência.'
+  in_combat: '&cEspere até estar fora de combate antes de entrar em um sonho.'
+  recovery_pending: '&cSua visita anterior ao mundo ainda está sendo recuperada.'
+  not_tired: '&7Você não está cansado o suficiente para sonhar ainda ({fatigue}%).'
+  world_denied: '&cVocê não pode começar uma jornada de sonho deste mundo.'
+  clear_cursor: '&cLimpe o item em seu cursor primeiro.'
+  clear_crafting: '&cRetire itens da grade de artesanato aberta primeiro.'
+  bed_required: '&7Fique perto de uma cama segura, então tente &f/dream &7De novo.'
+  storage_unavailable: '&cSuas recompensas de sonhos não podiam ser lidas com segurança. Nenhuma viagem foi iniciada.'
+  pouch_recovery: '&eUma recompensa anterior precisa de recuperação. Use &f/dreamloot &ePrimeiro.'
+  entry_failed: '&cA jornada dos sonhos não poderia ser iniciada com segurança.'
+  entry_refused: '&cCore recusou a viagem dos sonhos ({reason}).'
+  entered: '&bVocê entra no Reino dos Sonhos. Você tem cerca de {minutes} minutos; use &f/wake &bpara voltar em segurança.'
+  not_visiting: '&7Você não está no Reino dos Sonhos.'
+  waking: '&bVocê acorda e volta em segurança...'
+  time_warning: '&eVocê tem {seconds} segundos de tempo de sonho.'
+  time_bar: '&fHora do sonho: {time}'
+  time_left: '&7Tempo de sonho restante: cerca de {minutes} min.'
+  cloud_waypoint: '&aCaminho {step}/{total} explorado.'
+  cloud_ready: '&aAs ruínas da nuvem são exploradas. Encontre o marcador de recompensa dourada.'
+  cloud_need_waypoints: '&7Explore os pontos marcados primeiro.'
+  reward_marker: '&7Interaja com o marcador de recompensa dourada.'
+  crystal_progress: '&bSequência de cristal {step}/{total}.'
+  crystal_reset: '&cOs cristais se calam. A sequência começa de novo.'
+  nightmare_wave: '&5Onda de pesadelo {wave}/{total}!'
+  reward_unconfigured: '&cNenhuma recompensa válida é configurada para este site de sonhos.'
+  dungeon_complete: '&aLocal do sonho concluído: {dungeon}.'
+  loot_pouched: '&dLoot de {dungeon} foi adicionado ao seu Dream Pouch.'
+  loot_delivered: '&aUma recompensa de sonho foi entregue em segurança ao seu inventário.'
+  loot_empty: '&7Seu Sonho Pouch está vazio.'
+  loot_full: '&eSeu inventário está completo, a recompensa permanece no Dream Pouch.'
+  loot_busy: '&cRecompensas não podem ser reclamadas durante uma visita ou recuperação.'
+  loot_recovery: '&cA entrega da recompensa precisa ser recuperada. Tente novamente depois de se reconectar.'
+sleep_preview: '&7Qualidade atual do sono: &f{quality}x&7. Um descanso completo concede {rested_minutes} min descansado e
+  {xp_multiplier}x XP.'
+fatigue:
+  paused_creative: '&eO crescimento da fadiga está parado no modo criativo.'
+  paused_spectator: '&eO crescimento da fadiga está parado no modo Espectador.'
+  paused_local_afk: '&eO crescimento da fadiga é pausado após {seconds}s sem entrada do jogador local.'
+history:
+  page: '&7Página {page}/{pages}'
+  invalid_page: '&cEscolha uma página entre 1 e {pages}.'
+  title: '&7Fadiga recente e história da dívida de sono:'
+  triggers_title: '&7Alucinações recentes e sua causa observada:'
+  entry: '&8{at} &7Fadiga {fatigue}% / dívida {debt}% - {event}'
+  sample: Amostra
+  sleep_started: O sono começou
+  sleep_completed: sono completo
+  rest_started: Descansando em uma fogueira
+  stimulant: 'estimulante usado: {detail}'
+  hallucination: Alucinação {effect}; estágio {stage}, fadiga {fatigue}%, dívida de sono {debt}%
+  empty: '&7Sem história recente.'
+  no_triggers: '&7Nenhuma alucinação registrou esta sessão.'
+  memory_only: '&8História recente é apenas memória e está limpa no logout/restart.'
+sleep_deep: '&bVocê caiu em sono profundo.'
+sleep_rested: '&aVocê acorda completamente descansado.'
+sleep_summary: '&7Você dormiu {seconds} s: fadiga &f{fatigue_before}% → {fatigue_after}%&7, dívida de sono &f{debt_before}%
+  → {debt_after}%&7. Durma até estar completamente descansado para o efeito completo.'
+status_stimulant: '&eCafeína: {minutes} min {seconds} s restantes; {uses} doses desde o repouso total. Fadiga após o acidente
+  baseado nos valores atuais: &f{fatigue}%&e (atividade e sono podem mudar isso).'
+stimulant: '&eA cafeína suprime sua fadiga por um tempo.'
+stimulant_weak: '&6Por causa de sua tolerância o efeito é muito mais fraco.'
+stimulant_crash: '&cO efeito passa, a fadiga cai.'
+microsleep: '&4Seus olhos se fecham por um momento...'
+no_permission: '&cVocê não tem permissão para fazer isso.'
+player_only: '&cEste comando só está disponível para os jogadores.'
+data_loading: '&7Seus dados de fadiga ainda estão carregando, por favor tente novamente em um momento.'
+player_not_found: '&cJogador não encontrado ou não on-line.'
+invalid_number: '&cNúmero inválido.'
+reloaded: '&aConfiguração recarregada.'
+config_invalid: '&cConfiguração inválida, os valores anteriores permanecem ativos: {errors}. Os números devem ser finitos (sem NaN ou infinito).'
+admin:
+  set_fatigue: '&7Fadiga de {player} = {value}'
+  set_debt: '&7Dívida de sono de {player} = {value}'
+  rested: '&a{player} agora está totalmente descansado.'
+  effect_unknown: '&cEfeito desconhecido: {effects}'
+  effect_done: '&aEfeito desencadeado.'
+  mob_spawned: '&aCriatura insônia gerada.'
+  mob_refused: '&cSpawn recusou.'
+stage_name:
+  rested: Descansado
+  tired: Cansada
+  exhausted: Exausto
+  overmuedet: Cansado
+  sleep_deprivation: Privação de sono
+hint:
+  rested: Dormir em uma cama sob um teto e no escuro se recupera melhor.
+  exhausted: Sua concentração está desaparecendo. Encontre uma cama segura logo.
+  overmuedet: Seus sentidos estão pregando peças em você. Durma assim que puder!
+  sleep_deprivation: 'Privações de sono graves: micro-sono e pesadelos estão chegando.'
+rested_left:
+  none: não
+  minutes: '{minutes} min'
+menu:
+  title: Fadiga
+  description: Sua fadiga, dívida de sono e bônus descansados
+  chat_button: Fadiga
+dialog:
+  title: Fadiga
+  state: '<gray>Estado: </gray>{stage}'
+  fatigue: 'Fadiga: {bar} {value} %'
+  debt: 'Dívida de sono: {bar} {value} %'
+  rested: 'Bônus descansado: {rested}'
+  stimulant: <yellow>Estimulante ativo por mais {minutes} min - um acidente de fadiga segue.</yellow>
+  sleeping: <aqua>Você está dormindo.</aqua>
+  refresh: Refresque
+  close: Fechar
+  web: Página Web
+settings:
+  title: Fadiga e sono
+  description: Fadiga, sono, alucinações e micro-sono. Mudanças se aplicam imediatamente.
+debt_reminder:
+  message: '&6Sua dívida de sono é {debt}%. Café e fogueiras não podem reduzi-lo. Durma em uma cama para se recuperar. Lembretes
+    podem ser desativados em /vsettings → Durma.'
+  preference: A dívida do sono lembra
+  preference_desc: Lembre-me de dormir quando minha dívida de sono estiver alta
+setting:
+  debt_reminder:
+    enabled:
+      label: A dívida do sono lembra
+      desc: Envie lembretes para jogadores acordados com dívidas de sono
+    threshold:
+      label: Limite da dívida para o sono
+      desc: Percentagem mínima de débito para um lembrete
+    interval_minutes:
+      label: Intervalo de lembrete (minutos)
+      desc: Tempo mínimo entre lembretes para cada jogador durante esta sessão
+  fatigue:
+    enabled:
+      label: A fadiga aumenta
+      desc: Off = fadiga e débito do sono não crescem mais
+    base_per_minute:
+      label: Fadiga por minuto
+      desc: Aumento da atividade normal (0.125 160 min por estágio)
+    debt_per_minute:
+      label: Dívida de sono por minuto
+      desc: Aumento da dívida do sono
+  sleep:
+    fatigue_recovery_per_second:
+      label: Recuperação no sono /s
+      desc: Redução da fadiga por segundo de sono
+    debt_recovery_per_second:
+      label: Redução da dívida no sono /s
+      desc: Redução da dívida do sono por segundo de sono
+    cancel_vanilla_night_skip:
+      label: Evitar a noite de baunilha
+      desc: Dormir não pula a noite
+    dialog:
+      enabled:
+        label: Diálogo de sono
+        desc: 'Pergunte aos dorminhocos: dormir até um momento, sonhar reino ou levantar'
+      day_naps:
+        label: Diálogo para cochilos diurnos
+        desc: Pergunte também em cochilos diurnos (somente enquanto o reino dos sonhos está aberto)
+      custom_time:
+        label: Hora de acordar
+        desc: Ofereça uma hora no diálogo do sono
+    wake_summary:
+      label: Resumo de despertar
+      desc: Levantar cedo mostra quanto tempo você dormiu e o que levou
+    acceleration:
+      enabled:
+        label: Aceleração do tempo
+        desc: O tempo corre mais rápido quanto mais jogadores dormem, em vez de pular a noite
+      min_speed:
+        label: Velocidade com poucos adormecidos
+        desc: Vezes mais rápidas com o primeiro de vários adormecidos (1-100)
+      max_speed:
+        label: Velocidade com todos dormindo
+        desc: Vezes mais rápidas quando todos dormem (1-100); 10 Um minuto por noite
+      curve:
+        label: Curva de velocidade
+        desc: 1 = linear, 2 = lento até a maioria do sono, 0.5 = rápido cedo
+      action_bar:
+        label: Barra de ação
+        desc: Mostre sono e velocidade para todos no mundo
+  stimulants:
+    enabled:
+      label: Estimulantes
+      desc: Cafeína e como suprimir a fadiga
+  hallucinations:
+    enabled:
+      label: Alucinações
+      desc: Sons e distúrbios visuais quando muito cansados
+    chance_exhausted:
+      label: 'Alucinação: exausto'
+      desc: Chance por cheque
+    chance_overmuedet:
+      label: 'Alucinação: cansado'
+      desc: Chance por cheque
+    chance_sleep_deprivation:
+      label: 'Alucinação: privação de sono'
+      desc: Chance por cheque
+  microsleep_grace: 'Recuperação de micro-sono: {seconds} segundos restantes.'
+  microsleep_recovered: 'Microsono interrompido: recuperação verificada. {seconds} segundos de graça, fadiga e débito de sono
+    preservados.'
+  microsleep:
+    enabled:
+      label: Microsleep
+      desc: Brevemente cochilando com alta fadiga
+    min_fatigue:
+      label: Micro-sono de fadiga
+      desc: Fadiga em %
+    chance_per_check:
+      label: Microsleep chance
+      desc: Chance por cheque
+    cooldown_seconds:
+      label: Micro-sono pausa (s)
+      desc: Tempo mínimo entre duas microsondas
+  insomnia_mobs:
+    enabled:
+      label: Criaturas insônia
+      desc: Monstros de pesadelo em alta fadiga
+    min_fatigue:
+      label: Criaturas insônias da fadiga
+      desc: Fadiga em %
+    base_spawn_chance:
+      label: Insônia criatura chance
+      desc: Chance por cheque
+  rested:
+    enabled:
+      label: Bônus descansado
+      desc: Bônus após um sono completo
+    duration_minutes:
+      label: Duração descansada (min)
+      desc: Duração do bônus
+    xp_multiplier:
+      label: Descansado XP
+      desc: XP multiplicadores do bônus
+  integrations:
+    cityclaim:
+      label: Integração da cidade
+      desc: Qualidade do sono nas cidades
+    bloodmoon:
+      label: Integração da lua de sangue
+      desc: Dorme pior durante uma lua de sangue; faz efeito após um reinício
+  rest:
+    campfire:
+      enabled:
+        label: Campo de descanso
+        desc: Ficar parado ao lado de uma fogueira acesa lentamente diminui a fadiga
+      fatigue_per_second:
+        label: Campo de descanso por segundo
+        desc: Fadiga perdida por segundo de descanso (uma cama recupera 1.0)
+      min_fatigue:
+        label: A fogueira descansa até
+        desc: Uma fogueira nunca diminui a fadiga abaixo deste valor
+  player_menu:
+    enabled:
+      label: Entrada do menu do jogador
+      desc: Fadiga entrada quando você agachar-direita-clique um jogador (Core 0.43+)
+    show_stage_to_players:
+      label: Outros vêem o palco
+      desc: Jogadores ver como cansado outro jogador parece (sem números)
+hud:
+  rested: Descansado
+  fatigue: Fadiga {value} % · {stage}
+  debt: Dívida de sono {value} %
+panel:
+  loading: Seus dados de fadiga ainda estão carregando.
+  state: Estado
+  rested: Bônus descansado
+  fatigue: Fadiga {value} %
+  debt: Dívida de sono {value} %
+  stimulant: Estimulante ativo por mais {minutes} min - um acidente de fadiga segue.
+  sleeping: Você está dormindo.
+  settings: Configurações do servidor
+  settings-unavailable: Configurações indisponível.
+web:
+  module:
+    title: Fadiga
+    description: Fadiga, dívida de sono e história
+  ui:
+    loading: Carregando...
+    offline: Você não está no jogo. Seus valores aparecem assim que estiver online.
+    not-loaded: Seus dados de fadiga ainda estão carregando.
+    stage: Estado
+    fatigue: Fadiga
+    debt: Dívida de dormir
+    rested: Bônus descansado
+    rested-none: nenhum
+    rested-minutes: '{minutes} min esquerda'
+    stimulant: Estimulante ativo por mais {minutes} min - um acidente de fadiga segue.
+    sleeping: Você está dormindo.
+    history: Histórico
+    history-empty: Sem histórico ainda - uma amostra por minuto enquanto você está online.
+    history-hint: Últimos {count} minutos (uma amostra por minuto, esta sessão de jogo apenas).
+    thresholds: Estágios de {values} % fadiga
+    legend-fatigue: Fadiga
+    legend-debt: Dívida de dormir
+admin_usage: '&7/insomnia admin <get|setfatigue|setdebt|sleep|effect|spawnmob|overview|reload>'
+sleep_cozy: '&7Coziness: &f{count}/{max} &7(+{bonus}% qualidade do sono): &f{found}&7. Ainda é possível: {missing}.'
+status_cozy: '&7Coziness na cama: &f{count}/{max} &7(+{bonus}% qualidade do sono): &f{found}&7. Ainda é possível: {missing}.'
+status_next:
+  minutes: '&7Próxima etapa: &f{stage} &7em torno de &f{minutes} min &7de jogo normal.'
+  hours: '&7Próxima etapa: &f{stage} &7em torno de &f{hours} h {minutes} min &7de jogo normal.'
+cozy:
+  soft: tapete ou lã
+  plant: Planta em vaso
+  books: Estante
+  light: lanterna ou vela
+  art: Pintura ou moldura
+  storage: baú ou barril
+  none: Nada
+rest:
+  started: '&6Fique perto da fogueira. Sua fadiga cai lentamente, até {floor}%. Mover ou lutar acaba com o resto.'
+  bar: '&6Descansando junto ao fogo &8· &7Fadiga &f{fatigue}% &8→ &7{floor}%'
+  floor: '&7Você descansou tanto quanto uma fogueira permite ({floor}%). Para mais, durma em uma cama.'
+  stopped: '&7Pare de descansar.'
+  status: '&6Você está descansando em uma fogueira.'
+overview:
+  button: Todos os jogadores
+  title: Fadiga de todos os jogadores
+  intro: '{count} jogadores online, mais cansados primeiro. Clique em um jogador para obter valores e ações rápidas.'
+  empty: Nenhum jogador com dados de fadiga está online.
+  more: '...e mais {count} (apenas os 40 mais cansados são mostrados).'
+  row: '{player} · {stage} · {fatigue} % {state}'
+  row_hover: Dívida de sono {debt} %
+  sleeping: (Dormindo)
+  resting: (na fogueira)
+  activity: 'Agora: {state}'
+  player_title: 'Fadiga: {player}'
+  back: ← Todos os jogadores
+  back_menu: ← Fadiga
+  chat_title: '&7Fadiga de todos os jogadores ({count}), o mais cansado primeiro:'
+  chat_line: '&f{player} &8· &7{stage} &8· &7fadiga &f{fatigue}% &8· &7dívida &f{debt}% {state}'
+  action:
+    rest: Descansar completamente
+    clear_debt: Dívida de sono limpa
+    less: 'Fadiga: 20'
+    more: Fadiga +20
+player_menu:
+  admin_name: '&dFadiga: {player}'
+  admin_lore: |-
+    &7Etapa: &f{stage}
+    &7Fadiga: &f{fatigue} %
+    &7Dívida de sono: &f{debt} %
+    &eClique: valores e ações rápidas
+  name: '&d{player} &8· &f{stage}'
+  lore:
+    rested: '&7Bem acordado e bem descansado.'
+    tired: '&7Bocejos de vez em quando.'
+    exhausted: '&7Tem olheiras sob os olhos.'
+    overmuedet: '&7Mal conseguem manter os olhos abertos.'
+    sleep_deprivation: '&7Precisa muito de uma cama. Talvez oferecer uma?'
+sleep_choice:
+  title: Dormir
+  nap_title: Nap
+  now: É sim <white>{time}</white>. Quanto tempo você quer dormir?
+  nap_now: É sim <white>{time}</white>. O relógio não corre mais rápido para uma soneca diurna, você descansa até se levantar.
+  faster: <gray>Quanto mais jogadores dormem, mais rápido o tempo corre.</gray>
+  no_acceleration: <gray>A noite termina de manhã.</gray>
+  dream_ready: '<light_purple>Reino dos sonhos: aberto a você (fadiga {fatigue} %).</light_purple>'
+  dream_not_tired: '<gray>Reino dos sonhos: de {min} % fadiga (você: {fatigue} %).</gray>'
+  hour_label: Hora de acordar
+  remember: Não pergunte de novo (change it in /vsettings)
+  keep_sleeping: Continue dormindo
+  keep_napping: Continue cochilando
+  button:
+    morning: Até de manhã ({time})
+    noon: Até o meio-dia ({time})
+    evening: Até à noite ({time})
+    night: Até a noite seguinte ({time})
+    custom: Até o meu próprio tempo
+    sleep: Dormir
+    dream: Entre no reino dos sonhos
+    get_up: Levante-se
+  sleeping_until: '&7Você dorme até &f{time}&7. Quanto mais jogadores dormem, mais rápido o tempo corre.'
+  sleeping: '&7Você dorme até de manhã.'
+  auto: '&7Você dorme até &f{time}&7 (Sua escolha salva, mude-a em /vsettings).'
+  remembered: '&7Salvo. Você não será perguntado novamente, mude-o em /vsettings → Dormir.'
+  woke: '&7Você acorda. É sim &f{time}&7.'
+  chat_night: '&7É sim &f{time}&7. Durma.'
+  chat_nap: '&7Dormindo. O reino dos sonhos ou se levantar?'
+  chat_button: '&b[{label}]'
+  chat_hover: Clique para escolher
+  chat_settings: '&8[Settings]'
+  action_bar: '&7{sleeping}/{players} dormindo &8– &fO tempo corre {speed}× Mais rápido'
+  settings:
+    title: Dormir
+    description: O que acontece quando você se deita em uma cama
+    mode: Quando me deito
+    mode_desc: Pergunte toda vez, use minha escolha salva, ou pergunte na conversa
+    mode_ask: Pergunte com um diálogo
+    mode_auto: Use minha escolha salva, não pergunte
+    mode_chat: Pergunte na conversa
+    choice: Escolha salva
+    choice_desc: Usado quando não lhe perguntam, sua escolha no diálogo é salva aqui
+    choice_morning: Até de manhã
+    choice_noon: Até o meio-dia
+    choice_evening: Até à noite
+    choice_night: Até a noite seguinte
+    choice_custom: Até o meu próprio tempo
+    choice_dream: Reino dos sonhos
+    hour: Hora própria de acordar
+    hour_desc: Hora (0-23) para "até meu próprio tempo"
+commands:
+  insomnia:
+    description: 'Fadiga e sono: menu, status, história, gatilhos e administração'
+    aliases: []
+    sub:
+      menu:
+        name: menu
+        aliases: []
+        description: Abra o menu de fadiga
+      status:
+        name: status
+        aliases: []
+        description: Sua fadiga, dívida de sono, palco e bônus descansado
+      history:
+        name: history
+        aliases: []
+        description: Suas últimas amostras de fadiga e eventos de sono
+      triggers:
+        name: triggers
+        aliases: []
+        description: Suas últimas alucinações e o que as desencadeou
+      admin:
+        name: admin
+        aliases: []
+        description: 'Administração: valores, sono, efeitos, criaturas, visão geral e recarga'
+        sub:
+          get:
+            name: get
+            aliases: []
+            description: Mostre o status de fadiga de um jogador
+            usage: PLAYER
+            args:
+              player: PLAYER
+          setfatigue:
+            name: setfatigue
+            aliases: []
+            description: Coloque a fadiga de um jogador (+n/-n muda)
+            usage: PLAYER 0-100
+            args:
+              player: PLAYER
+              value: 0-100
+          setdebt:
+            name: setdebt
+            aliases: []
+            description: Coloque a dívida de sono de um jogador (+n/-n muda)
+            usage: PLAYER 0-100
+            args:
+              player: PLAYER
+              value: 0-100
+          sleep:
+            name: sleep
+            aliases: []
+            description: Deixe um jogador descansar de uma vez
+            usage: PLAYER
+            args:
+              player: PLAYER
+          effect:
+            name: effect
+            aliases: []
+            description: 'Alucinação para um jogador (sem nome: listar os efeitos)'
+            usage: PLAYER [EFFECT]
+            args:
+              player: PLAYER
+              value: EFFECT
+          spawnmob:
+            name: spawnmob
+            aliases: []
+            description: Espalhou uma criatura insônia de uma camada perto de um jogador
+            usage: PLAYER TIER
+            args:
+              player: PLAYER
+              value: TIER
+          reload:
+            name: reload
+            aliases: []
+            description: Verifique e recarregue a configuração
+          overview:
+            name: overview
+            aliases: []
+            description: Fadiga visão geral de todos os jogadores online
+  dream:
+    description: Entre no reino dos sonhos de uma cama segura perto
+    aliases: []
+    sub:
+      quest:
+        name: "quest"
+        aliases: []
+        description: "Seguir sua história persistente de sonhos com escolhas"
+        args:
+          action: "ESCOLHA"
+      invite:
+        name: "invite"
+        aliases: []
+        description: "Convidar outro sonhador para o seu sonho"
+        args:
+          player: "PLAYER"
+      join:
+        name: "join"
+        aliases: []
+        description: "Entrar num sonho para o qual foi convidado"
+        args:
+          player: "PLAYER"
+      leave:
+        name: "leave"
+        aliases: []
+        description: "Sair do sonho compartilhado"
+      weekly:
+        name: "weekly"
+        aliases: []
+        description: "O desafio de pesadelo da semana e os melhores tempos"
+
+    values:
+      status: "estado"
+      start: "iniciar"
+      pause: "pausar"
+      mercy: "misericordia"
+      courage: "coragem"
+      restore: "restaurar"
+      master: "dominar"
+
+  wake:
+    description: Deixe o reino dos sonhos com segurança
+    aliases: []
+  dreamloot:
+    description: Reclame suas recompensas de sonho armazenadas
+    aliases: []
+
+# Free feature release: quest
+quest:
+  unavailable: "As missões dos sonhos estão desativadas ou você não tem permissão."
+  usage: "/dream quest status|start|pause|mercy|courage|restore|master"
+  paused: "O Sonho Fragmentado espera. /dream quest start inicia ou retoma a história; pause suspende o progresso."
+  chapter_0: "Capítulo I — Uma voz presa no cristal pede sua memória. Conclua o Cofre de Cristal."
+  chapter_1: "A memória revela um guardião perdido. mercy protege seu povo; courage enfrenta seu captor: /dream quest mercy|courage."
+  chapter_2: "Capítulo II — Sua escolha define o caminho. Conclua a masmorra indicada para recuperar o coração do sonho."
+  chapter_3: "O coração pode curar o sonho ou se tornar sua bússola. Escolha restore ou master: /dream quest restore|master."
+  chapter_4: "Capítulo III — Resta uma última prova. Conclua a última masmorra para selar seu final."
+  objective: "Próximo objetivo: {dungeon}. O progresso permanece ao acordar, sair e reiniciar."
+  ending_guardian: "Final — Guardião da Aurora. Você protegeu os perdidos e restaurou seu lar. O sonho lembra sua bondade."
+  ending_wanderer: "Final — Viajante das Estrelas. Você salvou os perdidos e levou o coração a novos céus. Novos horizontes esperam."
+  ending_liberator: "Final — Libertador dos Sonhos. Você enfrentou o pesadelo e devolveu o coração roubado. O medo não reina mais."
+  ending_sovereign: "Final — Soberano do Crepúsculo. Você conquistou o pesadelo e dominou seu coração. Uma coroa poderosa e solitária é sua."
+  reward: "Este final é permanente. Receba a recompensa única fora do sonho com /dreamloot."
+weekly:
+  disabled: 'O desafio semanal de pesadelo está desligado.'
+  started: '&5Pesadelo da semana: &d{modifiers}&5. O relógio está correndo!'
+  cleared: '&dPesadelo vencido em &f{time}&d (lugar {rank} de {count} nesta semana).'
+  record: '&6Novo recorde da semana: &f{time}&6 – lugar {rank} de {count}!'
+  reward: '&aPrimeira vitória da semana: a recompensa está na sua bolsa de sonhos (/dreamloot).'
+  header: '&5Pesadelo da semana: &d{modifiers} &7(termina em {days} d {hours} h)'
+  empty: '&7Ninguém venceu ainda nesta semana.'
+  row: '&7{rank}. &f{player} &7– {time}'
+  own: '&7Seu melhor tempo: &f{time} &7(lugar {rank})'
+  own-none: '&7Você ainda não venceu o pesadelo desta semana.'
+  modifier:
+    swift: 'Guardiões velozes'
+    armored: 'Guardiões blindados'
+    ferocious: 'Guardiões ferozes'
+    horde: 'Horda'
+    darkness: 'Escuridão'
+companion:
+  disabled: 'Sonhos compartilhados estão desligados neste servidor.'
+  not-dreaming: 'Você precisa estar no sonho para convidar alguém.'
+  target-not-dreaming: '{player} não está no sonho agora.'
+  invited: 'Você convidou {player} para o seu sonho (válido por 60 segundos).'
+  invitation: '&d{player} convida você para o sonho dele – enfrentem o pesadelo juntos. &f[Clique para entrar]'
+  joined: 'Agora você compartilha o sonho de {player}. Os guardiões dele ficam visíveis para você; suas abates contam para ele.'
+  joined-host: '{player} entrou no seu sonho.'
+  ended: 'O sonho compartilhado com {player} acabou.'
+  none: 'Você não está compartilhando um sonho.'
+  error-self: 'Você não pode convidar a si mesmo.'
+  error-already: '{player} já compartilha o seu sonho.'
+  error-host-busy: 'Você é companheiro em outro sonho; use /dream leave primeiro.'
+  error-target-busy: '{player} já compartilha outro sonho.'
+  error-full: 'No máximo {max} companheiros podem compartilhar um sonho.'
+  error-no-invite: 'Não há convite aberto para você.'

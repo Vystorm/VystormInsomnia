@@ -1,0 +1,40 @@
+title: 'Fatigue & sleep'
+permission: insomnia.use
+pages:
+  - title: 'Fatigue and sleep debt'
+    text: |
+      1. While you are awake, fatigue and sleep debt slowly rise; strenuous activities speed this up.
+      2. In the Vystorm menu (/vmenu) under "Character" → "Fatigue" (also /insomnia) you see your state, fatigue, sleep debt and rested bonus.
+      3. The stages: Rested, Tired, Exhausted, Overtired, Sleep deprivation. Every stage change sends a message with a button to the status.
+
+  - title: 'Sleeping well'
+    text: |
+      1. Lie down in a bed. You doze first, then deep sleep follows, which recovers the most.
+      2. A bed under a roof and in the dark recovers best; in cities and rented plots you sleep better.
+      3. If you wake up fully rested, you get the rested bonus for a while.
+
+  - title: 'Stimulants'
+    text: |
+      1. Caffeine and the like suppress fatigue for a while.
+      2. Each use before your next sleep raises your tolerance and weakens the effect.
+      3. When the effect wears off, a fatigue crash follows.
+
+  - title: 'Resting by a campfire'
+    text: |
+      1. Out and about without a bed? Stand still next to a lit campfire or soul campfire for a few seconds.
+      2. Your fatigue then slowly drops, but only down to a limit (30 % by default). The action bar shows the progress.
+      3. Moving or fighting ends the rest. Sleep debt and the rested bonus still need a bed.
+
+  - title: 'Staying awake too long'
+    text: |
+      1. From "Exhausted" on, sounds and visual disturbances play tricks on you.
+      2. When very tired you risk microsleep: you nod off briefly and your body stays behind, vulnerable.
+      3. Nightmare monsters appear only for you and attack only you. Sleep before it gets that far.
+
+  - title: 'Administration'
+    permission: insomnia.admin
+    text: |
+      1. Server settings: Settings → Server → Fatigue & sleep; saving reloads immediately.
+      2. /insomnia admin overview (or the "All players" button in the fatigue menu, or sneak + right-click a player) lists every player with quick actions.
+      3. Commands: /insomnia admin get|setfatigue|setdebt|sleep|effect|spawnmob <player> and /insomnia admin reload.
+      4. Texts live in plugins/VystormInsomnia/lang/de.yml and en.yml.

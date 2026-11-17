@@ -1,0 +1,40 @@
+title: 'Müdigkeit & Schlaf'
+permission: insomnia.use
+pages:
+  - title: 'Müdigkeit und Schlafschuld'
+    text: |
+      1. Solange du wach bist, steigen Müdigkeit und Schlafschuld langsam an; anstrengende Tätigkeiten beschleunigen das.
+      2. Im Vystorm-Menü (/vmenu) unter „Charakter“ → „Müdigkeit“ (auch /insomnia) siehst du Zustand, Müdigkeit, Schlafschuld und den Ausgeruht-Bonus.
+      3. Die Stufen: Ausgeruht, Müde, Erschöpft, Übermüdet, Schlafentzug. Bei jedem Stufenwechsel bekommst du eine Meldung mit Knopf zum Status.
+
+  - title: 'Richtig schlafen'
+    text: |
+      1. Leg dich in ein Bett. Erst döst du, dann folgt der Tiefschlaf, der am meisten erholt.
+      2. Ein Bett unter Dach und im Dunkeln erholt am besten; in Städten und gemieteten Grundstücken schläfst du besser.
+      3. Wer vollständig erholt aufwacht, bekommt eine Zeit lang den Ausgeruht-Bonus.
+
+  - title: 'Stimulanzien'
+    text: |
+      1. Koffein & Co. drücken die Müdigkeit eine Weile.
+      2. Mit jeder Nutzung vor dem nächsten Schlaf wächst die Toleranz und die Wirkung wird schwächer.
+      3. Lässt die Wirkung nach, folgt ein Müdigkeits-Crash.
+
+  - title: 'Rast am Lagerfeuer'
+    text: |
+      1. Unterwegs ohne Bett? Bleib neben einem brennenden Lagerfeuer oder Seelenlagerfeuer ein paar Sekunden stehen.
+      2. Deine Müdigkeit sinkt dann langsam, aber nur bis zu einer Grenze (Standard 30 %). Die Aktionsleiste zeigt den Fortschritt.
+      3. Bewegung oder Kampf beendet die Rast. Schlafschuld und Ausgeruht-Bonus gibt es weiterhin nur im Bett.
+
+  - title: 'Wenn du zu lange wach bleibst'
+    text: |
+      1. Ab „Erschöpft“ spielen dir Geräusche und Sichtstörungen Streiche.
+      2. Bei starker Müdigkeit droht Sekundenschlaf: Du nickst kurz weg, dein Körper bleibt verwundbar zurück.
+      3. Albtraum-Monster tauchen nur für dich auf und greifen nur dich an. Schlaf, bevor es so weit kommt.
+
+  - title: 'Verwaltung'
+    permission: insomnia.admin
+    text: |
+      1. Server-Einstellungen: Einstellungen → Server → Müdigkeit & Schlaf; Speichern lädt sofort neu.
+      2. /insomnia admin overview (oder der Knopf „Alle Spieler“ im Müdigkeits-Menü, oder Schleichen + Rechtsklick auf einen Spieler) zeigt alle Spieler mit Schnellaktionen.
+      3. Befehle: /insomnia admin get|setfatigue|setdebt|sleep|effect|spawnmob <Spieler> und /insomnia admin reload.
+      4. Texte stehen in plugins/VystormInsomnia/lang/de.yml und en.yml.

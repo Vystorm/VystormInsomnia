@@ -1,0 +1,610 @@
+# VystormInsomnia – English texts (Vystorm Core localization, final fallback). Legacy colour codes (&7) and
+# MiniMessage both work. Chat messages get "prefix" in front. Placeholders in {curly braces}.
+prefix: '&8[&5Insomnia&8] '
+
+status: '&7Fatigue: &f{fatigue}% &8| &7Sleep debt: &f{debt}% &8| &7Stage: &f{stage} &8| &7Rested: &f{rested}'
+stage_tired: '&eYou are starting to feel tired.'
+stage_exhausted: '&6Your concentration is fading noticeably.'
+stage_overmuedet: '&cYou are badly overtired. Your senses are starting to play tricks on you.'
+stage_sleep_deprivation: '&4You are suffering from severe sleep deprivation.'
+sleep_start: '&7You try to fall asleep...'
+dream:
+  name_cloud_ruins: 'Cloud Ruins'
+  name_crystal_vault: 'Crystal Vault'
+  name_nightmare_keep: 'Nightmare Keep'
+  dungeon_direction: '&b{name} &7– entrance at &f{x}, {y}, {z}&7. Earth trails lead there from arrival. Use &f/dream &7to list these sites again.'
+  hint_cloud_ruins: '&aCloud Ruins: Explore the floor markers in order from the entrance. Interact with the golden reward stone at the end.'
+  hint_crystal_vault: '&bCrystal Vault: Right-click the four crystal floor stones in order from the entrance to the last chamber. A wrong stone resets the sequence.'
+  hint_nightmare_keep: '&5Nightmare Keep: Enter the arena center and defeat your warden waves. Only your own kills count; rewards go safely into your Dream Pouch.'
+  tower_departing: '&dThe tower is turning your dream around. Stand still for a moment.'
+  tower_arrived: '&bYou reached mirror side {side}. Your dream timer keeps running.'
+  tower_failed: '&eThe transfer failed. You remain on this side.'
+  tower_unavailable: '&eThe tower is not ready. Finish combat and wait a moment.'
+  napping: '&7You can now sleep during the day. Leave Bed or /wake wakes you; /dream enters the dream realm.'
+  choice: '&7Rest here, or choose /dream to enter the dream realm. Use /wake to return.'
+  exit_tool: '&5Dream Thread · /wake'
+  mob_name: '&5Dream Warden'
+  disabled: '&cThe Dream Realm is currently unavailable.'
+  survival_only: '&cA dream journey is only available in Survival mode.'
+  in_combat: '&cWait until you are out of combat before entering a dream.'
+  recovery_pending: '&cYour previous managed-world visit is still being recovered.'
+  not_tired: '&7You are not tired enough to dream yet ({fatigue}%).'
+  world_denied: '&cYou cannot begin a dream journey from this world.'
+  clear_cursor: '&cClear the item on your cursor first.'
+  clear_crafting: '&cRemove items from the open crafting grid first.'
+  bed_required: '&7Stand near a safe bed, then try &f/dream &7again.'
+  storage_unavailable: '&cYour dream rewards could not be read safely. No journey was started.'
+  pouch_recovery: '&eA previous reward delivery needs recovery. Use &f/dreamloot &efirst.'
+  entry_failed: '&cThe dream journey could not be started safely.'
+  entry_refused: '&cCore refused the dream journey ({reason}).'
+  entered: '&bYou enter the Dream Realm. You have about {minutes} minutes; use &f/wake &bto return safely.'
+  not_visiting: '&7You are not currently in the Dream Realm.'
+  waking: '&bYou wake and return safely...'
+  time_warning: '&eYou have {seconds} seconds of dream time left.'
+  time_bar: '&fDream time: {time}'
+  time_left: '&7Dream time remaining: about {minutes} min.'
+  cloud_waypoint: '&aWaypoint {step}/{total} explored.'
+  cloud_ready: '&aThe Cloud Ruins are explored. Find the golden reward marker.'
+  cloud_need_waypoints: '&7Explore the marked waypoints in order first.'
+  reward_marker: '&7Interact with the golden reward marker.'
+  crystal_progress: '&bCrystal sequence {step}/{total}.'
+  crystal_reset: '&cThe crystals fall silent. The sequence starts over.'
+  nightmare_wave: '&5Nightmare wave {wave}/{total}!'
+  reward_unconfigured: '&cNo valid reward is configured for this dream site.'
+  dungeon_complete: '&aDream site completed: {dungeon}.'
+  loot_pouched: '&dLoot from {dungeon} was durably added to your Dream Pouch.'
+  loot_delivered: '&aOne dream reward was safely delivered to your inventory.'
+  loot_empty: '&7Your Dream Pouch is empty.'
+  loot_full: '&eYour inventory is full; the reward remains in the Dream Pouch.'
+  loot_busy: '&cRewards cannot be claimed during a visit or recovery.'
+  loot_recovery: '&cThe reward delivery needs recovery. Try again after reconnecting.'
+sleep_preview: '&7Current sleep quality: &f{quality}x&7. A completed rest grants {rested_minutes} min rested and {xp_multiplier}x XP.'
+fatigue:
+  paused_creative: '&eFatigue growth is paused in Creative mode.'
+  paused_spectator: '&eFatigue growth is paused in Spectator mode.'
+  paused_local_afk: '&eFatigue growth is paused after {seconds}s without local player input.'
+history:
+  page: '&7Page {page}/{pages}'
+  invalid_page: '&cChoose a page between 1 and {pages}.'
+  title: '&7Recent fatigue and sleep-debt history:'
+  triggers_title: '&7Recent hallucinations and their observed cause:'
+  entry: '&8{at} &7Fatigue {fatigue}% / debt {debt}% — {event}'
+  sample: 'sample'
+  sleep_started: 'sleep started'
+  sleep_completed: 'sleep completed'
+  rest_started: 'resting by a campfire'
+  stimulant: 'stimulant used: {detail}'
+  hallucination: 'Hallucination {effect}; stage {stage}, fatigue {fatigue}%, sleep debt {debt}%'
+  empty: '&7No recent history.'
+  no_triggers: '&7No hallucinations recorded this session.'
+  memory_only: '&8Recent history is memory-only and is cleared on logout/restart.'
+sleep_deep: '&bYou have fallen into deep sleep.'
+sleep_rested: '&aYou wake up fully rested.'
+sleep_summary: '&7You slept {seconds} s: fatigue &f{fatigue_before}% → {fatigue_after}%&7, sleep debt &f{debt_before}% → {debt_after}%&7. Sleep until you are fully rested for the full effect.'
+status_stimulant: '&eCaffeine: {minutes} min {seconds} s remaining; {uses} doses since full rest. Fatigue after the crash based on current values: &f{fatigue}%&e (activity and sleep can change this).'
+stimulant: '&eThe caffeine suppresses your fatigue for a while.'
+stimulant_weak: '&6Because of your tolerance the effect is much weaker.'
+stimulant_crash: '&cThe effect wears off – the fatigue crash sets in.'
+microsleep: '&4Your eyes close for a moment...'
+no_permission: '&cYou do not have permission to do that.'
+player_only: '&cThis command is only available to players.'
+data_loading: '&7Your fatigue data is still loading, please try again in a moment.'
+player_not_found: '&cPlayer not found or not online.'
+invalid_number: '&cInvalid number.'
+reloaded: '&aConfiguration reloaded.'
+config_invalid: '&cConfiguration invalid, the previous values stay active: {errors}. Numeric values must be finite (no NaN or infinity).'
+
+admin:
+  set_fatigue: '&7Fatigue of {player} = {value}'
+  set_debt: '&7Sleep debt of {player} = {value}'
+  rested: '&a{player} is now fully rested.'
+  effect_unknown: '&cUnknown effect: {effects}'
+  effect_done: '&aEffect triggered.'
+  mob_spawned: '&aInsomnia mob spawned.'
+  mob_refused: '&cSpawn refused.'
+
+stage_name:
+  rested: 'Rested'
+  tired: 'Tired'
+  exhausted: 'Exhausted'
+  overmuedet: 'Overtired'
+  sleep_deprivation: 'Sleep deprivation'
+
+hint:
+  rested: 'Sleeping in a bed under a roof and in the dark recovers best.'
+  exhausted: 'Your concentration is fading – find a safe bed soon.'
+  overmuedet: 'Your senses are playing tricks on you. Sleep as soon as you can!'
+  sleep_deprivation: 'Severe sleep deprivation: microsleep and nightmares are coming.'
+
+rested_left:
+  none: 'no'
+  minutes: '{minutes} min'
+
+menu:
+  title: 'Fatigue'
+  description: 'Your fatigue, sleep debt and rested bonus'
+  chat_button: 'Fatigue'
+
+dialog:
+  title: 'Fatigue'
+  state: '<gray>State: </gray>{stage}'
+  fatigue: 'Fatigue: {bar} {value} %'
+  debt: 'Sleep debt: {bar} {value} %'
+  rested: 'Rested bonus: {rested}'
+  stimulant: '<yellow>Stimulant active for another {minutes} min – a fatigue crash follows.</yellow>'
+  sleeping: '<aqua>You are asleep.</aqua>'
+  refresh: '↻ Refresh'
+  close: 'Close'
+  web: 'Web page'
+
+settings:
+  title: 'Fatigue & sleep'
+  description: 'Fatigue, sleep, hallucinations and microsleep. Changes apply immediately.'
+
+# Server settings (Settings → Server → Fatigue & sleep): setting.<config path>.label|desc
+debt_reminder:
+  message: '&6Your sleep debt is {debt}%. Coffee and campfires cannot reduce it. Sleep in a bed to recover. Reminders can be disabled in /vsettings → Sleep.'
+  preference: 'Sleep debt reminders'
+  preference_desc: 'Remind me to sleep when my sleep debt is high'
+
+setting:
+  debt_reminder:
+    enabled:
+      label: 'Sleep debt reminders'
+      desc: 'Send reminders to awake players with high sleep debt'
+    threshold:
+      label: 'Sleep debt threshold'
+      desc: 'Minimum sleep debt percentage for a reminder'
+    interval_minutes:
+      label: 'Reminder interval (minutes)'
+      desc: 'Minimum time between reminders for each player during this session'
+  fatigue:
+    enabled:
+      label: 'Fatigue rises'
+      desc: 'Off = fatigue and sleep debt no longer grow'
+    base_per_minute:
+      label: 'Fatigue per minute'
+      desc: 'Increase at normal activity (0.125 ≈ 160 min per stage)'
+    debt_per_minute:
+      label: 'Sleep debt per minute'
+      desc: 'Increase of sleep debt'
+  sleep:
+    fatigue_recovery_per_second:
+      label: 'Recovery in sleep /s'
+      desc: 'Fatigue reduction per second of sleep'
+    debt_recovery_per_second:
+      label: 'Debt reduction in sleep /s'
+      desc: 'Sleep debt reduction per second of sleep'
+    cancel_vanilla_night_skip:
+      label: 'Prevent vanilla night skip'
+      desc: 'Sleeping does not skip the night'
+    dialog:
+      enabled:
+        label: 'Sleep dialog'
+        desc: 'Ask sleepers: sleep until a time, dream realm or get up'
+      day_naps:
+        label: 'Dialog for day naps'
+        desc: 'Also ask on daytime naps (only while the dream realm is open)'
+      custom_time:
+        label: 'Own wake-up time'
+        desc: 'Offer an hour picker in the sleep dialog'
+    wake_summary:
+      label: 'Wake-up summary'
+      desc: 'Getting up early shows how long you slept and what it took away'
+    acceleration:
+      enabled:
+        label: 'Time acceleration'
+        desc: 'Time runs faster the more players sleep, instead of skipping the night'
+      min_speed:
+        label: 'Speed with few sleepers'
+        desc: 'Times faster with the first of several sleepers (1-100)'
+      max_speed:
+        label: 'Speed with everyone asleep'
+        desc: 'Times faster when everyone sleeps (1-100); 10 ≈ one minute per night'
+      curve:
+        label: 'Speed curve'
+        desc: '1 = linear, 2 = slow until most sleep, 0.5 = fast early'
+      action_bar:
+        label: 'Action bar'
+        desc: 'Show sleepers and speed to everyone in the world'
+  stimulants:
+    enabled:
+      label: 'Stimulants'
+      desc: 'Caffeine and the like suppress fatigue'
+  hallucinations:
+    enabled:
+      label: 'Hallucinations'
+      desc: 'Sounds and visual disturbances when very tired'
+    chance_exhausted:
+      label: 'Hallucination: exhausted'
+      desc: 'Chance per check'
+    chance_overmuedet:
+      label: 'Hallucination: overtired'
+      desc: 'Chance per check'
+    chance_sleep_deprivation:
+      label: 'Hallucination: sleep deprivation'
+      desc: 'Chance per check'
+  microsleep_grace: "Microsleep recovery grace: {seconds} seconds remaining."
+  microsleep_recovered: "Interrupted microsleep: recovery checked. {seconds} seconds of grace; fatigue and sleep debt are preserved."
+  microsleep:
+    enabled:
+      label: 'Microsleep'
+      desc: 'Briefly nodding off at high fatigue'
+    min_fatigue:
+      label: 'Microsleep from fatigue'
+      desc: 'Fatigue in %'
+    chance_per_check:
+      label: 'Microsleep chance'
+      desc: 'Chance per check'
+    cooldown_seconds:
+      label: 'Microsleep pause (s)'
+      desc: 'Minimum time between two microsleeps'
+  insomnia_mobs:
+    enabled:
+      label: 'Insomnia mobs'
+      desc: 'Nightmare monsters at high fatigue'
+    min_fatigue:
+      label: 'Insomnia mobs from fatigue'
+      desc: 'Fatigue in %'
+    base_spawn_chance:
+      label: 'Insomnia mob chance'
+      desc: 'Chance per check'
+  rested:
+    enabled:
+      label: 'Rested bonus'
+      desc: 'Bonus after a full sleep'
+    duration_minutes:
+      label: 'Rested duration (min)'
+      desc: 'Duration of the bonus'
+    xp_multiplier:
+      label: 'Rested XP'
+      desc: 'XP multiplier of the bonus'
+  integrations:
+    cityclaim:
+      label: 'City integration'
+      desc: 'Sleep quality in cities; takes effect after a restart'
+    bloodmoon:
+      label: 'Blood moon integration'
+      desc: 'Worse sleep during a blood moon; takes effect after a restart'
+  rest:
+    campfire:
+      enabled:
+        label: 'Campfire rest'
+        desc: 'Standing still next to a lit campfire slowly lowers fatigue'
+      fatigue_per_second:
+        label: 'Campfire rest per second'
+        desc: 'Fatigue lost per second of rest (a bed recovers 1.0)'
+      min_fatigue:
+        label: 'Campfire rest down to'
+        desc: 'A campfire never lowers fatigue below this value'
+  player_menu:
+    enabled:
+      label: 'Player menu entry'
+      desc: 'Fatigue entry when you sneak-right-click a player (Core 0.43+)'
+    show_stage_to_players:
+      label: 'Others see the stage'
+      desc: 'Players see how tired another player looks (no numbers)'
+
+# Client mod (HUD bars and native panel)
+hud:
+  rested: 'Rested'
+  fatigue: 'Fatigue {value} % · {stage}'
+  debt: 'Sleep debt {value} %'
+panel:
+  loading: 'Your fatigue data is still loading.'
+  state: 'State'
+  rested: 'Rested bonus'
+  fatigue: 'Fatigue {value} %'
+  debt: 'Sleep debt {value} %'
+  stimulant: 'Stimulant active for another {minutes} min – a fatigue crash follows.'
+  sleeping: 'You are asleep.'
+  settings: 'Server settings'
+  settings-unavailable: 'Settings unavailable.'
+
+# Web page in Core's web UI (/app/insomnia); web.ui.* without MiniMessage (sent raw)
+web:
+  module:
+    title: 'Fatigue'
+    description: 'Fatigue, sleep debt and history'
+  ui:
+    loading: 'Loading…'
+    offline: 'You are not in the game. Your values appear as soon as you are online.'
+    not-loaded: 'Your fatigue data is still loading.'
+    stage: 'State'
+    fatigue: 'Fatigue'
+    debt: 'Sleep debt'
+    rested: 'Rested bonus'
+    rested-none: 'none'
+    rested-minutes: '{minutes} min left'
+    stimulant: 'Stimulant active for another {minutes} min – a fatigue crash follows.'
+    sleeping: 'You are asleep.'
+    history: 'History'
+    history-empty: 'No history yet – one sample per minute while you are online.'
+    history-hint: 'Last {count} minutes (one sample per minute, this play session only).'
+    thresholds: 'Stages from {values} % fatigue'
+    legend-fatigue: 'Fatigue'
+    legend-debt: 'Sleep debt'
+admin_usage: '&7/insomnia admin <get|setfatigue|setdebt|sleep|effect|spawnmob|overview|reload>'
+sleep_cozy: '&7Coziness: &f{count}/{max} &7(+{bonus}% sleep quality): &f{found}&7. Still possible: {missing}.'
+status_cozy: '&7Coziness at the bed: &f{count}/{max} &7(+{bonus}% sleep quality): &f{found}&7. Still possible: {missing}.'
+status_next:
+  minutes: '&7Next stage: &f{stage} &7in about &f{minutes} min &7of normal play.'
+  hours: '&7Next stage: &f{stage} &7in about &f{hours} h {minutes} min &7of normal play.'
+cozy:
+  soft: carpet or wool
+  plant: potted plant
+  books: bookshelf
+  light: lantern or candle
+  art: painting or frame
+  storage: chest or barrel
+  none: nothing
+rest:
+  started: '&6You settle down by the campfire. Your fatigue slowly drops, down to {floor}%. Moving or fighting ends the rest.'
+  bar: '&6Resting by the fire &8· &7Fatigue &f{fatigue}% &8→ &7{floor}%'
+  floor: '&7You have rested as much as a campfire allows ({floor}%). For more, sleep in a bed.'
+  stopped: '&7You stop resting.'
+  status: '&6You are resting by a campfire.'
+overview:
+  button: 'All players'
+  title: 'Fatigue of all players'
+  intro: '{count} players online, most tired first. Click a player for values and quick actions.'
+  empty: 'No player with loaded fatigue data is online.'
+  more: '…and {count} more (only the 40 most tired are shown).'
+  row: '{player} · {stage} · {fatigue} % {state}'
+  row_hover: 'Sleep debt {debt} %'
+  sleeping: '(asleep)'
+  resting: '(at the campfire)'
+  activity: 'Right now: {state}'
+  player_title: 'Fatigue: {player}'
+  back: '← All players'
+  back_menu: '← Fatigue'
+  chat_title: '&7Fatigue of all players ({count}), most tired first:'
+  chat_line: '&f{player} &8· &7{stage} &8· &7fatigue &f{fatigue}% &8· &7debt &f{debt}% {state}'
+  action:
+    rest: 'Fully rest'
+    clear_debt: 'Clear sleep debt'
+    less: 'Fatigue −20'
+    more: 'Fatigue +20'
+player_menu:
+  admin_name: '&dFatigue: {player}'
+  admin_lore: "&7Stage: &f{stage}\n&7Fatigue: &f{fatigue} %\n&7Sleep debt: &f{debt} %\n&eClick: values and quick actions"
+  name: '&d{player} &8· &f{stage}'
+  lore:
+    rested: '&7Wide awake and well rested.'
+    tired: '&7Yawns now and then.'
+    exhausted: '&7Has dark circles under the eyes.'
+    overmuedet: '&7Can barely keep their eyes open.'
+    sleep_deprivation: '&7Badly needs a bed – maybe offer one?'
+
+# Sleep dialog and time acceleration (0.18.0)
+sleep_choice:
+  title: 'Sleep'
+  nap_title: 'Nap'
+  now: 'It is <white>{time}</white>. How long do you want to sleep?'
+  nap_now: 'It is <white>{time}</white>. The clock does not run faster for a daytime nap; you rest until you get up.'
+  faster: '<gray>The more players sleep, the faster the time runs.</gray>'
+  no_acceleration: '<gray>The night ends in the morning.</gray>'
+  dream_ready: '<light_purple>Dream realm: open to you (fatigue {fatigue} %).</light_purple>'
+  dream_not_tired: '<gray>Dream realm: from {min} % fatigue (you: {fatigue} %).</gray>'
+  hour_label: 'Own wake-up time'
+  remember: "Don't ask again (change it in /vsettings)"
+  keep_sleeping: 'Keep sleeping'
+  keep_napping: 'Keep napping'
+  button:
+    morning: 'Until morning ({time})'
+    noon: 'Until noon ({time})'
+    evening: 'Until evening ({time})'
+    night: 'Until the next night ({time})'
+    custom: 'Until my own time'
+    sleep: 'Sleep'
+    dream: 'Enter the dream realm'
+    get_up: 'Get up'
+  sleeping_until: '&7You sleep until &f{time}&7. The more players sleep, the faster the time runs.'
+  sleeping: '&7You sleep until the morning.'
+  auto: '&7You sleep until &f{time}&7 (your saved choice, change it in /vsettings).'
+  remembered: '&7Saved. You will not be asked again; change it in /vsettings → Sleep.'
+  woke: '&7You wake up. It is &f{time}&7.'
+  chat_night: '&7It is &f{time}&7. Sleep:'
+  chat_nap: '&7Napping. Dream realm or get up?'
+  chat_button: '&b[{label}]'
+  chat_hover: 'Click to choose'
+  chat_settings: '&8[Settings]'
+  action_bar: '&7{sleeping}/{players} sleeping &8– &ftime runs {speed}× faster'
+  settings:
+    title: 'Sleep'
+    description: 'What happens when you lie down in a bed'
+    mode: 'When I lie down'
+    mode_desc: 'Ask every time, use my saved choice, or ask in chat'
+    mode_ask: 'Ask with a dialog'
+    mode_auto: "Use my saved choice, don't ask"
+    mode_chat: 'Ask in chat'
+    choice: 'Saved choice'
+    choice_desc: 'Used when you are not asked; your pick in the dialog is saved here'
+    choice_morning: 'Until morning'
+    choice_noon: 'Until noon'
+    choice_evening: 'Until evening'
+    choice_night: 'Until the next night'
+    choice_custom: 'Until my own time'
+    choice_dream: 'Dream realm'
+    hour: 'Own wake-up hour'
+    hour_desc: 'Hour (0-23) for "until my own time"'
+
+# /insomnia, /dream, /wake and /dreamloot through Vystorm Core 0.45.0+: description, help and tab completion per player.
+# "aliases" under commands.<command> are extra root commands (server-wide, the admin chooses which languages: Core config
+# commands.localized-aliases); "name" and "aliases" of a subcommand are accepted in every language, English always works.
+commands:
+  insomnia:
+    description: "Fatigue and sleep: menu, status, history, triggers and administration"
+    aliases: []
+    sub:
+      menu:
+        name: menu
+        aliases: []
+        description: "Open the fatigue menu"
+      status:
+        name: status
+        aliases: []
+        description: "Your fatigue, sleep debt, stage and rested bonus"
+      history:
+        name: history
+        aliases: []
+        description: "Your latest fatigue samples and sleep events"
+      triggers:
+        name: triggers
+        aliases: []
+        description: "Your latest hallucinations and what triggered them"
+      admin:
+        name: admin
+        aliases: []
+        description: "Administration: values, sleep, effects, mobs, overview and reload"
+        sub:
+          get:
+            name: get
+            aliases: []
+            description: "Show a player's fatigue status"
+            usage: "PLAYER"
+            args:
+              player: PLAYER
+          setfatigue:
+            name: setfatigue
+            aliases: []
+            description: "Set a player's fatigue (+n/-n changes it)"
+            usage: "PLAYER 0-100|+n|-n"
+            args:
+              player: PLAYER
+              value: "0-100|+n|-n"
+          setdebt:
+            name: setdebt
+            aliases: []
+            description: "Set a player's sleep debt (+n/-n changes it)"
+            usage: "PLAYER 0-100|+n|-n"
+            args:
+              player: PLAYER
+              value: "0-100|+n|-n"
+          sleep:
+            name: sleep
+            aliases: []
+            description: "Let a player rest at once"
+            usage: "PLAYER"
+            args:
+              player: PLAYER
+          effect:
+            name: effect
+            aliases: []
+            description: "Trigger a hallucination for a player (without a name: list the effects)"
+            usage: "PLAYER [EFFECT]"
+            args:
+              player: PLAYER
+              value: EFFECT
+          spawnmob:
+            name: spawnmob
+            aliases: []
+            description: "Spawn an insomnia mob of a tier near a player"
+            usage: "PLAYER TIER"
+            args:
+              player: PLAYER
+              value: TIER
+          reload:
+            name: reload
+            aliases: []
+            description: "Check and reload the configuration"
+          overview:
+            name: overview
+            aliases: []
+            description: "Fatigue overview of all online players"
+  dream:
+    description: "Enter the dream realm from a safe bed nearby"
+    aliases: []
+    sub:
+      quest:
+        name: "quest"
+        aliases: []
+        description: "Follow your persistent branching dream story"
+        args:
+          action: "CHOICE"
+      invite:
+        name: "invite"
+        aliases: []
+        description: "Invite another dreamer into your dream"
+        args:
+          player: "PLAYER"
+      join:
+        name: "join"
+        aliases: []
+        description: "Join a dream you were invited to"
+        args:
+          player: "PLAYER"
+      leave:
+        name: "leave"
+        aliases: []
+        description: "Leave the shared dream"
+      weekly:
+        name: "weekly"
+        aliases: []
+        description: "This week's nightmare challenge and its fastest clears"
+
+    values:
+      status: "status"
+      start: "start"
+      pause: "pause"
+      mercy: "mercy"
+      courage: "courage"
+      restore: "restore"
+      master: "master"
+
+  wake:
+    description: "Leave the dream realm safely"
+    aliases: []
+  dreamloot:
+    description: "Claim your stored dream rewards"
+    aliases: []
+
+# Free feature release: quest
+quest:
+  unavailable: "Dream quests are disabled or you lack permission."
+  usage: "/dream quest status|start|pause|mercy|courage|restore|master"
+  paused: "The Shattered Dream awaits. /dream quest start begins or resumes your saved story; pause stops quest progress."
+  chapter_0: "Chapter I — A voice trapped in crystal asks you to recover its memory. Complete the Crystal Vault."
+  chapter_1: "The memory reveals a lost guardian. Choose mercy to shelter its people, or courage to face its captor: /dream quest mercy|courage."
+  chapter_2: "Chapter II — Your first choice sets the path. Complete the marked dungeon to recover the dream’s heart."
+  chapter_3: "The heart can heal the dream or become your compass. Choose restore or master: /dream quest restore|master."
+  chapter_4: "Chapter III — One final trial remains. Complete the last dungeon to seal the ending you chose."
+  objective: "Next objective: {dungeon}. Your progress survives waking, disconnects and restarts."
+  ending_guardian: "Ending — Guardian of Dawn. You sheltered the lost and restored their home. The dream remembers your kindness."
+  ending_wanderer: "Ending — Star Wanderer. You saved the lost, then carried the heart beyond familiar skies. New horizons await."
+  ending_liberator: "Ending — Dream Liberator. You faced the nightmare and returned its stolen heart. Fear no longer rules this realm."
+  ending_sovereign: "Ending — Sovereign of Twilight. You conquered the nightmare and bound its heart to your will. A powerful, lonely crown is yours."
+  reward: "This ending is permanent. Collect its one-time reward outside the dream with /dreamloot."
+weekly:
+  disabled: 'The weekly nightmare challenge is switched off.'
+  started: '&5Weekly nightmare: &d{modifiers}&5. The clock is running!'
+  cleared: '&dNightmare cleared in &f{time}&d (place {rank} of {count} this week).'
+  record: '&6New weekly best: &f{time}&6 – place {rank} of {count}!'
+  reward: '&aFirst clear this week: the weekly reward waits in your dream pouch (/dreamloot).'
+  header: '&5Weekly nightmare: &d{modifiers} &7(ends in {days} d {hours} h)'
+  empty: '&7Nobody has cleared it this week yet.'
+  row: '&7{rank}. &f{player} &7– {time}'
+  own: '&7Your best: &f{time} &7(place {rank})'
+  own-none: '&7You have not cleared this week''s nightmare yet.'
+  modifier:
+    swift: 'Swift wardens'
+    armored: 'Armoured wardens'
+    ferocious: 'Ferocious wardens'
+    horde: 'Horde'
+    darkness: 'Darkness'
+companion:
+  disabled: 'Shared dreams are switched off on this server.'
+  not-dreaming: 'You have to be in the dream to invite someone.'
+  target-not-dreaming: '{player} is not in the dream right now.'
+  invited: 'You invited {player} into your dream (valid for 60 seconds).'
+  invitation: '&d{player} invites you into their dream – fight their nightmare together. &f[Click to join]'
+  joined: 'You now share {player}''s dream. Their wardens are visible to you; your kills count for them.'
+  joined-host: '{player} joined your dream.'
+  ended: 'The shared dream with {player} has ended.'
+  none: 'You are not sharing a dream.'
+  error-self: 'You cannot invite yourself.'
+  error-already: '{player} already shares your dream.'
+  error-host-busy: 'You are a companion in another dream; use /dream leave first.'
+  error-target-busy: '{player} already shares another dream.'
+  error-full: 'At most {max} companions can share one dream.'
+  error-no-invite: 'There is no open invitation for you.'

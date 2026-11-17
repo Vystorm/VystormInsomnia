@@ -1,0 +1,262 @@
+{
+  "version": 1,
+  "intro": {
+    "en": "A few quick choices for Insomnia. Everything else stays on its defaults.",
+    "de": "Ein paar schnelle Entscheidungen für Insomnia. Alles andere bleibt auf Standard.",
+    "fr": "Quelques choix rapides pour Insomnia. Le reste garde ses valeurs par défaut.",
+    "it": "Alcune scelte rapide per Insomnia. Il resto resta predefinito.",
+    "pt_br": "Algumas escolhas rápidas para Insomnia. O resto fica no padrão.",
+    "ru": "Несколько быстрых решений для Insomnia. Остальное останется по умолчанию.",
+    "zh_cn": "Insomnia 的几个快速选项，其余保持默认。"
+  },
+  "questions": [
+    {
+      "id": "fatigue",
+      "text": {
+        "en": "How fast should players get tired?",
+        "de": "Wie schnell sollen Spieler müde werden?",
+        "fr": "À quelle vitesse les joueurs se fatiguent-ils ?",
+        "it": "Quanto velocemente si stancano i giocatori?",
+        "pt_br": "Com que rapidez os jogadores se cansam?",
+        "ru": "Как быстро игроки устают?",
+        "zh_cn": "玩家疲劳的速度？"
+      },
+      "type": "choice",
+      "recommended": "normal",
+      "options": [
+        {
+          "id": "slow",
+          "label": {
+            "en": "Slowly",
+            "de": "Langsam",
+            "fr": "Lentement",
+            "it": "Lentamente",
+            "pt_br": "Devagar",
+            "ru": "Медленно",
+            "zh_cn": "慢"
+          },
+          "set": {
+            "config.yml:fatigue.enabled": true,
+            "config.yml:fatigue.base_per_minute": 0.0625
+          }
+        },
+        {
+          "id": "normal",
+          "label": {
+            "en": "Normally",
+            "de": "Normal",
+            "fr": "Normalement",
+            "it": "Normalmente",
+            "pt_br": "Normal",
+            "ru": "Обычно",
+            "zh_cn": "普通"
+          },
+          "set": {
+            "config.yml:fatigue.enabled": true,
+            "config.yml:fatigue.base_per_minute": 0.125
+          }
+        },
+        {
+          "id": "fast",
+          "label": {
+            "en": "Quickly",
+            "de": "Schnell",
+            "fr": "Rapidement",
+            "it": "Velocemente",
+            "pt_br": "Rápido",
+            "ru": "Быстро",
+            "zh_cn": "快"
+          },
+          "set": {
+            "config.yml:fatigue.enabled": true,
+            "config.yml:fatigue.base_per_minute": 0.25
+          }
+        }
+      ]
+    },
+    {
+      "id": "dreams",
+      "text": {
+        "en": "Enable dream adventures?",
+        "de": "Traumabenteuer aktivieren?",
+        "fr": "Activer les aventures de rêve ?",
+        "it": "Attivare le avventure nei sogni?",
+        "pt_br": "Ativar aventuras nos sonhos?",
+        "ru": "Включить приключения во сне?",
+        "zh_cn": "启用梦境冒险？"
+      },
+      "type": "choice",
+      "recommended": "on",
+      "options": [
+        {
+          "id": "on",
+          "label": {
+            "en": "On",
+            "de": "An",
+            "fr": "Activé",
+            "it": "Attivo",
+            "pt_br": "Ligado",
+            "ru": "Вкл.",
+            "zh_cn": "开启"
+          },
+          "set": {
+            "config.yml:dream.enabled": true
+          }
+        },
+        {
+          "id": "off",
+          "label": {
+            "en": "Off",
+            "de": "Aus",
+            "fr": "Désactivé",
+            "it": "Disattivo",
+            "pt_br": "Desligado",
+            "ru": "Выкл.",
+            "zh_cn": "关闭"
+          },
+          "set": {
+            "config.yml:dream.enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "daytime",
+      "text": {
+        "en": "Allow sleeping during the day?",
+        "de": "Schlafen am Tag erlauben?",
+        "fr": "Autoriser le sommeil en journée ?",
+        "it": "Consentire di dormire di giorno?",
+        "pt_br": "Permitir dormir de dia?",
+        "ru": "Разрешить сон днём?",
+        "zh_cn": "允许白天睡觉？"
+      },
+      "type": "choice",
+      "recommended": "on",
+      "options": [
+        {
+          "id": "on",
+          "label": {
+            "en": "On",
+            "de": "An",
+            "fr": "Activé",
+            "it": "Attivo",
+            "pt_br": "Ligado",
+            "ru": "Вкл.",
+            "zh_cn": "开启"
+          },
+          "set": {
+            "config.yml:sleep.daytime.enabled": true
+          }
+        },
+        {
+          "id": "off",
+          "label": {
+            "en": "Off",
+            "de": "Aus",
+            "fr": "Désactivé",
+            "it": "Disattivo",
+            "pt_br": "Desligado",
+            "ru": "Выкл.",
+            "zh_cn": "关闭"
+          },
+          "set": {
+            "config.yml:sleep.daytime.enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "reminder",
+      "text": {
+        "en": "Remind tired players to sleep?",
+        "de": "Müde Spieler ans Schlafen erinnern?",
+        "fr": "Rappeler aux joueurs fatigués de dormir ?",
+        "it": "Ricordare ai giocatori stanchi di dormire?",
+        "pt_br": "Lembrar jogadores cansados de dormir?",
+        "ru": "Напоминать уставшим игрокам о сне?",
+        "zh_cn": "提醒疲劳的玩家睡觉？"
+      },
+      "type": "choice",
+      "recommended": "on",
+      "options": [
+        {
+          "id": "on",
+          "label": {
+            "en": "On",
+            "de": "An",
+            "fr": "Activé",
+            "it": "Attivo",
+            "pt_br": "Ligado",
+            "ru": "Вкл.",
+            "zh_cn": "开启"
+          },
+          "set": {
+            "config.yml:debt_reminder.enabled": true
+          }
+        },
+        {
+          "id": "off",
+          "label": {
+            "en": "Off",
+            "de": "Aus",
+            "fr": "Désactivé",
+            "it": "Disattivo",
+            "pt_br": "Desligado",
+            "ru": "Выкл.",
+            "zh_cn": "关闭"
+          },
+          "set": {
+            "config.yml:debt_reminder.enabled": false
+          }
+        }
+      ]
+    },
+    {
+      "id": "weekly",
+      "text": {
+        "en": "Run the weekly nightmare challenge (modifiers, board, weekly reward)?",
+        "de": "Wöchentliche Albtraum-Herausforderung aktivieren (Modifikatoren, Bestenliste, Wochenbelohnung)?",
+        "fr": "Activer le défi cauchemar hebdomadaire (modificateurs, classement, récompense) ?",
+        "it": "Attivare la sfida incubo settimanale (modificatori, classifica, ricompensa)?",
+        "pt_br": "Ativar o desafio semanal de pesadelo (modificadores, ranking, recompensa)?",
+        "ru": "Включить еженедельный кошмар (модификаторы, рейтинг, награда)?",
+        "zh_cn": "启用每周梦魇挑战（修饰、排行榜、每周奖励）？"
+      },
+      "type": "choice",
+      "recommended": "on",
+      "options": [
+        {
+          "id": "on",
+          "label": {
+            "en": "On",
+            "de": "An",
+            "fr": "Activé",
+            "it": "Attivo",
+            "pt_br": "Ligado",
+            "ru": "Вкл.",
+            "zh_cn": "开启"
+          },
+          "set": {
+            "config.yml:dream.weekly.enabled": true
+          }
+        },
+        {
+          "id": "off",
+          "label": {
+            "en": "Off",
+            "de": "Aus",
+            "fr": "Désactivé",
+            "it": "Disattivo",
+            "pt_br": "Desligado",
+            "ru": "Выкл.",
+            "zh_cn": "关闭"
+          },
+          "set": {
+            "config.yml:dream.weekly.enabled": false
+          }
+        }
+      ]
+    }
+  ]
+}

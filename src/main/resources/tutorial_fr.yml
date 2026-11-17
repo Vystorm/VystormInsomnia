@@ -1,0 +1,36 @@
+# Français — UTF-8. Keep keys, placeholders and formatting tokens unchanged.
+title: Fatigue et sommeil
+permission: insomnia.use
+pages:
+- title: Fatigue et dette de sommeil
+  text: |
+    1. Pendant que vous êtes éveillé, la fatigue et la dette de sommeil augmentent lentement; les activités intenses accélèrent cela.
+    2. Dans le menu Vystorm (/vmenu) sous "Caractère"" → "Fatigue" (also /insomnia) vous voyez votre état, fatigue, dette de sommeil et bonus reposés.
+    3. Les étapes: reposé, fatigué, épuisé, couvert, manque de sommeil. Chaque changement d'étape envoie un message avec un bouton à l'état.
+- title: Bien dormir
+  text: |
+    1. Allongez-vous dans un lit. Vous êtes d'abord fatigué, puis le sommeil profond suit, qui récupère le plus.
+    2. Un lit sous le toit et dans le noir se rétablit le mieux; dans les villes et les parcelles louées, vous dormez mieux.
+    3. Si vous vous réveillez complètement reposé, vous obtenez le bonus reposé pour un moment.
+- title: Stimulants
+  text: |
+    1. La caféine et comme supprimer la fatigue pendant un moment.
+    2. Chaque utilisation avant votre prochain sommeil augmente votre tolérance et affaiblit l'effet.
+    3. Lorsque l'effet s'éteint, un accident de fatigue suit.
+- title: Le repos par un feu de camp
+  text: |
+    1. Dehors et sans lit ? Restez à côté d'un feu de camp allumé ou d'un feu de camp d'âme pendant quelques secondes.
+    2. Votre fatigue diminue ensuite lentement, mais seulement jusqu'à une limite (30 % par défaut). La barre d'action montre les progrès.
+    3. Se déplacer ou se battre finit le reste. La dette de sommeil et le bonus reposé ont encore besoin d'un lit.
+- title: Rester éveillé trop longtemps
+  text: |
+    1. De "Epuisé" sur, les sons et les perturbations visuelles jouent des tours sur vous.
+    2. Lorsque vous êtes très fatigué, vous risquez un microsleep: vous vous évanouissez brièvement et votre corps reste derrière, vulnérable.
+    3. Les monstres des cauchemars n'apparaissent que pour vous et n'attaquent que vous. Dors avant que ça arrive.
+- title: Administration
+  permission: insomnia.admin
+  text: |
+    1. Paramètres du serveur : paramètres → Serveur → Fatigue & sommeil; économie de recharges immédiatement.
+    2. /insomnia admin overview (ou le bouton "Tous les joueurs" dans le menu fatigue, ou sneak + clic droit sur un lecteur) liste chaque joueur avec des actions rapides.
+    3. Commandes: /insomnia admin get|setfatigue|setdebt|sleep|effect|spawnmob <player> et /insomnia admin reload.
+    4. Textes en direct plugins/VystormInsomnia/lang/de.yml et en.yml.

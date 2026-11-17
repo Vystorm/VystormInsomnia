@@ -1,0 +1,19 @@
+stimulants:
+  coffee:
+    material: HONEY_BOTTLE
+    nbt_key: ''
+    nbt_value: ''
+    fatigue_reduction: 20.0
+    duration_seconds: 900
+    tolerance_step: 0.25
+    crash_fatigue: 10.0
+    max_effective_uses_before_sleep: 4
+  energy_drink:
+    material: POTION
+    nbt_key: insomnia_stimulant
+    nbt_value: energy_drink
+    fatigue_reduction: 30.0
+    duration_seconds: 600
+    tolerance_step: 0.30
+    crash_fatigue: 16.0
+    max_effective_uses_before_sleep: 4

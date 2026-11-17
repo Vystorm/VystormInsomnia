@@ -1,0 +1,259 @@
+config_version: 2
+
+# Remind players that coffee and campfires do not repay sleep debt; personal opt-out in /vsettings.
+debt_reminder:
+  enabled: true
+  threshold: 50.0
+  interval_minutes: 15
+
+# Dream visits use Core's durable snapshot and RewardPouch; disabling this leaves ordinary sleep unchanged.
+dream:
+  enabled: true
+  quests:
+    enabled: true
+    # One campaign per player. Ending rewards use a permanent Core RewardPouch receipt.
+    rewards:
+      guardian: [emerald:3, golden_carrot:4]
+      wanderer: [amethyst_shard:8, ender_pearl:2]
+      liberator: [echo_shard:2, golden_apple:1]
+      sovereign: [diamond:2, phantom_membrane:4]
+  companions:
+    # Shared dreams: while in the dream, /dream invite <player> asks another dreamer to join you. Companions see and
+    # fight your nightmare wardens, and their kills count for your waves. /dream leave ends it; waking ends it too.
+    enabled: true
+    # Companions per dreamer (1-8).
+    max: 3
+  entry:
+    minimum_fatigue: 40
+    allowed_worlds: []
+    blocked_region_kinds: [arena, combat, prison]
+    cooldown_seconds: 300
+  duration:
+    minimum_minutes: 5
+    maximum_minutes: 20
+    maximum_fatigue: 80
+  deadline:
+    warning_seconds: [60, 30]
+  world:
+    id: insomnia:dreamweite
+    name: InsomniaDream
+    seed: 510231
+    # Seed/density/layout changes apply at restart and rebuild only the managed dream world.
+    decoration_density: 100
+    # Independent procedural upper islands and biome accents; 0 disables each layer.
+    # Geometry changes require restart and rebuild the disposable dream world.
+    sky_island_density: 100
+    natural_accent_density: 65
+    # Seed-generated logs, boulders, mushrooms and mineral formations (0 disables).
+    natural_object_density: 65
+    # Three seeded dungeons on supported land, with walkable trails from arrival.
+    dungeons_enabled: true
+    # Static invisible ambient light for vegetation; no runtime lighting task.
+    ambient_light: true
+  # Reserved compatibility settings; the landscape-only layout currently generates no towers.
+  towers:
+    transition_millis: 750
+    cooldown_seconds: 3
+    effects: true
+  loot:
+    namespace: insomnia_dreamweite
+    rewards:
+      cloud-ruins: [amethyst_shard, glow_berries]
+      crystal-vault: [prismarine_crystals, amethyst_shard]
+      nightmare-keep: [phantom_membrane, echo_shard]
+  nightmare:
+    wave_mobs: [3, 4]
+  weekly:
+    # Weekly nightmare challenge: each week (Monday 00:00 UTC) the Nightmare Keep gets rotating modifiers (faster,
+    # armoured or stronger wardens, bigger waves, darkness). Clear times form a weekly board (/dream weekly) and the
+    # first clear of the week adds the reward below to the dream pouch (/dreamloot).
+    enabled: true
+    # Modifiers per week (1-5).
+    modifiers: 2
+    reward: [diamond:1, experience_bottle:16]
+
+# Where player fatigue is stored. Changes need a server restart.
+storage:
+  # yaml  = plugins/VystormInsomnia/data/fatigue.yml (Core VersionedStore; default, for single servers)
+  # mysql = the shared Vystorm database. The credentials are NOT here but only in Core's
+  #         plugins/vystorm_core/config.yml under database.shared (needs Vystorm Core 0.14.0+).
+  #         On the first start with an empty table, fatigue.yml is imported once and kept as backup.
+  #         If the database is not available in mysql mode, the plugin disables itself instead of
+  #         falling back to fatigue.yml, so no server writes stale data next to the database.
+  type: yaml
+  # Table name prefix in the shared database: <prefix>_players, <prefix>_imports (2-16 chars, a-z0-9).
+  table-prefix: vinsom
+  # Name of this server in the network, stored with the player it currently holds. Set a unique
+  # name per server so claims left by a crash are freed on the next start.
+  server-id: default
+  # When a player switches servers, wait this long for the previous server to save them, then take over.
+  claim-wait-seconds: 10
+
+fatigue:
+  # false = fatigue and sleep debt stop rising (sleeping still reduces them).
+  enabled: true
+  update_interval_ticks: 100
+  # Quarter of the original 0.50 / 0.35: each stage (20 points) takes about 160 minutes of normal play.
+  base_per_minute: 0.125
+  debt_per_minute: 0.0875
+  # Fatigue pauses in these modes. Local AFK below measures input inactivity only and never sets an AFK flag.
+  exclude_creative: true
+  exclude_spectator: true
+  pause-afk:
+    # Local input inactivity only; this does not set or claim an external AFK status.
+    enabled: false
+    threshold_seconds: 300 # minimum 60
+  stages: [20.0, 40.0, 60.0, 80.0]
+  dirty_flush_seconds: 300
+
+activity:
+  normal: 1.0
+  sprint: 1.2
+  mining: 1.1
+  swimming: 1.2
+  combat: 1.5
+  boss: 2.0
+  mining_window_seconds: 8
+  combat_window_seconds: 20
+  boss_window_seconds: 30
+  boss_types: [WITHER, ENDER_DRAGON, WARDEN, ELDER_GUARDIAN]
+
+sleep:
+  daytime:
+    enabled: true
+  falling_asleep_seconds: 10
+  light_sleep_seconds: 20
+  deep_sleep_seconds: 30
+  fatigue_recovery_per_second: 1.0
+  debt_recovery_per_second: 0.5
+  quality_recheck_seconds: 10
+  independent_from_night_skip: true
+  # Stops the vanilla night skip completely (also without time acceleration below).
+  cancel_vanilla_night_skip: false
+  # Getting up before fully rested shows how long you slept and how much fatigue and sleep debt it took away.
+  wake_summary: true
+  # Dialog when a player lies down: sleep until a time, enter the dream realm or get up. Players pick in
+  # /vsettings whether it asks every time, uses their saved choice, or asks in chat instead.
+  dialog:
+    # Ask sleeping players what they want (false = sleep as before, /dream still works).
+    enabled: true
+    # Also ask on daytime naps (keep napping, dream realm, get up). The clock never runs faster for naps.
+    day_naps: true
+    # Wake-up times as clock time hh:mm of the coming day (06:00 = next morning, 22:00 = the night after);
+    # '' hides a preset. Only offered where time acceleration runs, otherwise the night ends in the morning.
+    presets:
+      morning: '06:00'
+      noon: '12:00'
+      evening: '18:00'
+      night: '22:00'
+    # Offer an hour picker for an own wake-up time.
+    custom_time: true
+  # Multiplayer: instead of skipping the night at once, time runs faster the more players sleep.
+  # speed = min_speed + (max_speed - min_speed) * (sleeping / players) ^ curve (game ticks per server tick).
+  # Spectators and players ignored for sleeping (AFK plugins set that) are not counted.
+  acceleration:
+    # Replace the vanilla night skip with time acceleration (false = vanilla behaviour).
+    enabled: true
+    # Lowest speed, approached when only a small share sleeps (1.0-100.0). With the defaults 1 of 4 gives 4x.
+    min_speed: 2.0
+    # Speed when everyone in the world sleeps (1.0-100.0). 10.0 passes a night in about one minute.
+    max_speed: 10.0
+    # 1.0 = linear, 2.0 = stays slow until most players sleep, 0.5 = fast already with few sleepers (0.1-5.0).
+    curve: 1.0
+    # Worlds where it runs; empty = every overworld-type world (never the dream world).
+    worlds: []
+    # Show "x/y sleeping – time runs 6x faster" in the action bar of everyone in the world.
+    action_bar: true
+  quality:
+    base: 1.0
+    roof_multiplier: 1.10
+    exposed_multiplier: 0.85
+    low_light_multiplier: 1.05
+    bright_light_multiplier: 0.90
+    monster_nearby_multiplier: 0.70
+    storm_exposed_multiplier: 0.75
+    city_multiplier: 1.15
+    rental_multiplier: 1.20
+    min: 0.25
+    max: 2.0
+    # Cozy bedroom: each furnishing type within cozy_radius of the bed (carpet/wool, potted plant,
+    # bookshelf, lantern/candle, painting/item frame, chest/barrel) adds this much quality.
+    cozy_per_furnishing: 0.04
+    cozy_radius: 4
+
+stimulants:
+  enabled: true
+
+hallucinations:
+  enabled: true
+  check_interval_seconds: 10
+  chance_exhausted: 0.05
+  chance_overmuedet: 0.18
+  chance_sleep_deprivation: 0.35
+  sight_loss_seconds: 4
+  custom_yawn_sound: 'vystorm:insomnia.yawn'
+  weights:
+    yawn: 24
+    footsteps: 18
+    creeper: 12
+    door: 10
+    darkness: 12
+    blindness: 8
+    shadow: 10
+    sight_loss: 6
+
+microsleep:
+  # One-time grace after interrupted microsleep; normal relogging does not renew it (0..300).
+  recovery_grace_seconds: 30
+  enabled: true
+  min_fatigue: 80.0
+  check_interval_seconds: 10
+  chance_per_check: 0.08
+  duration_min_seconds: 1
+  duration_max_seconds: 4
+  cooldown_seconds: 120
+
+insomnia_mobs:
+  enabled: true
+  min_fatigue: 70.0
+  check_interval_seconds: 15
+  base_spawn_chance: 0.08
+  max_per_player: 3
+  max_global: 20
+  min_spawn_distance: 8
+  max_spawn_distance: 18
+  lifetime_seconds: 120
+  # Owner-only ECHO_SHARD drops are capped per rolling window; later rewards are reduced.
+  shards_per_window: 3
+  shard_window_seconds: 900
+  shard_diminishing_after: 1
+
+rested:
+  enabled: true
+  duration_minutes: 45
+  xp_multiplier: 1.05
+  regeneration_per_5_seconds: 0.5
+  hunger_reduction: 0.15
+
+# Resting by a lit campfire or soul campfire: stand still next to it and fatigue slowly drops, but never
+# below min_fatigue. Sleep debt and the rested bonus still need a real bed.
+rest:
+  campfire:
+    enabled: true
+    # Blocks around the player searched for a lit campfire (1-8).
+    radius: 3
+    # Standing still this long starts the rest; moving, combat, sleeping or a mode change ends it.
+    settle_seconds: 5
+    fatigue_per_second: 0.2
+    min_fatigue: 30.0
+
+# Fatigue entry in Core's player menu (sneak + right-click another player, Core 0.43.0+).
+# Admins (insomnia.admin) get the values and quick actions there and in /insomnia admin overview.
+player_menu:
+  enabled: true
+  # Everyone else sees how tired the other player looks (stage only, no numbers).
+  show_stage_to_players: true
+
+integrations:
+  cityclaim: true
+  bloodmoon: true

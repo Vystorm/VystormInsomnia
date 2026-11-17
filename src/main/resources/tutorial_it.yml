@@ -1,0 +1,36 @@
+# Italiano — UTF-8. Keep keys, placeholders and formatting tokens unchanged.
+title: Fatigue e sonno
+permission: insomnia.use
+pages:
+- title: Debiti familiari e sonno
+  text: |
+    1. Mentre sei sveglio, l'affaticamento e il debito del sonno lentamente aumentano; le attività faticose accelerano questo.
+    2. Nel menu Vystorm (/vmenu) sotto "Character"" → "Stanchezza" (also /insomnia) vedi il tuo stato, stanchezza, debito del sonno e bonus riposato.
+    3. Le fasi: Riposo, Stanco, Esaurito, Sopravvivente, Sonno privato. Ogni cambiamento di fase invia un messaggio con un pulsante per lo stato.
+- title: Dormire bene
+  text: |
+    1. Sdraiati in un letto. Si doze prima, poi sonno profondo segue, che recupera il più.
+    2. Un letto sotto un tetto e nel buio recupera meglio; in città e in affitto trama si dorme meglio.
+    3. Se ti svegli completamente riposato, ottieni il bonus riposato per un po'.
+- title: Stimolanti
+  text: |
+    1. Caffeina e simili sopprimere la fatica per un po'.
+    2. Ogni uso prima del sonno successivo aumenta la tolleranza e indebolisce l'effetto.
+    3. Quando l'effetto si spegne, segue un incidente di stanchezza.
+- title: Riposare con un fuoco
+  text: |
+    1. Senza un letto? Stare ancora vicino a un fuoco acceso o fuoco dell'anima per alcuni secondi.
+    2. La fatica poi scende lentamente, ma solo fino a un limite (30 % per impostazione predefinita). La barra d'azione mostra i progressi.
+    3. Spostarsi o combattere finisce il resto. Il debito del sonno e il bonus riposato hanno ancora bisogno di un letto.
+- title: Resta sveglio troppo a lungo
+  text: |
+    1. Da "Esaurito" su, suoni e disturbi visivi giocano trucchi su di voi.
+    2. Quando molto stanco si rischia microsleep: si annuisce brevemente e il vostro corpo rimane dietro, vulnerabile.
+    3. I mostri incubi appaiono solo per te e attaccano solo te. Dormi prima che arrivi cosi' lontano.
+- title: Amministrazione
+  permission: insomnia.admin
+  text: |
+    1. Impostazioni server: Impostazioni → Server → Fatigue & sleep; salvataggio ricarica immediatamente.
+    2. /insomnia admin overview (o il pulsante "Tutti i giocatori" nel menu di stanchezza, o sneak + click destro di un giocatore) elenca ogni giocatore con azioni rapide.
+    3. Comandi: /insomnia admin get|setfatigue|setdebt|sleep|effect|spawnmob <player> e /insomnia admin reload.
+    4. I testi vivono in plugins/VystormInsomnia/lang/de.yml e en.yml.

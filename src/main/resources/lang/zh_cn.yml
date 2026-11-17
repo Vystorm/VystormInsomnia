@@ -1,0 +1,610 @@
+# VystormInsomnia – 简体中文文本（Vystorm Core 本地化）。旧版颜色代码（&7）和
+# MiniMessage 均可使用。聊天消息前会加上 "prefix"。占位符写在 {花括号} 中。
+prefix: '&8[&5Insomnia&8] '
+
+status: '&7疲劳：&f{fatigue}% &8| &7睡眠负债：&f{debt}% &8| &7阶段：&f{stage} &8| &7精力充沛：&f{rested}'
+stage_tired: '&e你开始感到疲倦了。'
+stage_exhausted: '&6你的注意力明显在下降。'
+stage_overmuedet: '&c你严重过度疲劳。你的感官开始捉弄你了。'
+stage_sleep_deprivation: '&4你正遭受严重的睡眠不足。'
+sleep_start: '&7你试着入睡……'
+dream:
+  name_cloud_ruins: '云中遗迹'
+  name_crystal_vault: '水晶宝库'
+  name_nightmare_keep: '梦魇堡垒'
+  dungeon_direction: '&b{name} &7– 入口位于 &f{x}, {y}, {z}&7。从抵达点出发的泥土小径通往那里。使用 &f/dream &7可再次列出这些地点。'
+  hint_cloud_ruins: '&a云中遗迹：从入口开始按顺序探索地面标记。在终点与金色奖励石互动。'
+  hint_crystal_vault: '&b水晶宝库：从入口到最后一个房间，按顺序右键四块水晶地面石。踩错一块会重置顺序。'
+  hint_nightmare_keep: '&5梦魇堡垒：进入竞技场中心，击败你的梦境监守者波次。只计算你自己的击杀；奖励会安全地放入你的梦境袋。'
+  tower_departing: '&d高塔正在翻转你的梦境。请站着别动。'
+  tower_arrived: '&b你到达了镜像面 {side}。你的梦境计时仍在继续。'
+  tower_failed: '&e转移失败。你仍留在这一面。'
+  tower_unavailable: '&e高塔尚未就绪。请结束战斗并稍等片刻。'
+  napping: '&7你现在可以在白天睡觉了。点击“起床”或 /wake 即可醒来；/dream 进入梦境。'
+  choice: '&7在这里休息，或选择 /dream 进入梦境。使用 /wake 返回。'
+  exit_tool: '&5梦境之线 · /wake'
+  mob_name: '&5梦境监守者'
+  disabled: '&c梦境当前不可用。'
+  survival_only: '&c梦境之旅仅在生存模式下可用。'
+  in_combat: '&c请在脱离战斗后再进入梦境。'
+  recovery_pending: '&c你上一次的托管世界访问仍在恢复中。'
+  not_tired: '&7你还不够疲倦，无法做梦（{fatigue}%）。'
+  world_denied: '&c你无法从这个世界开始梦境之旅。'
+  clear_cursor: '&c请先清空光标上的物品。'
+  clear_crafting: '&c请先取出打开的合成格中的物品。'
+  bed_required: '&7站到一张安全的床附近，然后再试一次 &f/dream&7。'
+  storage_unavailable: '&c无法安全读取你的梦境奖励。未开始任何旅程。'
+  pouch_recovery: '&e上一次的奖励发放需要恢复。请先使用 &f/dreamloot&e。'
+  entry_failed: '&c无法安全地开始梦境之旅。'
+  entry_refused: '&cCore 拒绝了梦境之旅（{reason}）。'
+  entered: '&b你进入了梦境。你大约有 {minutes} 分钟；使用 &f/wake &b可安全返回。'
+  not_visiting: '&7你当前不在梦境中。'
+  waking: '&b你醒来并安全返回……'
+  time_warning: '&e你的梦境时间还剩 {seconds} 秒。'
+  time_bar: '&f梦境时间：{time}'
+  time_left: '&7剩余梦境时间：约 {minutes} 分钟。'
+  cloud_waypoint: '&a已探索路径点 {step}/{total}。'
+  cloud_ready: '&a云中遗迹已探索完毕。找到金色奖励标记。'
+  cloud_need_waypoints: '&7请先按顺序探索标记的路径点。'
+  reward_marker: '&7与金色奖励标记互动。'
+  crystal_progress: '&b水晶顺序 {step}/{total}。'
+  crystal_reset: '&c水晶归于沉寂。顺序重新开始。'
+  nightmare_wave: '&5梦魇波次 {wave}/{total}！'
+  reward_unconfigured: '&c此梦境地点未配置有效的奖励。'
+  dungeon_complete: '&a梦境地点已完成：{dungeon}。'
+  loot_pouched: '&d来自 {dungeon} 的战利品已永久存入你的梦境袋。'
+  loot_delivered: '&a一份梦境奖励已安全发放到你的物品栏。'
+  loot_empty: '&7你的梦境袋是空的。'
+  loot_full: '&e你的物品栏已满；奖励仍留在梦境袋中。'
+  loot_busy: '&c访问或恢复期间无法领取奖励。'
+  loot_recovery: '&c奖励发放需要恢复。请重新连接后再试。'
+sleep_preview: '&7当前睡眠质量：&f{quality}x&7。完整休息可获得 {rested_minutes} 分钟精力充沛和 {xp_multiplier}x 经验。'
+fatigue:
+  paused_creative: '&e创造模式下疲劳不会增长。'
+  paused_spectator: '&e旁观模式下疲劳不会增长。'
+  paused_local_afk: '&e{seconds} 秒内无本地玩家输入，疲劳增长已暂停。'
+history:
+  page: '&7第{page}/{pages}页'
+  invalid_page: '&c请选择1至{pages}之间的页码。'
+  title: '&7最近的疲劳和睡眠负债记录：'
+  triggers_title: '&7最近的幻觉及观察到的原因：'
+  entry: '&8{at} &7疲劳 {fatigue}% / 负债 {debt}% — {event}'
+  sample: '采样'
+  sleep_started: '开始睡眠'
+  sleep_completed: '睡眠完成'
+  rest_started: '在营火旁休息'
+  stimulant: '使用了兴奋剂：{detail}'
+  hallucination: '幻觉 {effect}；阶段 {stage}，疲劳 {fatigue}%，睡眠负债 {debt}%'
+  empty: '&7暂无最近记录。'
+  no_triggers: '&7本次会话未记录到幻觉。'
+  memory_only: '&8最近记录仅保存在内存中，登出或重启后会清除。'
+sleep_deep: '&b你进入了深度睡眠。'
+sleep_rested: '&a你醒来了，精力充沛。'
+sleep_summary: '&7你睡了 {seconds} 秒：疲劳 &f{fatigue_before}% → {fatigue_after}%&7，睡眠负债 &f{debt_before}% → {debt_after}%&7。睡到完全恢复才能获得全部效果。'
+status_stimulant: '&e咖啡因：剩余 {minutes} 分 {seconds} 秒；自上次充分休息后已服用 {uses} 次。按当前数值计算，反弹后的疲劳为 &f{fatigue}%&e（活动和睡眠会改变此数值）。'
+stimulant: '&e咖啡因暂时压制了你的疲劳。'
+stimulant_weak: '&6由于你的耐受性，效果弱了很多。'
+stimulant_crash: '&c效果消退了——疲劳反扑袭来。'
+microsleep: '&4你的眼睛闭上了一会儿……'
+no_permission: '&c你没有权限执行此操作。'
+player_only: '&c此命令仅限玩家使用。'
+data_loading: '&7你的疲劳数据仍在加载，请稍后再试。'
+player_not_found: '&c找不到该玩家或玩家不在线。'
+invalid_number: '&c无效的数字。'
+reloaded: '&a配置已重新加载。'
+config_invalid: '&c配置无效，之前的值仍然有效：{errors}。数值必须是有限数（不能为 NaN 或无穷大）。'
+
+admin:
+  set_fatigue: '&7{player} 的疲劳 = {value}'
+  set_debt: '&7{player} 的睡眠负债 = {value}'
+  rested: '&a{player} 现在精力充沛了。'
+  effect_unknown: '&c未知效果：{effects}'
+  effect_done: '&a效果已触发。'
+  mob_spawned: '&aInsomnia 生物已生成。'
+  mob_refused: '&c生成被拒绝。'
+
+stage_name:
+  rested: '精力充沛'
+  tired: '疲倦'
+  exhausted: '精疲力竭'
+  overmuedet: '过度疲劳'
+  sleep_deprivation: '睡眠不足'
+
+hint:
+  rested: '在有屋顶的黑暗处睡床恢复得最好。'
+  exhausted: '你的注意力在下降——尽快找一张安全的床。'
+  overmuedet: '你的感官在捉弄你。尽快睡觉！'
+  sleep_deprivation: '严重睡眠不足：微睡眠和噩梦即将来临。'
+
+rested_left:
+  none: '无'
+  minutes: '{minutes} 分钟'
+
+menu:
+  title: '疲劳'
+  description: '你的疲劳、睡眠负债和精力充沛加成'
+  chat_button: '疲劳'
+
+dialog:
+  title: '疲劳'
+  state: '<gray>状态：</gray>{stage}'
+  fatigue: '疲劳：{bar} {value} %'
+  debt: '睡眠负债：{bar} {value} %'
+  rested: '精力充沛加成：{rested}'
+  stimulant: '<yellow>兴奋剂还会持续 {minutes} 分钟——之后会出现疲劳反扑。</yellow>'
+  sleeping: '<aqua>你正在睡觉。</aqua>'
+  refresh: '↻ 刷新'
+  close: '关闭'
+  web: '网页'
+
+settings:
+  title: '疲劳与睡眠'
+  description: '疲劳、睡眠、幻觉和微睡眠。更改立即生效。'
+
+# 服务器设置（设置 → 服务器 → 疲劳与睡眠）：setting.<config path>.label|desc
+debt_reminder:
+  message: '&6你的睡眠债为 {debt}%。咖啡和营火无法减少睡眠债，请在床上睡觉恢复。可在 /vsettings → 睡眠 中关闭提醒。'
+  preference: '睡眠债提醒'
+  preference_desc: '睡眠债较高时提醒我睡觉'
+
+setting:
+  debt_reminder:
+    enabled:
+      label: '睡眠债提醒'
+      desc: '向睡眠债较高且清醒的玩家发送提醒'
+    threshold:
+      label: '睡眠债阈值'
+      desc: '触发提醒的最低睡眠债百分比'
+    interval_minutes:
+      label: '提醒间隔（分钟）'
+      desc: '本次会话中每位玩家两次提醒之间的最短时间'
+  fatigue:
+    enabled:
+      label: '疲劳增长'
+      desc: '关闭 = 疲劳和睡眠负债不再增长'
+    base_per_minute:
+      label: '每分钟疲劳'
+      desc: '正常活动时的增长（0.125 ≈ 每阶段 160 分钟）'
+    debt_per_minute:
+      label: '每分钟睡眠负债'
+      desc: '睡眠负债的增长'
+  sleep:
+    fatigue_recovery_per_second:
+      label: '睡眠恢复 /秒'
+      desc: '每秒睡眠减少的疲劳'
+    debt_recovery_per_second:
+      label: '睡眠负债减少 /秒'
+      desc: '每秒睡眠减少的睡眠负债'
+    cancel_vanilla_night_skip:
+      label: '阻止原版跳过夜晚'
+      desc: '睡觉不会跳过夜晚'
+    dialog:
+      enabled:
+        label: '睡眠对话框'
+        desc: '询问睡觉的玩家：睡到某个时间、进入梦境或起床'
+      day_naps:
+        label: '白天小睡对话框'
+        desc: '白天小睡时也询问（仅在梦境开放时）'
+      custom_time:
+        label: '自定义起床时间'
+        desc: '在睡眠对话框中提供小时选择'
+    wake_summary:
+      label: '醒来小结'
+      desc: '提前起床时显示睡了多久以及减少了多少疲劳和睡眠负债'
+    acceleration:
+      enabled:
+        label: '时间加速'
+        desc: '睡觉的玩家越多，时间流逝越快，而不是直接跳过夜晚'
+      min_speed:
+        label: '少数人睡觉时的速度'
+        desc: '多名玩家中第一人入睡时的倍速（1-100）'
+      max_speed:
+        label: '所有人睡觉时的速度'
+        desc: '所有人都睡觉时的倍速（1-100）；10 ≈ 每晚一分钟'
+      curve:
+        label: '速度曲线'
+        desc: '1 = 线性，2 = 大多数人入睡前较慢，0.5 = 早期就很快'
+      action_bar:
+        label: '动作栏'
+        desc: '向世界中的所有人显示睡觉人数和速度'
+  stimulants:
+    enabled:
+      label: '兴奋剂'
+      desc: '咖啡因等物品可压制疲劳'
+  hallucinations:
+    enabled:
+      label: '幻觉'
+      desc: '极度疲倦时出现声音和视觉干扰'
+    chance_exhausted:
+      label: '幻觉：精疲力竭'
+      desc: '每次检查的概率'
+    chance_overmuedet:
+      label: '幻觉：过度疲劳'
+      desc: '每次检查的概率'
+    chance_sleep_deprivation:
+      label: '幻觉：睡眠不足'
+      desc: '每次检查的概率'
+  microsleep_grace: "微睡眠恢复宽限：剩余 {seconds} 秒。"
+  microsleep_recovered: "微睡眠被中断：已检查恢复。宽限 {seconds} 秒；疲劳和睡眠负债保持不变。"
+  microsleep:
+    enabled:
+      label: '微睡眠'
+      desc: '高度疲劳时短暂打瞌睡'
+    min_fatigue:
+      label: '微睡眠起始疲劳'
+      desc: '疲劳百分比'
+    chance_per_check:
+      label: '微睡眠概率'
+      desc: '每次检查的概率'
+    cooldown_seconds:
+      label: '微睡眠间隔（秒）'
+      desc: '两次微睡眠之间的最短时间'
+  insomnia_mobs:
+    enabled:
+      label: 'Insomnia 生物'
+      desc: '高度疲劳时出现的梦魇怪物'
+    min_fatigue:
+      label: 'Insomnia 生物起始疲劳'
+      desc: '疲劳百分比'
+    base_spawn_chance:
+      label: 'Insomnia 生物概率'
+      desc: '每次检查的概率'
+  rested:
+    enabled:
+      label: '精力充沛加成'
+      desc: '完整睡眠后的加成'
+    duration_minutes:
+      label: '精力充沛持续时间（分钟）'
+      desc: '加成的持续时间'
+    xp_multiplier:
+      label: '精力充沛经验'
+      desc: '加成的经验倍率'
+  integrations:
+    cityclaim:
+      label: '城市集成'
+      desc: '城市中的睡眠质量；重启后生效'
+    bloodmoon:
+      label: '血月集成'
+      desc: '血月期间睡眠更差；重启后生效'
+  rest:
+    campfire:
+      enabled:
+        label: '营火休息'
+        desc: '在点燃的营火旁静止站立会慢慢降低疲劳'
+      fatigue_per_second:
+        label: '每秒营火休息'
+        desc: '每秒休息减少的疲劳（床恢复 1.0）'
+      min_fatigue:
+        label: '营火休息下限'
+        desc: '营火不会把疲劳降到此值以下'
+  player_menu:
+    enabled:
+      label: '玩家菜单条目'
+      desc: '潜行 + 右键玩家时显示疲劳条目（Core 0.43+）'
+    show_stage_to_players:
+      label: '他人可见阶段'
+      desc: '玩家可以看到其他玩家看起来有多累（不显示数字）'
+
+# 客户端模组（HUD 条和原生面板）
+hud:
+  rested: '精力充沛'
+  fatigue: '疲劳 {value} % · {stage}'
+  debt: '睡眠负债 {value} %'
+panel:
+  loading: '你的疲劳数据仍在加载。'
+  state: '状态'
+  rested: '精力充沛加成'
+  fatigue: '疲劳 {value} %'
+  debt: '睡眠负债 {value} %'
+  stimulant: '兴奋剂还会持续 {minutes} 分钟——之后会出现疲劳反扑。'
+  sleeping: '你正在睡觉。'
+  settings: '服务器设置'
+  settings-unavailable: '设置不可用。'
+
+# Core 网页界面中的网页（/app/insomnia）；web.ui.* 不使用 MiniMessage（原样发送）
+web:
+  module:
+    title: '疲劳'
+    description: '疲劳、睡眠负债和记录'
+  ui:
+    loading: '加载中…'
+    offline: '你不在游戏中。你上线后数值就会显示。'
+    not-loaded: '你的疲劳数据仍在加载。'
+    stage: '状态'
+    fatigue: '疲劳'
+    debt: '睡眠负债'
+    rested: '精力充沛加成'
+    rested-none: '无'
+    rested-minutes: '剩余 {minutes} 分钟'
+    stimulant: '兴奋剂还会持续 {minutes} 分钟——之后会出现疲劳反扑。'
+    sleeping: '你正在睡觉。'
+    history: '记录'
+    history-empty: '暂无记录——在线时每分钟采样一次。'
+    history-hint: '最近 {count} 分钟（每分钟采样一次，仅限本次游戏会话）。'
+    thresholds: '阶段起始疲劳：{values} %'
+    legend-fatigue: '疲劳'
+    legend-debt: '睡眠负债'
+admin_usage: '&7/insomnia admin <get|setfatigue|setdebt|sleep|effect|spawnmob|overview|reload>'
+sleep_cozy: '&7舒适度：&f{count}/{max} &7（睡眠质量 +{bonus}%）：&f{found}&7。还可添加：{missing}。'
+status_cozy: '&7床边舒适度：&f{count}/{max} &7（睡眠质量 +{bonus}%）：&f{found}&7。还可添加：{missing}。'
+status_next:
+  minutes: '&7下一阶段：&f{stage}&7，正常游玩约 &f{minutes} 分钟&7后到达。'
+  hours: '&7下一阶段：&f{stage}&7，正常游玩约 &f{hours} 小时 {minutes} 分钟&7后到达。'
+cozy:
+  soft: 地毯或羊毛
+  plant: 盆栽
+  books: 书架
+  light: 灯笼或蜡烛
+  art: 画或物品展示框
+  storage: 箱子或木桶
+  none: 无
+rest:
+  started: '&6你在营火旁坐下。你的疲劳会慢慢下降，最低到 {floor}%。移动或战斗会结束休息。'
+  bar: '&6在火边休息 &8· &7疲劳 &f{fatigue}% &8→ &7{floor}%'
+  floor: '&7你已经在营火旁休息到极限了（{floor}%）。想恢复更多，请睡床。'
+  stopped: '&7你停止了休息。'
+  status: '&6你正在营火旁休息。'
+overview:
+  button: '所有玩家'
+  title: '所有玩家的疲劳'
+  intro: '{count} 名玩家在线，最疲倦的排在前面。点击玩家查看数值和快捷操作。'
+  empty: '没有已加载疲劳数据的在线玩家。'
+  more: '……还有 {count} 名（仅显示最疲倦的 40 名）。'
+  row: '{player} · {stage} · {fatigue} % {state}'
+  row_hover: '睡眠负债 {debt} %'
+  sleeping: '（睡觉中）'
+  resting: '（在营火旁）'
+  activity: '当前：{state}'
+  player_title: '疲劳：{player}'
+  back: '← 所有玩家'
+  back_menu: '← 疲劳'
+  chat_title: '&7所有玩家的疲劳（{count}），最疲倦的排在前面：'
+  chat_line: '&f{player} &8· &7{stage} &8· &7疲劳 &f{fatigue}% &8· &7负债 &f{debt}% {state}'
+  action:
+    rest: '完全恢复'
+    clear_debt: '清除睡眠负债'
+    less: '疲劳 −20'
+    more: '疲劳 +20'
+player_menu:
+  admin_name: '&d疲劳：{player}'
+  admin_lore: "&7阶段：&f{stage}\n&7疲劳：&f{fatigue} %\n&7睡眠负债：&f{debt} %\n&e点击：数值和快捷操作"
+  name: '&d{player} &8· &f{stage}'
+  lore:
+    rested: '&7神采奕奕，休息充足。'
+    tired: '&7时不时打哈欠。'
+    exhausted: '&7有明显的黑眼圈。'
+    overmuedet: '&7几乎睁不开眼睛。'
+    sleep_deprivation: '&7急需一张床——要不要给 TA 一张？'
+
+# 睡眠对话框和时间加速（0.18.0）
+sleep_choice:
+  title: '睡觉'
+  nap_title: '小睡'
+  now: '现在是 <white>{time}</white>。你想睡多久？'
+  nap_now: '现在是 <white>{time}</white>。白天小睡时时间不会加快；你会一直休息到起床。'
+  faster: '<gray>睡觉的玩家越多，时间流逝越快。</gray>'
+  no_acceleration: '<gray>夜晚将在早晨结束。</gray>'
+  dream_ready: '<light_purple>梦境：已向你开放（疲劳 {fatigue} %）。</light_purple>'
+  dream_not_tired: '<gray>梦境：疲劳达到 {min} % 时开放（你：{fatigue} %）。</gray>'
+  hour_label: '自定义起床时间'
+  remember: "不再询问（可在 /vsettings 中更改）"
+  keep_sleeping: '继续睡觉'
+  keep_napping: '继续小睡'
+  button:
+    morning: '睡到早晨（{time}）'
+    noon: '睡到中午（{time}）'
+    evening: '睡到傍晚（{time}）'
+    night: '睡到下一个夜晚（{time}）'
+    custom: '睡到我设定的时间'
+    sleep: '睡觉'
+    dream: '进入梦境'
+    get_up: '起床'
+  sleeping_until: '&7你将睡到 &f{time}&7。睡觉的玩家越多，时间流逝越快。'
+  sleeping: '&7你将睡到早晨。'
+  auto: '&7你将睡到 &f{time}&7（你保存的选择，可在 /vsettings 中更改）。'
+  remembered: '&7已保存。以后不会再询问你；可在 /vsettings → 睡觉 中更改。'
+  woke: '&7你醒来了。现在是 &f{time}&7。'
+  chat_night: '&7现在是 &f{time}&7。睡觉：'
+  chat_nap: '&7正在小睡。进入梦境还是起床？'
+  chat_button: '&b[{label}]'
+  chat_hover: '点击选择'
+  chat_settings: '&8[设置]'
+  action_bar: '&7{sleeping}/{players} 人在睡觉 &8– &f时间加快 {speed}×'
+  settings:
+    title: '睡觉'
+    description: '你躺到床上时会发生什么'
+    mode: '当我躺下时'
+    mode_desc: '每次都询问、使用保存的选择，或在聊天中询问'
+    mode_ask: '用对话框询问'
+    mode_auto: "使用保存的选择，不询问"
+    mode_chat: '在聊天中询问'
+    choice: '保存的选择'
+    choice_desc: '不询问时使用；你在对话框中的选择会保存在这里'
+    choice_morning: '睡到早晨'
+    choice_noon: '睡到中午'
+    choice_evening: '睡到傍晚'
+    choice_night: '睡到下一个夜晚'
+    choice_custom: '睡到我设定的时间'
+    choice_dream: '梦境'
+    hour: '自定义起床小时'
+    hour_desc: '“睡到我设定的时间”所用的小时（0-23）'
+
+# 通过 Vystorm Core 0.45.0+ 提供的 /insomnia、/dream、/wake 和 /dreamloot：每位玩家看到自己语言的说明、帮助和 Tab 补全。
+# commands.<命令> 下的 "aliases" 是额外的主命令（全服生效，由管理员在 Core 配置 commands.localized-aliases 中选择语言）；
+# 子命令的 "name" 和 "aliases" 在所有语言中都可使用，英文始终有效。
+commands:
+  insomnia:
+    description: "疲劳与睡眠：菜单、状态、记录、触发和管理"
+    aliases: [失眠]
+    sub:
+      menu:
+        name: 菜单
+        aliases: []
+        description: "打开疲劳菜单"
+      status:
+        name: 状态
+        aliases: []
+        description: "你的疲劳、睡眠债、阶段和休息加成"
+      history:
+        name: 记录
+        aliases: [历史]
+        description: "你最近的疲劳数据和睡眠事件"
+      triggers:
+        name: 触发
+        aliases: []
+        description: "你最近的幻觉及其触发原因"
+      admin:
+        name: 管理
+        aliases: []
+        description: "管理：数值、睡眠、效果、怪物、总览和重载"
+        sub:
+          get:
+            name: 查询
+            aliases: []
+            description: "显示玩家的疲劳状态"
+            usage: "玩家"
+            args:
+              player: 玩家
+          setfatigue:
+            name: 设疲劳
+            aliases: []
+            description: "设置玩家的疲劳值（+n/-n 为增减）"
+            usage: "玩家 0-100|+n|-n"
+            args:
+              player: 玩家
+              value: "0-100|+n|-n"
+          setdebt:
+            name: 设睡眠债
+            aliases: []
+            description: "设置玩家的睡眠债（+n/-n 为增减）"
+            usage: "玩家 0-100|+n|-n"
+            args:
+              player: 玩家
+              value: "0-100|+n|-n"
+          sleep:
+            name: 休息
+            aliases: []
+            description: "让玩家立即完成休息"
+            usage: "玩家"
+            args:
+              player: 玩家
+          effect:
+            name: 效果
+            aliases: []
+            description: "为玩家触发一个幻觉（不填名称：列出所有效果）"
+            usage: "玩家 [效果]"
+            args:
+              player: 玩家
+              value: 效果
+          spawnmob:
+            name: 生成怪物
+            aliases: []
+            description: "在玩家附近生成指定等级的失眠怪物"
+            usage: "玩家 等级"
+            args:
+              player: 玩家
+              value: 等级
+          reload:
+            name: 重载
+            aliases: []
+            description: "检查并重新加载配置"
+          overview:
+            name: 总览
+            aliases: []
+            description: "所有在线玩家的疲劳总览"
+  dream:
+    description: "从附近安全的床进入梦境"
+    aliases: [入梦]
+    sub:
+      quest:
+        name: "任务"
+        aliases: []
+        description: "继续持久保存的分支梦境故事"
+        args:
+          action: "选择"
+      invite:
+        name: "邀请"
+        aliases: []
+        description: "邀请另一位做梦者进入你的梦境"
+        args:
+          player: "PLAYER"
+      join:
+        name: "加入"
+        aliases: []
+        description: "加入你受邀的梦境"
+        args:
+          player: "PLAYER"
+      leave:
+        name: "离开"
+        aliases: []
+        description: "离开共享梦境"
+      weekly:
+        name: "每周"
+        aliases: []
+        description: "本周梦魇挑战及最快通关"
+
+    values:
+      status: "状态"
+      start: "开始"
+      pause: "暂停"
+      mercy: "仁慈"
+      courage: "勇气"
+      restore: "修复"
+      master: "掌控"
+
+  wake:
+    description: "安全离开梦境"
+    aliases: [醒来]
+  dreamloot:
+    description: "领取你保存的梦境奖励"
+    aliases: [梦境奖励]
+
+# Free feature release: quest
+quest:
+  unavailable: "梦境任务已禁用或你没有权限。"
+  usage: "/dream quest status|start|pause|mercy|courage|restore|master"
+  paused: "破碎之梦在等待。/dream quest start 开始或继续故事；pause 暂停任务进度。"
+  chapter_0: "第一章 — 水晶中的声音请求找回记忆。完成水晶宝库。"
+  chapter_1: "记忆揭示失落的守护者。mercy 庇护居民，courage 面对囚禁者：/dream quest mercy|courage。"
+  chapter_2: "第二章 — 第一次选择决定道路。完成指定地牢，找回梦之心。"
+  chapter_3: "梦之心可以修复梦境或成为你的罗盘。选择 restore 或 master：/dream quest restore|master。"
+  chapter_4: "第三章 — 只剩最后的试炼。完成最后地牢，迎接你选择的结局。"
+  objective: "下一目标：{dungeon}。醒来、离线和重启后进度保留。"
+  ending_guardian: "结局 — 黎明守护者。你庇护迷失者并修复家园。梦境记住了你的善意。"
+  ending_wanderer: "结局 — 星辰旅人。你救下迷失者，携梦之心远行。新的天地在等待。"
+  ending_liberator: "结局 — 梦境解放者。你直面噩梦，归还被盗之心。恐惧不再统治这片领域。"
+  ending_sovereign: "结局 — 暮光君主。你征服噩梦，将梦之心纳入掌控。强大而孤独的王冠属于你。"
+  reward: "此结局永久保存。在梦境外使用 /dreamloot 领取一次性奖励。"
+weekly:
+  disabled: '每周梦魇挑战已关闭。'
+  started: '&5本周梦魇：&d{modifiers}&5。计时开始！'
+  cleared: '&d梦魇通关用时 &f{time}&d（本周第 {rank} 名，共 {count} 人）。'
+  record: '&6本周新纪录：&f{time}&6 —— 第 {rank} 名，共 {count} 人！'
+  reward: '&a本周首次通关：每周奖励已放入你的梦境袋（/dreamloot）。'
+  header: '&5本周梦魇：&d{modifiers} &7（{days} 天 {hours} 小时后结束）'
+  empty: '&7本周还没有人通关。'
+  row: '&7{rank}. &f{player} &7– {time}'
+  own: '&7你的最佳：&f{time} &7（第 {rank} 名）'
+  own-none: '&7你还没有通关本周的梦魇。'
+  modifier:
+    swift: '迅捷守卫'
+    armored: '装甲守卫'
+    ferocious: '狂暴守卫'
+    horde: '大军'
+    darkness: '黑暗'
+companion:
+  disabled: '本服务器已关闭共享梦境。'
+  not-dreaming: '你必须身处梦境中才能邀请别人。'
+  target-not-dreaming: '{player} 现在不在梦境中。'
+  invited: '你已邀请 {player} 进入你的梦境（60 秒内有效）。'
+  invitation: '&d{player} 邀请你进入其梦境——一起对抗噩梦。&f[点击加入]'
+  joined: '你现在与 {player} 共享梦境。其守卫对你可见；你的击杀也会计入。'
+  joined-host: '{player} 加入了你的梦境。'
+  ended: '与 {player} 的共享梦境已结束。'
+  none: '你没有与人共享梦境。'
+  error-self: '你不能邀请自己。'
+  error-already: '{player} 已在共享你的梦境。'
+  error-host-busy: '你正在另一个梦境中作为同伴；请先使用 /dream leave。'
+  error-target-busy: '{player} 已在共享另一个梦境。'
+  error-full: '一个梦境最多可有 {max} 名同伴。'
+  error-no-invite: '没有给你的有效邀请。'
