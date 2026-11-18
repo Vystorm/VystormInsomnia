@@ -165,6 +165,16 @@ setting:
     debt_per_minute:
       label: Indebitamento del sonno al minuto
       desc: Aumento del debito del sonno
+    pause-afk:
+      enabled:
+        label: "Pausa da inattivi"
+        desc: "La stanchezza non cresce per i giocatori senza input"
+    exclude_creative:
+      label: "Pausa in creativa"
+      desc: "La stanchezza non cresce in modalità creativa"
+    exclude_spectator:
+      label: "Pausa in spettatore"
+      desc: "La stanchezza non cresce in modalità spettatore"
   sleep:
     fatigue_recovery_per_second:
       label: Recupero nel sonno /s
@@ -204,6 +214,21 @@ setting:
       action_bar:
         label: Barra d'azione
         desc: Mostra sonniferi e velocità a tutti nel mondo
+    enabled:
+      label: "Sonno"
+      desc: "Sonno in tempo reale nel letto; disattivato = letti come in vanilla"
+    quality:
+      enabled:
+        label: "Qualità del sonno"
+        desc: "Tetto, luce, mostri e meteo cambiano quanto bene si dorme"
+      cozy:
+        enabled:
+          label: "Camere accoglienti"
+          desc: "L'arredamento intorno al letto migliora il sonno"
+    daytime:
+      enabled:
+        label: "Pisolini di giorno"
+        desc: "I giocatori possono riposare a letto di giorno"
   stimulants:
     enabled:
       label: Stimolanti
@@ -221,6 +246,31 @@ setting:
     chance_sleep_deprivation:
       label: 'Allucinazione: privazione del sonno'
       desc: Chance per assegno
+    effects:
+      yawn:
+        label: "Allucinazione: sbadiglio"
+        desc: "Uno sbadiglio che sente solo il giocatore stanco"
+      footsteps:
+        label: "Allucinazione: passi"
+        desc: "Passi dietro il giocatore"
+      creeper:
+        label: "Allucinazione: creeper"
+        desc: "Un sibilo di creeper senza creeper"
+      door:
+        label: "Allucinazione: porta"
+        desc: "Una porta sbatte dove non ce n'è"
+      darkness:
+        label: "Allucinazione: oscurità"
+        desc: "La vista si oscura per un attimo"
+      blindness:
+        label: "Allucinazione: cecità"
+        desc: "Breve cecità"
+      shadow:
+        label: "Allucinazione: ombra"
+        desc: "Uno sbuffo d'ombra accanto al giocatore"
+      sight_loss:
+        label: "Allucinazione: perdita della vista"
+        desc: "Gli altri giocatori spariscono per un attimo dalla vista"
   microsleep_grace: 'Microsleep recupero grazia: {seconds} secondi rimanenti.'
   microsleep_recovered: 'Microsleep interrotti: recupero controllato. {seconds} secondi di grazia; stanchezza e il debito
     del sonno sono conservati.'
@@ -282,6 +332,69 @@ setting:
     show_stage_to_players:
       label: Altri vedono il palco
       desc: I giocatori vedono quanto sembra stanco un altro giocatore (senza numeri)
+  activity:
+    enabled:
+      label: "Fattori di attività"
+      desc: "Scatto, nuoto, scavo e combattimento stancano più in fretta"
+  dream:
+    enabled:
+      label: "Regno dei sogni"
+      desc: "Visite nei sogni con /dream, limite di tempo e bottino dei sogni"
+    quests:
+      enabled:
+        label: "Campagna dei sogni"
+        desc: "La campagna Il sogno infranto con quattro finali"
+    companions:
+      enabled:
+        label: "Sogni condivisi"
+        desc: "Chi sogna può invitare fino a tre compagni"
+    weekly:
+      enabled:
+        label: "Incubo della settimana"
+        desc: "Sfida settimanale con classifica e ricompensa"
+    world:
+      dungeons_enabled:
+        label: "Dungeon dei sogni"
+        desc: "Tre dungeon nel mondo dei sogni; serve un riavvio"
+      ambient_light:
+        label: "Luce ambientale del sogno"
+        desc: "Luce tenue per le piante del sogno; serve un riavvio"
+      sky_islands:
+        enabled:
+          label: "Isole del cielo"
+          desc: "Isole fluttuanti nel mondo dei sogni; serve un riavvio"
+      natural_accents:
+        enabled:
+          label: "Piante del sogno"
+          desc: "Piante e accenti di bioma nel mondo dei sogni; serve un riavvio"
+      natural_objects:
+        enabled:
+          label: "Oggetti del sogno"
+          desc: "Tronchi, massi, funghi e cristalli nel mondo dei sogni; serve un riavvio"
+      decorations:
+        enabled:
+          label: "Decorazioni del sogno"
+          desc: "Decorazioni del mondo dei sogni; serve un riavvio"
+  menu:
+    enabled:
+      label: "Menu della stanchezza"
+      desc: "Menu, /insomnia status, history e triggers"
+  admin_tools:
+    enabled:
+      label: "Strumenti di amministrazione"
+      desc: "Strumenti di /insomnia admin; reload funziona sempre"
+  client_hud:
+    enabled:
+      label: "Barre della mod client"
+      desc: "Barre della stanchezza e avvisi per la mod client Vystorm"
+  web_page:
+    enabled:
+      label: "Pagina web"
+      desc: "Pagina della stanchezza nell'interfaccia web di Core; serve un riavvio"
+  tutorial:
+    enabled:
+      label: "Tutorial"
+      desc: "Tutorial nel menu principale di Core; serve un riavvio"
 hud:
   rested: Riposo
   fatigue: '{value} % · {stage}'
@@ -601,3 +714,15 @@ companion:
   error-target-busy: '{player} condivide già un altro sogno.'
   error-full: 'Al massimo {max} compagni possono condividere un sogno.'
   error-no-invite: 'Non c’è nessun invito aperto per te.'
+feature_off: "&eQuesta funzione è disattivata su questo server."
+placeholder:
+  fatigue: "Stanchezza del giocatore, da 0 a 100 con un decimale; vuoto con la stanchezza disattivata"
+  fatigue_int: "Stanchezza arrotondata a un numero intero"
+  debt: "Debito di sonno, da 0 a 100 con un decimale"
+  stage: "Stadio: RESTED, TIRED, EXHAUSTED, OVERMUEDET o SLEEP_DEPRIVATION"
+  stage_name: "Stadio nella lingua del giocatore"
+  sleeping: "true o false: il giocatore dorme; vuoto con il sonno disattivato"
+  rested_minutes: "Minuti rimasti del bonus riposato; vuoto con il bonus disattivato"
+  rested: "true o false: il bonus riposato è attivo"
+  caffeine_seconds: "Secondi rimasti dell'effetto stimolante; vuoto con gli stimolanti disattivati"
+  caffeine_doses: "Dosi di stimolante dall'ultimo riposo completo"

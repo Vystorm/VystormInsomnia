@@ -24,7 +24,7 @@ class HistoryPagesTest {
         when(fatigue.ready(id)).thenReturn(true);
         List<Entry> entries = IntStream.range(0, 17).mapToObj(n -> new Entry(n * 60_000L, n, n, "sample")).toList();
         when(fatigue.recentHistory(id)).thenReturn(entries);
-        var config = mock(InsomniaConfig.class);
+        var config = at.vystorm.insomnia.SwitchDefaults.on(mock(InsomniaConfig.class));
         var messages = mock(Messages.class);
         when(config.messages()).thenReturn(messages);
         var command = new InsomniaCommand(config, fatigue, null, null, null, null, () -> {}, null);

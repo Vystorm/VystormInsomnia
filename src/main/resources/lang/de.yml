@@ -169,6 +169,16 @@ setting:
     debt_per_minute:
       label: 'Schlafschuld pro Minute'
       desc: 'Anstieg der Schlafschuld'
+    pause-afk:
+      enabled:
+        label: "Pause bei Untätigkeit"
+        desc: "Müdigkeit steigt nicht bei Spielern ohne Eingabe"
+    exclude_creative:
+      label: "Pause im Kreativmodus"
+      desc: "Müdigkeit steigt im Kreativmodus nicht"
+    exclude_spectator:
+      label: "Pause im Zuschauermodus"
+      desc: "Müdigkeit steigt im Zuschauermodus nicht"
   sleep:
     fatigue_recovery_per_second:
       label: 'Erholung im Schlaf /s'
@@ -208,6 +218,21 @@ setting:
       action_bar:
         label: 'Aktionsleiste'
         desc: 'Allen in der Welt Schläfer und Tempo anzeigen'
+    enabled:
+      label: "Schlaf"
+      desc: "Echtzeit-Schlaf im Bett; aus = Betten wie in Vanilla"
+    quality:
+      enabled:
+        label: "Schlafqualität"
+        desc: "Dach, Licht, Monster und Wetter ändern, wie gut man schläft"
+      cozy:
+        enabled:
+          label: "Gemütliche Schlafzimmer"
+          desc: "Einrichtung rund ums Bett verbessert den Schlaf"
+    daytime:
+      enabled:
+        label: "Nickerchen am Tag"
+        desc: "Spieler können tagsüber im Bett ruhen"
   stimulants:
     enabled:
       label: 'Stimulanzien'
@@ -225,6 +250,31 @@ setting:
     chance_sleep_deprivation:
       label: 'Halluzination: Schlafentzug'
       desc: 'Chance je Prüfung'
+    effects:
+      yawn:
+        label: "Halluzination: Gähnen"
+        desc: "Ein Gähnen, das nur der müde Spieler hört"
+      footsteps:
+        label: "Halluzination: Schritte"
+        desc: "Schritte hinter dem Spieler"
+      creeper:
+        label: "Halluzination: Creeper"
+        desc: "Ein Creeper-Zischen ohne Creeper"
+      door:
+        label: "Halluzination: Tür"
+        desc: "Eine Tür fällt zu, wo keine ist"
+      darkness:
+        label: "Halluzination: Dunkelheit"
+        desc: "Die Sicht wird kurz dunkel"
+      blindness:
+        label: "Halluzination: Blindheit"
+        desc: "Kurze Blindheit"
+      shadow:
+        label: "Halluzination: Schatten"
+        desc: "Ein Schattenhauch neben dem Spieler"
+      sight_loss:
+        label: "Halluzination: Sichtverlust"
+        desc: "Andere Spieler verschwinden kurz aus dem Blick"
   microsleep_grace: "Sekundenschlaf-Schonfrist: noch {seconds} Sekunden."
   microsleep_recovered: "Unterbrochener Sekundenschlaf: Rückkehr geprüft. {seconds} Sekunden Schonfrist; Müdigkeit und Schlafschuld bleiben erhalten."
   microsleep:
@@ -285,6 +335,69 @@ setting:
     show_stage_to_players:
       label: 'Andere sehen die Stufe'
       desc: 'Spieler sehen, wie müde jemand aussieht (ohne Zahlen)'
+  activity:
+    enabled:
+      label: "Aktivitätsfaktoren"
+      desc: "Sprinten, Schwimmen, Abbauen und Kampf machen schneller müde"
+  dream:
+    enabled:
+      label: "Traumwelt"
+      desc: "Traumbesuche mit /dream, Zeitlimit und Traumbeute"
+    quests:
+      enabled:
+        label: "Traumkampagne"
+        desc: "Die Kampagne Der zerbrochene Traum mit vier Enden"
+    companions:
+      enabled:
+        label: "Gemeinsame Träume"
+        desc: "Träumende können bis zu drei Begleiter einladen"
+    weekly:
+      enabled:
+        label: "Albtraum der Woche"
+        desc: "Wöchentliche Herausforderung mit Bestenliste und Belohnung"
+    world:
+      dungeons_enabled:
+        label: "Traum-Dungeons"
+        desc: "Drei Dungeons in der Traumwelt; braucht einen Neustart"
+      ambient_light:
+        label: "Umgebungslicht im Traum"
+        desc: "Sanftes Licht für Traumpflanzen; braucht einen Neustart"
+      sky_islands:
+        enabled:
+          label: "Himmelsinseln"
+          desc: "Schwebende Inseln in der Traumwelt; braucht einen Neustart"
+      natural_accents:
+        enabled:
+          label: "Traumpflanzen"
+          desc: "Pflanzen und Biomakzente in der Traumwelt; braucht einen Neustart"
+      natural_objects:
+        enabled:
+          label: "Traumobjekte"
+          desc: "Stämme, Felsen, Pilze und Kristalle in der Traumwelt; braucht einen Neustart"
+      decorations:
+        enabled:
+          label: "Traumdekoration"
+          desc: "Dekoration der Traumwelt; braucht einen Neustart"
+  menu:
+    enabled:
+      label: "Müdigkeitsmenü"
+      desc: "Menü, /insomnia status, history und triggers"
+  admin_tools:
+    enabled:
+      label: "Admin-Werkzeuge"
+      desc: "Werkzeuge unter /insomnia admin; reload geht immer"
+  client_hud:
+    enabled:
+      label: "Balken der Client-Mod"
+      desc: "Müdigkeitsbalken und Hinweise für die Vystorm-Client-Mod"
+  web_page:
+    enabled:
+      label: "Webseite"
+      desc: "Müdigkeitsseite in der Core-Weboberfläche; braucht einen Neustart"
+  tutorial:
+    enabled:
+      label: "Tutorial"
+      desc: "Tutorial im Core-Hauptmenü; braucht einen Neustart"
 
 # Client-Mod (HUD-Balken und natives Panel)
 hud:
@@ -610,3 +723,15 @@ companion:
   error-target-busy: '{player} teilt schon einen anderen Traum.'
   error-full: 'Höchstens {max} Begleiter können einen Traum teilen.'
   error-no-invite: 'Es gibt keine offene Einladung für dich.'
+feature_off: "&eDiese Funktion ist auf diesem Server ausgeschaltet."
+placeholder:
+  fatigue: "Müdigkeit des Spielers, 0 bis 100 mit einer Nachkommastelle; leer bei ausgeschalteter Müdigkeit"
+  fatigue_int: "Müdigkeit als ganze Zahl"
+  debt: "Schlafschuld, 0 bis 100 mit einer Nachkommastelle"
+  stage: "Stufe: RESTED, TIRED, EXHAUSTED, OVERMUEDET oder SLEEP_DEPRIVATION"
+  stage_name: "Stufe in der Sprache des Spielers"
+  sleeping: "true oder false: der Spieler schläft; leer bei ausgeschaltetem Schlaf"
+  rested_minutes: "Restliche Minuten des Ausgeruht-Bonus; leer bei ausgeschaltetem Bonus"
+  rested: "true oder false: der Ausgeruht-Bonus ist aktiv"
+  caffeine_seconds: "Restliche Sekunden der Wachmacher-Wirkung; leer bei ausgeschalteten Wachmachern"
+  caffeine_doses: "Wachmacher-Dosen seit dem letzten vollen Schlaf"

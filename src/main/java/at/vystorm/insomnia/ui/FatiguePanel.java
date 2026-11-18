@@ -65,7 +65,7 @@ public final class FatiguePanel {
         PanelSpec.Builder builder = PanelSpec.builder(texts.ref("menu.title"));
         if (web) builder.web(InsomniaWeb.MODULE, "");
         panels.register(NAME, builder
-                .access(p -> p.hasPermission("insomnia.use"))
+                .access(p -> enabled.getAsBoolean() && p.hasPermission("insomnia.use"))
                 .menu(MenuCategory.CHARACTER, Material.RED_BED, texts.ref("menu.description"))
                 .fallback(fallback)
                 .render(this::render)
@@ -73,6 +73,11 @@ public final class FatiguePanel {
     }
 
     public void open(Player player) { panels.open(player, NAME); }
+
+    private java.util.function.BooleanSupplier enabled = () -> true;
+
+    /** {@code menu.enabled} (0.31.0): while it is false the panel and its menu entry are not offered. */
+    public void enabledWhen(java.util.function.BooleanSupplier enabled) { this.enabled = Objects.requireNonNull(enabled, "enabled"); }
 
     private Panel render(PanelContext ctx) {
         Player player = ctx.player();

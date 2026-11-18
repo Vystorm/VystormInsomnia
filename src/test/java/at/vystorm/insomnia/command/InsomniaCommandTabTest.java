@@ -43,7 +43,7 @@ class InsomniaCommandTabTest {
 
     @Test
     void playerSubcommandsCheckUseOnExecution() {
-        InsomniaConfig config = mock(InsomniaConfig.class);
+        InsomniaConfig config = at.vystorm.insomnia.SwitchDefaults.on(mock(InsomniaConfig.class));
         when(config.message(any(), anyString())).thenReturn("no");
         FatigueService fatigue = mock(FatigueService.class);
         CommandSender nobody = sender(Set.of());
@@ -54,7 +54,7 @@ class InsomniaCommandTabTest {
 
     @Test
     void incompleteOrUnknownAdminCommandsShowUsageInsteadOfPlayerNotFound() {
-        InsomniaConfig config = mock(InsomniaConfig.class);
+        InsomniaConfig config = at.vystorm.insomnia.SwitchDefaults.on(mock(InsomniaConfig.class));
         when(config.message(any(), anyString())).thenReturn("msg");
         FatigueService fatigue = mock(FatigueService.class);
         CommandSender admin = sender(Set.of(InsomniaCommand.USE, InsomniaCommand.ADMIN));
@@ -77,7 +77,7 @@ class InsomniaCommandTabTest {
 
     @Test
     void overviewOpensTheAdminOverviewAndNeedsNoPlayerArgument() {
-        InsomniaConfig config = mock(InsomniaConfig.class);
+        InsomniaConfig config = at.vystorm.insomnia.SwitchDefaults.on(mock(InsomniaConfig.class));
         when(config.message(any(), anyString())).thenReturn("msg");
         CommandSender admin = sender(Set.of(InsomniaCommand.USE, InsomniaCommand.ADMIN));
         InsomniaCommand command = command(config, mock(FatigueService.class));

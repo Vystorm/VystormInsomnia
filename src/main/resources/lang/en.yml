@@ -168,6 +168,16 @@ setting:
     debt_per_minute:
       label: 'Sleep debt per minute'
       desc: 'Increase of sleep debt'
+    pause-afk:
+      enabled:
+        label: "Pause while idle"
+        desc: "Fatigue stops rising for players without input"
+    exclude_creative:
+      label: "Pause in Creative"
+      desc: "Fatigue does not rise in Creative mode"
+    exclude_spectator:
+      label: "Pause in Spectator"
+      desc: "Fatigue does not rise in Spectator mode"
   sleep:
     fatigue_recovery_per_second:
       label: 'Recovery in sleep /s'
@@ -207,6 +217,21 @@ setting:
       action_bar:
         label: 'Action bar'
         desc: 'Show sleepers and speed to everyone in the world'
+    enabled:
+      label: "Sleep"
+      desc: "Real-time sleep in beds; off = beds work as in vanilla"
+    quality:
+      enabled:
+        label: "Sleep quality"
+        desc: "Roof, light, monsters and weather change how well players sleep"
+      cozy:
+        enabled:
+          label: "Cozy bedrooms"
+          desc: "Furnishings around the bed improve sleep"
+    daytime:
+      enabled:
+        label: "Daytime naps"
+        desc: "Players can nap in a bed by day"
   stimulants:
     enabled:
       label: 'Stimulants'
@@ -224,6 +249,31 @@ setting:
     chance_sleep_deprivation:
       label: 'Hallucination: sleep deprivation'
       desc: 'Chance per check'
+    effects:
+      yawn:
+        label: "Hallucination: yawning"
+        desc: "A yawn only the tired player hears"
+      footsteps:
+        label: "Hallucination: footsteps"
+        desc: "Footsteps behind the player"
+      creeper:
+        label: "Hallucination: creeper"
+        desc: "A creeper hiss without a creeper"
+      door:
+        label: "Hallucination: door"
+        desc: "A door closing where there is none"
+      darkness:
+        label: "Hallucination: darkness"
+        desc: "The view grows dark for a moment"
+      blindness:
+        label: "Hallucination: blindness"
+        desc: "Short blindness"
+      shadow:
+        label: "Hallucination: shadow"
+        desc: "A puff of shadow beside the player"
+      sight_loss:
+        label: "Hallucination: sight loss"
+        desc: "Other players vanish from view for a moment"
   microsleep_grace: "Microsleep recovery grace: {seconds} seconds remaining."
   microsleep_recovered: "Interrupted microsleep: recovery checked. {seconds} seconds of grace; fatigue and sleep debt are preserved."
   microsleep:
@@ -284,6 +334,69 @@ setting:
     show_stage_to_players:
       label: 'Others see the stage'
       desc: 'Players see how tired another player looks (no numbers)'
+  activity:
+    enabled:
+      label: "Activity factors"
+      desc: "Sprinting, swimming, mining and combat make players tired faster"
+  dream:
+    enabled:
+      label: "Dream Realm"
+      desc: "Dream visits with /dream, a time limit and dream loot"
+    quests:
+      enabled:
+        label: "Dream campaign"
+        desc: "The campaign The Shattered Dream with four endings"
+    companions:
+      enabled:
+        label: "Shared dreams"
+        desc: "Dreamers can invite up to three companions"
+    weekly:
+      enabled:
+        label: "Weekly nightmare"
+        desc: "Weekly challenge with a board and a reward"
+    world:
+      dungeons_enabled:
+        label: "Dream dungeons"
+        desc: "Three dungeons in the dream world; needs a restart"
+      ambient_light:
+        label: "Dream ambient light"
+        desc: "Soft light for dream plants; needs a restart"
+      sky_islands:
+        enabled:
+          label: "Sky islands"
+          desc: "Floating islands in the dream world; needs a restart"
+      natural_accents:
+        enabled:
+          label: "Dream plants"
+          desc: "Plants and biome accents in the dream world; needs a restart"
+      natural_objects:
+        enabled:
+          label: "Dream objects"
+          desc: "Logs, boulders, mushrooms and crystals in the dream world; needs a restart"
+      decorations:
+        enabled:
+          label: "Dream decorations"
+          desc: "Decorations of the dream world; needs a restart"
+  menu:
+    enabled:
+      label: "Fatigue menu"
+      desc: "Menu, /insomnia status, history and triggers"
+  admin_tools:
+    enabled:
+      label: "Admin tools"
+      desc: "/insomnia admin tools; reload always works"
+  client_hud:
+    enabled:
+      label: "Client mod bars"
+      desc: "Fatigue bars and toasts for the Vystorm client mod"
+  web_page:
+    enabled:
+      label: "Web page"
+      desc: "Fatigue page in the Core web UI; needs a restart"
+  tutorial:
+    enabled:
+      label: "Tutorial"
+      desc: "Tutorial in the Core main menu; needs a restart"
 
 # Client mod (HUD bars and native panel)
 hud:
@@ -608,3 +721,15 @@ companion:
   error-target-busy: '{player} already shares another dream.'
   error-full: 'At most {max} companions can share one dream.'
   error-no-invite: 'There is no open invitation for you.'
+feature_off: "&eThis feature is switched off on this server."
+placeholder:
+  fatigue: "Fatigue of the player, 0 to 100 with one decimal; empty with fatigue off"
+  fatigue_int: "Fatigue rounded to a whole number"
+  debt: "Sleep debt, 0 to 100 with one decimal"
+  stage: "Stage: RESTED, TIRED, EXHAUSTED, OVERMUEDET or SLEEP_DEPRIVATION"
+  stage_name: "Stage in the player's language"
+  sleeping: "true or false: the player sleeps; empty with sleep off"
+  rested_minutes: "Minutes of rested bonus left; empty with the bonus off"
+  rested: "true or false: the rested bonus is active"
+  caffeine_seconds: "Seconds of stimulant effect left; empty with stimulants off"
+  caffeine_doses: "Stimulant doses since the last full rest"

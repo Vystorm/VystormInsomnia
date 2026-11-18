@@ -23,6 +23,10 @@ public final class SleepQualityService {
         Location location = player.getLocation();
         World world = location.getWorld();
         double quality = config.sleepQuality("base", 1.0);
+        double min = config.sleepQuality("min", 0.25);
+        double max = config.sleepQuality("max", 2.0);
+        // sleep.quality.enabled false (0.31.0): every sleep has the base quality; nothing around the bed is checked.
+        if (!config.sleepQualityEnabled()) return Math.max(min, Math.min(max, quality));
 
         int highestY = world.getHighestBlockYAt(location);
         boolean roof = highestY > location.getBlockY() + 1;
@@ -40,10 +44,7 @@ public final class SleepQualityService {
         if (world.hasStorm() && !roof) quality *= config.sleepQuality("storm_exposed_multiplier", 0.75);
         quality *= city.sleepQualityMultiplier(player);
         quality *= bloodMoon.sleepQualityMultiplier(player);
-        quality *= comfort(location).multiplier(config.sleepQuality("cozy_per_furnishing", 0.04));
-
-        double min = config.sleepQuality("min", 0.25);
-        double max = config.sleepQuality("max", 2.0);
+        if (config.cozyEnabled()) quality *= comfort(location).multiplier(config.cozyPerFurnishing());
         return Math.max(min, Math.min(max, quality));
     }
 

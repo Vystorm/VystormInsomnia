@@ -5,6 +5,8 @@ import Vystorm.vystorm_core.commands.CommandContext;
 import Vystorm.vystorm_core.commands.CommandSpec;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
+import at.vystorm.insomnia.config.InsomniaConfig;
 
 /**
  * {@code /insomnia}, {@code /dream}, {@code /wake} and {@code /dreamloot} as Vystorm Core command trees (Core 0.45.0+):
@@ -16,42 +18,65 @@ public final class InsomniaCommands {
     private InsomniaCommands() {}
 
     /** The four trees; the arguments may be {@code null} (or mocks) in tests. */
-    public static List<CommandSpec> specs(InsomniaCommand c, DreamCommand d) {
+    public static List<CommandSpec> specs(InsomniaCommand c, DreamCommand d) { return specs(c, d, null); }
+
+    /**
+     * The four trees; subcommands of features switched off in {@code config} are left out of tab completion and help
+     * (0.31.0). Core asks {@code config} at every completion and {@code config.reload()} updates it in place, so a
+     * switch applies at once; the commands themselves answer the shared off message. {@code config} null = everything
+     * shown.
+     */
+    public static List<CommandSpec> specs(InsomniaCommand c, DreamCommand d, InsomniaConfig config) {
         return List.of(
                 CommandSpec.command("insomnia").permission(InsomniaCommand.USE)
                         .executes(ctx -> run(ctx, c))
-                        .sub("menu", s -> s.executes(ctx -> run(ctx, c, "menu")))
-                        .sub("status", s -> s.playerOnly().executes(ctx -> run(ctx, c, "status")))
-                        .sub("history", s -> s.playerOnly().arg(Arg.word("page").optional().suggests(List.of("1", "2", "3")))
+                        .sub("menu", s -> hide(s, config, InsomniaConfig::menuEnabled).executes(ctx -> run(ctx, c, "menu")))
+                        .sub("status", s -> hide(s, config, InsomniaConfig::menuEnabled).playerOnly().executes(ctx -> run(ctx, c, "status")))
+                        .sub("history", s -> hide(s, config, InsomniaConfig::menuEnabled).playerOnly().arg(Arg.word("page").optional().suggests(List.of("1", "2", "3")))
                                 .executes(ctx -> run(ctx, c, "history", ctx.get("page"))))
-                        .sub("triggers", s -> s.playerOnly().arg(Arg.word("page").optional().suggests(List.of("1", "2", "3")))
+                        .sub("triggers", s -> hide(s, config, InsomniaConfig::menuEnabled).playerOnly().arg(Arg.word("page").optional().suggests(List.of("1", "2", "3")))
                                 .executes(ctx -> run(ctx, c, "triggers", ctx.get("page"))))
                         .sub("admin", s -> s.permission(InsomniaCommand.ADMIN)
                                 .executes(ctx -> run(ctx, c, "admin"))
-                                .sub("get", a -> target(a, c, "get"))
-                                .sub("setfatigue", a -> valued(a, c, "setfatigue", (ctx, prefix) -> List.of("0", "25", "50", "75", "100", "+10", "-10")))
-                                .sub("setdebt", a -> valued(a, c, "setdebt", (ctx, prefix) -> List.of("0", "25", "50", "75", "100", "+10", "-10")))
-                                .sub("sleep", a -> target(a, c, "sleep"))
-                                .sub("effect", a -> valued(a, c, "effect", (ctx, prefix) -> c.effectNames()))
-                                .sub("spawnmob", a -> valued(a, c, "spawnmob", (ctx, prefix) -> c.mobTiers()))
+                                .sub("get", a -> target(hide(a, config, InsomniaConfig::adminToolsEnabled), c, "get"))
+                                .sub("setfatigue", a -> valued(hide(a, config, InsomniaConfig::adminToolsEnabled), c, "setfatigue", (ctx, prefix) -> List.of("0", "25", "50", "75", "100", "+10", "-10")))
+                                .sub("setdebt", a -> valued(hide(a, config, InsomniaConfig::adminToolsEnabled), c, "setdebt", (ctx, prefix) -> List.of("0", "25", "50", "75", "100", "+10", "-10")))
+                                .sub("sleep", a -> target(hide(a, config, InsomniaConfig::adminToolsEnabled), c, "sleep"))
+                                .sub("effect", a -> valued(hide(a, config, InsomniaConfig::adminToolsEnabled), c, "effect", (ctx, prefix) -> c.effectNames()))
+                                .sub("spawnmob", a -> valued(hide(a, config, InsomniaConfig::adminToolsEnabled), c, "spawnmob", (ctx, prefix) -> c.mobTiers()))
                                 .sub("reload", a -> a.executes(ctx -> run(ctx, c, "admin", "reload")))
-                                .sub("overview", a -> a.executes(ctx -> run(ctx, c, "admin", "overview"))))
+                                .sub("overview", a -> hide(a, config, InsomniaConfig::adminToolsEnabled).executes(ctx -> run(ctx, c, "admin", "overview"))))
                         .build(),
-                dream("dream", d),
-                dream("wake", d),
-                dream("dreamloot", d));
+                dream("dream", d, config),
+                dream("wake", d, config),
+                dream("dreamloot", d, config));
     }
 
-    private static CommandSpec dream(String name, DreamCommand d) {
-        var command=CommandSpec.command(name).permission("insomnia.dream").playerOnly()
+    /**
+     * Lists a node only while its switch is on, read from the live {@code config} at every completion (Core 0.65.0);
+     * without a config (tests) the node is unchanged.
+     */
+    private static CommandSpec.Builder hide(CommandSpec.Builder sub, InsomniaConfig config, Predicate<InsomniaConfig> on) {
+        return config == null ? sub : sub.visibleWhen(() -> on.test(config));
+    }
+
+    /** The switches that decide what the trees list; a reload that changes them refreshes the players' command lists. */
+    public static List<Boolean> visibility(InsomniaConfig config) {
+        return List.of(config.menuEnabled(), config.adminToolsEnabled(), config.dreamEnabled(), config.dreamQuestsEnabled(),
+                config.dreamCompanionsEnabled(), config.dreamWeeklyEnabled());
+    }
+
+    private static CommandSpec dream(String name, DreamCommand d, InsomniaConfig config) {
+        var command=hide(
+CommandSpec.command(name), config, InsomniaConfig::dreamEnabled).permission("insomnia.dream").playerOnly()
                 .executes(ctx -> d.run(ctx.player(), name));
-        if(name.equals("dream"))command.sub("quest", s -> s.permission("insomnia.dream.quest")
+        if(name.equals("dream"))command.sub("quest", s -> hide(s, config, InsomniaConfig::dreamQuestsEnabled).permission("insomnia.dream.quest")
                 .arg(Arg.word("action").optional().suggests((ctx,prefix) -> List.of("status","start","pause","mercy","courage","restore","master").stream().map(ctx::valueName).toList()))
                 .executes(ctx -> {String raw=ctx.get("action");String action=raw==null?null:ctx.keyword(raw,"status","start","pause","mercy","courage","restore","master");d.quest(ctx.player(),action==null?raw:action);}));
-        if(name.equals("dream"))command.sub("invite", s -> s.arg(Arg.playerName("player")).executes(ctx -> d.invite(ctx.player(), ctx.get("player"))))
-                .sub("join", s -> s.arg(Arg.playerName("player").optional()).executes(ctx -> d.join(ctx.player(), ctx.get("player"))))
-                .sub("leave", s -> s.executes(ctx -> d.leave(ctx.player())))
-                .sub("weekly", s -> s.executes(ctx -> d.weekly(ctx.player())));
+        if(name.equals("dream"))command.sub("invite", s -> hide(s, config, InsomniaConfig::dreamCompanionsEnabled).arg(Arg.playerName("player")).executes(ctx -> d.invite(ctx.player(), ctx.get("player"))))
+                .sub("join", s -> hide(s, config, InsomniaConfig::dreamCompanionsEnabled).arg(Arg.playerName("player").optional()).executes(ctx -> d.join(ctx.player(), ctx.get("player"))))
+                .sub("leave", s -> hide(s, config, InsomniaConfig::dreamCompanionsEnabled).executes(ctx -> d.leave(ctx.player())))
+                .sub("weekly", s -> hide(s, config, InsomniaConfig::dreamWeeklyEnabled).executes(ctx -> d.weekly(ctx.player())));
         return command.build();
     }
 

@@ -43,7 +43,7 @@ import java.util.List;
 
 public final class VystormInsomniaPlugin extends JavaPlugin {
     /** Oldest supported Core: the first one that offers every service through its managers. */
-    static final String MIN_CORE_VERSION = "0.64.0";
+    static final String MIN_CORE_VERSION = "0.65.0";
 
     /** The Core hub; set first thing in onEnable, right after the version gate. */
     private API api;
@@ -149,10 +149,12 @@ public final class VystormInsomniaPlugin extends JavaPlugin {
                     this, api, config, messages, accelerator, dreams, fatigue);
             getServer().getPluginManager().registerEvents(sleepDialog, this);
             hud = new FatigueHud(this, api.web().clientUi(), messages, fatigue, config::restedDurationMillis);
+            hud.enabledWhen(config::clientHudEnabled);
             getServer().getPluginManager().registerEvents(hud, this);
             gameplay.stageToasts(hud::stageChanged);
 
             InsomniaMenu menu = new InsomniaMenu(this, api, messages, fatigue, sleep, rested, this::reloadRuntimeConfig);
+            menu.enabledWhen(config::menuEnabled);
             InsomniaCommand command = new InsomniaCommand(config, fatigue, sleep, hallucinations, mobs, rested, this::reloadRuntimeConfig, menu);
             FatigueOverview overview = new FatigueOverview(this, api, messages, fatigue, sleep, rested, campfire);
             overview.menu(menu);
@@ -170,6 +172,11 @@ public final class VystormInsomniaPlugin extends JavaPlugin {
 
             getServer().getServicesManager().register(InsomniaApi.class, fatigue, this, ServicePriority.Normal);
             try {
+                InsomniaPlaceholders.register(api.placeholders(), this, messages.lang(), config, fatigue, sleep, rested);
+            } catch (RuntimeException failure) {
+                core.high("Placeholders could not be registered: " + failure);
+            }
+            if (config.webPageEnabled()) try {
                 InsomniaWeb page = new InsomniaWeb(this, api.web(), messages, fatigue, sleep, rested, config::stageThresholds);
                 page.register();
                 getServer().getPluginManager().registerEvents(page, this);
@@ -178,8 +185,10 @@ public final class VystormInsomniaPlugin extends JavaPlugin {
                 core.high("Web page could not be registered: " + failure);
             }
             try {
-                menu.register(new FatiguePanel(this, api, messages, fatigue, sleep, rested), web);
-                api.registerTutorial(this);
+                FatiguePanel panel = new FatiguePanel(this, api, messages, fatigue, sleep, rested);
+                panel.enabledWhen(config::menuEnabled);
+                menu.register(panel, web);
+                if (config.tutorialEnabled()) api.registerTutorial(this);
             } catch (RuntimeException failure) {
                 api.debug().messages().high("[VystormInsomnia/VystormInsomniaPlugin] Could not register the menu and settings with Core", failure);
             }
@@ -238,7 +247,7 @@ public final class VystormInsomniaPlugin extends JavaPlugin {
 
     /** /insomnia, /dream, /wake and /dreamloot through Core's command system (see InsomniaCommands). */
     private void registerCommands(InsomniaCommand command, DreamCommand dreamCommand) {
-        for (var spec : at.vystorm.insomnia.command.InsomniaCommands.specs(command, dreamCommand))
+        for (var spec : at.vystorm.insomnia.command.InsomniaCommands.specs(command, dreamCommand, config))
             api.command().register(this, messages.lang(), spec);
     }
 
@@ -277,6 +286,7 @@ public final class VystormInsomniaPlugin extends JavaPlugin {
 
     /** @throws IllegalArgumentException when the new configuration is invalid; the old one then stays active */
     public void reloadRuntimeConfig() {
+        var listed = at.vystorm.insomnia.command.InsomniaCommands.visibility(config);
         try {
             config.reload();
         } catch (IllegalArgumentException invalid) {
@@ -290,6 +300,8 @@ public final class VystormInsomniaPlugin extends JavaPlugin {
         if (messages != null) messages.reload();
         logConfigWarnings();
         nextDirtyFlushAt = System.currentTimeMillis() + config.dirtyFlushSeconds() * 1000L;
+        // Tab completion asks the switches live; a changed switch only needs the players' command lists sent again.
+        if (api != null && !listed.equals(at.vystorm.insomnia.command.InsomniaCommands.visibility(config))) api.command().refresh();
         core.mid("Configuration reloaded");
     }
 

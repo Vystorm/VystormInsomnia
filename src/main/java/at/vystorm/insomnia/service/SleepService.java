@@ -47,7 +47,7 @@ public final class SleepService {
                 : String.join(", ", set.stream().map(c -> texts == null ? c.name() : texts.text(viewer, "cozy." + c.name().toLowerCase(java.util.Locale.ROOT))).toList());
         return config.message(viewer, key, "count", comfort.count(), "max", BedroomComfort.Category.values().length,
                 "found", names.apply(comfort.found()), "missing", names.apply(comfort.missing()),
-                "bonus", Math.round((comfort.multiplier(config.sleepQuality("cozy_per_furnishing", 0.04)) - 1) * 100));
+                "bonus", Math.round((comfort.multiplier(config.cozyPerFurnishing()) - 1) * 100));
     }
 
     /** Starts actual-time sleep recovery for a Core-managed dream visit, without requiring vanilla isSleeping(). */
@@ -69,7 +69,7 @@ public final class SleepService {
     }
 
     public void start(Player player, long now) {
-        if (!fatigue.ready(player.getUniqueId())) return;
+        if (!config.sleepEnabled() || !fatigue.ready(player.getUniqueId())) return;
         PlayerFatigueState state = fatigue.require(player.getUniqueId());
         if (sessions.containsKey(player.getUniqueId())) return;
         SleepSession session = new SleepSession(player.getUniqueId(), now, quality.calculate(player));
@@ -85,7 +85,7 @@ public final class SleepService {
         player.sendMessage(config.message(player, "sleep_preview", "quality", String.format(java.util.Locale.ROOT, "%.2f", preview),
                 "rested_minutes", config.restedEnabled() ? config.restedDurationMillis() / 60_000L : 0L,
                 "xp_multiplier", String.format(java.util.Locale.ROOT, "%.2f", config.restedEnabled() ? config.restedXpMultiplier() : 1.0)));
-        player.sendMessage(cozyLine(player, "sleep_cozy", quality.comfort(player.getLocation())));
+        if (config.cozyEnabled()) player.sendMessage(cozyLine(player, "sleep_cozy", quality.comfort(player.getLocation())));
         player.sendMessage(config.message(player, "sleep_start"));
     }
 
@@ -124,7 +124,9 @@ public final class SleepService {
     public void tick(long now) {
         for (SleepSession session : sessions.values().toArray(SleepSession[]::new)) {
             Player player = Bukkit.getPlayer(session.playerUuid());
-            if (player == null || !player.isOnline() || (!dreamSessions.contains(session.playerUuid()) && !player.isSleeping())) {
+            boolean bedSession = !dreamSessions.contains(session.playerUuid());
+            // sleep.enabled switched off at runtime: bed sessions end at once (no recovery, no rested bonus); dream visits go on.
+            if (player == null || !player.isOnline() || (bedSession && (!player.isSleeping() || !config.sleepEnabled()))) {
                 if (player != null) stop(player, false);
                 else sessions.remove(session.playerUuid());
                 continue;

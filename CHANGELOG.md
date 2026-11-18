@@ -1,3 +1,17 @@
+## 0.31.0-26.2 — 2026-11-18
+
+- Requires Vystorm Core 0.65.0. Update Core before you update this plugin.
+- Every feature can now be switched on and off. All switches are listed in `/vadmin features` with a label and a one-line description in all seven languages. Changes apply at once; `web_page.enabled`, `tutorial.enabled`, `integrations.*` and the dream world layout apply at the next restart. New switches are added to your existing `config.yml` with their comments, and a missing switch counts as on, so nothing changes until you switch something off.
+- New master switch `sleep.enabled`: off means beds behave as in vanilla (no sleep stages, no recovery from sleep, no sleep dialog, no time acceleration, no naps, no new rested bonus). The Dream Realm keeps working through `/dream`.
+- New switches for sleep and fatigue: `sleep.quality.enabled`, `sleep.quality.cozy.enabled`, `activity.enabled`, and one switch per hallucination effect under `hallucinations.effects` (yawn, footsteps, creeper, door, darkness, blindness, shadow, sight loss).
+- New switches for the dream world layout: `dream.world.sky_islands.enabled`, `dream.world.natural_accents.enabled`, `dream.world.natural_objects.enabled`, `dream.world.decorations.enabled`.
+- New switches for menus and tools: `menu.enabled` (fatigue menu, `/insomnia`, `status`, `history`, `triggers`), `admin_tools.enabled` (`/insomnia admin ...`; `reload` always works), `client_hud.enabled` (bars and toasts of the Vystorm client mod), `web_page.enabled`, `tutorial.enabled`.
+- Older keys keep their names and now also show in `/vadmin features`: `fatigue.exclude_creative`, `fatigue.exclude_spectator`, `sleep.cancel_vanilla_night_skip`, `sleep.wake_summary`, `sleep.dialog.day_naps`, `sleep.dialog.custom_time`, `sleep.acceleration.action_bar`, `player_menu.show_stage_to_players`, `integrations.cityclaim`, `integrations.bloodmoon`, `dream.world.dungeons_enabled`, `dream.world.ambient_light`. The six older `enabled` switches without a label (`dream`, `dream.quests`, `dream.companions`, `dream.weekly`, `fatigue.pause-afk`, `sleep.daytime`) now have one.
+- A command of a switched-off feature answers "This feature is switched off on this server." It is also gone from tab completion and help while the switch is off. The fatigue menu entry disappears while `menu.enabled` is off.
+- Placeholders: the plugin registers the namespace `sleep` with 10 values (fatigue, sleep debt, stage, sleeping, rested bonus, caffeine). Examples: `%vystorm_sleep_fatigue_int%` and `{sleep:stage_name}`. They work in Vystorm texts and, through PlaceholderAPI, in other plugins. A value of a switched-off feature is empty.
+- Tab completion and help follow a switch at once, without registering the command again.
+- README: the German README now names all seven languages, the GPL-3.0 licence and what the build proves about server support.
+
 ## 0.30.0-26.2 — 2026-11-17
 
 - Requires Vystorm Core 0.64.0 or newer. Update Core before you update this plugin.

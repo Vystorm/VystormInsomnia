@@ -31,7 +31,7 @@ class StimulantStatusTest {
             }
         }
         Messages messages = new Messages(Lang.create("VystormInsomnia", files));
-        InsomniaConfig config = mock(InsomniaConfig.class);
+        InsomniaConfig config = at.vystorm.insomnia.SwitchDefaults.on(mock(InsomniaConfig.class));
         when(config.messages()).thenReturn(messages);
         when(config.message(any(), anyString(), any(Object[].class))).thenReturn("status");
         FatigueService fatigue = mock(FatigueService.class);

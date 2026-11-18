@@ -59,7 +59,48 @@ final class InsomniaConfigEditor {
             label("player_menu.enabled"),
             label("player_menu.show_stage_to_players"),
             label("integrations.cityclaim"),
-            label("integrations.bloodmoon"));
+            label("integrations.bloodmoon"),
+            // Feature switches without a label before 0.31.0, and the new ones (0.31.0)
+            label("sleep.enabled"),
+            label("sleep.quality.enabled"),
+            label("sleep.quality.cozy.enabled"),
+            label("sleep.daytime.enabled"),
+            label("activity.enabled"),
+            label("fatigue.pause-afk.enabled"),
+            label("fatigue.exclude_creative"),
+            label("fatigue.exclude_spectator"),
+            label("dream.enabled"),
+            label("dream.quests.enabled"),
+            label("dream.companions.enabled"),
+            label("dream.weekly.enabled"),
+            label("dream.world.dungeons_enabled"),
+            label("dream.world.ambient_light"),
+            label("dream.world.sky_islands.enabled"),
+            label("dream.world.natural_accents.enabled"),
+            label("dream.world.natural_objects.enabled"),
+            label("dream.world.decorations.enabled"),
+            label("menu.enabled"),
+            label("admin_tools.enabled"),
+            label("client_hud.enabled"),
+            label("web_page.enabled"),
+            label("tutorial.enabled"));
+
+    /** The eight single hallucination effects, each a switch under {@code hallucinations.effects} (0.31.0). */
+    static final List<String> EFFECTS = List.of("yawn", "footsteps", "creeper", "door", "darkness", "blindness", "shadow", "sight_loss");
+
+    /**
+     * Booleans whose name does not end in {@code enabled}: declared as feature switches so {@code /vadmin features}
+     * lists them; their keys stay as server owners know them.
+     */
+    static final List<String> DECLARED = java.util.stream.Stream.concat(java.util.stream.Stream.of(
+            "fatigue.exclude_creative", "fatigue.exclude_spectator", "sleep.cancel_vanilla_night_skip", "sleep.wake_summary",
+            "sleep.dialog.day_naps", "sleep.dialog.custom_time", "sleep.acceleration.action_bar",
+            "player_menu.show_stage_to_players", "integrations.cityclaim", "integrations.bloodmoon",
+            "dream.world.dungeons_enabled", "dream.world.ambient_light"),
+            EFFECTS.stream().map(effect -> "hallucinations.effects." + effect)).toList();
+
+    /** Switches read only at startup. */
+    static final List<String> RESTART = List.of("integrations", "dream.world", "web_page", "tutorial");
 
     private InsomniaConfigEditor() {}
 
@@ -79,7 +120,9 @@ final class InsomniaConfigEditor {
             editor.label(plugin, entry.path(), lang.ref(entry.labelKey()), lang.ref(entry.descriptionKey()));
             if (entry.ranged()) editor.range(plugin, entry.path(), entry.min(), entry.max(), entry.step());
         }
+        for (String path : DECLARED) editor.feature(plugin, path, lang.ref("setting." + path + ".label"), lang.ref("setting." + path + ".desc"));
         editor.hidden(plugin, "config_version");
         editor.activation(plugin, "storage", SettingPolicy.Activation.RESTART);
+        for (String path : RESTART) editor.activation(plugin, path, SettingPolicy.Activation.RESTART);
     }
 }

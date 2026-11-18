@@ -10,7 +10,7 @@ class CoreVersionCheckTest {
     @Test
     void coreBeforeTheDocumentedPlatformCompatibilityMinimumIsRejected() {
         try (var core = org.mockito.Mockito.mockStatic(CoreApi.class)) {
-            core.when(() -> CoreApi.atLeast("0.64.0")).thenReturn(false);
+            core.when(() -> CoreApi.atLeast(VystormInsomniaPlugin.MIN_CORE_VERSION)).thenReturn(false);
             assertFalse(VystormInsomniaPlugin.requiredCoreApiAvailable());
         }
     }
@@ -20,7 +20,7 @@ class CoreVersionCheckTest {
     @Test
     void coreWithoutCompatibilityReleaseIsRejected() {
         try (var core = org.mockito.Mockito.mockStatic(CoreApi.class)) {
-            core.when(() -> CoreApi.atLeast("0.64.0")).thenReturn(false);
+            core.when(() -> CoreApi.atLeast(VystormInsomniaPlugin.MIN_CORE_VERSION)).thenReturn(false);
             assertFalse(VystormInsomniaPlugin.requiredCoreApiAvailable());
         }
     }

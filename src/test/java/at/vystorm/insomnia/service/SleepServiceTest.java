@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 
 class SleepServiceTest {
     @Test void dreamUsesBedQualityAndElapsedTimeWithoutFullRestReset() {
-        var config = mock(InsomniaConfig.class);
+        var config = at.vystorm.insomnia.SwitchDefaults.on(mock(InsomniaConfig.class));
         when(config.sleepRecoveryPerSecond()).thenReturn(.1);
         when(config.debtRecoveryPerSecond()).thenReturn(.05);
         when(config.fallingAsleepMillis()).thenReturn(10_000L);
@@ -46,7 +46,7 @@ class SleepServiceTest {
 
     @Test
     void sleepPhaseBoundariesReachRestedOnlyAfterFullDeepSleepDuration() throws Exception {
-        InsomniaConfig config = mock(InsomniaConfig.class);
+        InsomniaConfig config = at.vystorm.insomnia.SwitchDefaults.on(mock(InsomniaConfig.class));
         when(config.fallingAsleepMillis()).thenReturn(10_000L);
         when(config.lightSleepMillis()).thenReturn(20_000L);
         when(config.deepSleepMillis()).thenReturn(30_000L);

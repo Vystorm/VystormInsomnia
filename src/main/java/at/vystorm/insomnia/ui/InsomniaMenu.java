@@ -63,7 +63,7 @@ public final class InsomniaMenu {
         this.web = web;
         if (panel != null) panel.register(this::open, web != null);
         else api.gui().registerMenu(plugin, FatiguePanel.NAME, texts.ref("menu.title"), Material.RED_BED,
-                p -> p.hasPermission("insomnia.use"), this::open, MenuCategory.CHARACTER.group(),
+                p -> enabled.getAsBoolean() && p.hasPermission("insomnia.use"), this::open, MenuCategory.CHARACTER.group(),
                 texts.ref("menu.description"));
         api.settings().register(plugin, settings(plugin, texts::ref).section("server", texts.ref("settings.title"),
                 texts.ref("settings.description"), ADMIN, this::applySettings));
@@ -74,8 +74,14 @@ public final class InsomniaMenu {
 
     /** Opens the status: native panel for players with the mod (it falls back to {@link #open}), else the dialog. */
     public void show(Player player) {
+        if (!enabled.getAsBoolean()) { player.sendMessage(texts.chat(player, "feature_off")); return; }
         if (panel != null) panel.open(player); else open(player);
     }
+
+    private java.util.function.BooleanSupplier enabled = () -> true;
+
+    /** {@code menu.enabled} (0.31.0): while it is false the menu entry is hidden and the menu does not open. */
+    public void enabledWhen(java.util.function.BooleanSupplier enabled) { this.enabled = Objects.requireNonNull(enabled, "enabled"); }
 
     /** Settings are already written to config.yml; an invalid combination keeps the previous values active. */
     private void applySettings(Player admin) {

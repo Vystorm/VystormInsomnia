@@ -168,6 +168,16 @@ setting:
     debt_per_minute:
       label: '每分钟睡眠负债'
       desc: '睡眠负债的增长'
+    pause-afk:
+      enabled:
+        label: "闲置时暂停"
+        desc: "没有操作的玩家疲劳不再上升"
+    exclude_creative:
+      label: "创造模式暂停"
+      desc: "创造模式下疲劳不上升"
+    exclude_spectator:
+      label: "旁观模式暂停"
+      desc: "旁观模式下疲劳不上升"
   sleep:
     fatigue_recovery_per_second:
       label: '睡眠恢复 /秒'
@@ -207,6 +217,21 @@ setting:
       action_bar:
         label: '动作栏'
         desc: '向世界中的所有人显示睡觉人数和速度'
+    enabled:
+      label: "睡眠"
+      desc: "床上的实时睡眠；关闭 = 床和原版一样"
+    quality:
+      enabled:
+        label: "睡眠质量"
+        desc: "屋顶、光照、怪物和天气影响睡眠好坏"
+      cozy:
+        enabled:
+          label: "舒适卧室"
+          desc: "床周围的家具让睡眠更好"
+    daytime:
+      enabled:
+        label: "白天小睡"
+        desc: "玩家可以在白天上床小睡"
   stimulants:
     enabled:
       label: '兴奋剂'
@@ -224,6 +249,31 @@ setting:
     chance_sleep_deprivation:
       label: '幻觉：睡眠不足'
       desc: '每次检查的概率'
+    effects:
+      yawn:
+        label: "幻觉：哈欠"
+        desc: "只有疲劳的玩家能听到的哈欠"
+      footsteps:
+        label: "幻觉：脚步"
+        desc: "玩家身后的脚步声"
+      creeper:
+        label: "幻觉：苦力怕"
+        desc: "没有苦力怕的嘶嘶声"
+      door:
+        label: "幻觉：门"
+        desc: "不存在的门砰地关上"
+      darkness:
+        label: "幻觉：黑暗"
+        desc: "视线短暂变暗"
+      blindness:
+        label: "幻觉：失明"
+        desc: "短暂失明"
+      shadow:
+        label: "幻觉：阴影"
+        desc: "玩家身旁的一缕阴影"
+      sight_loss:
+        label: "幻觉：视线丢失"
+        desc: "其他玩家短暂从视线中消失"
   microsleep_grace: "微睡眠恢复宽限：剩余 {seconds} 秒。"
   microsleep_recovered: "微睡眠被中断：已检查恢复。宽限 {seconds} 秒；疲劳和睡眠负债保持不变。"
   microsleep:
@@ -284,6 +334,69 @@ setting:
     show_stage_to_players:
       label: '他人可见阶段'
       desc: '玩家可以看到其他玩家看起来有多累（不显示数字）'
+  activity:
+    enabled:
+      label: "活动系数"
+      desc: "疾跑、游泳、挖掘和战斗让人更快疲劳"
+  dream:
+    enabled:
+      label: "梦境"
+      desc: "通过 /dream 进入梦境，有时间限制和梦境战利品"
+    quests:
+      enabled:
+        label: "梦境战役"
+        desc: "有四种结局的战役“破碎之梦”"
+    companions:
+      enabled:
+        label: "共享梦境"
+        desc: "做梦者最多可邀请三名同伴"
+    weekly:
+      enabled:
+        label: "每周噩梦"
+        desc: "带排行榜和奖励的每周挑战"
+    world:
+      dungeons_enabled:
+        label: "梦境地牢"
+        desc: "梦境世界中的三座地牢；需要重启"
+      ambient_light:
+        label: "梦境环境光"
+        desc: "梦境植物的柔和光照；需要重启"
+      sky_islands:
+        enabled:
+          label: "天空岛"
+          desc: "梦境世界中的浮空岛；需要重启"
+      natural_accents:
+        enabled:
+          label: "梦境植物"
+          desc: "梦境世界中的植物和生物群系点缀；需要重启"
+      natural_objects:
+        enabled:
+          label: "梦境物体"
+          desc: "梦境世界中的原木、巨石、蘑菇和晶体；需要重启"
+      decorations:
+        enabled:
+          label: "梦境装饰"
+          desc: "梦境世界的装饰；需要重启"
+  menu:
+    enabled:
+      label: "疲劳菜单"
+      desc: "菜单、/insomnia status、history 和 triggers"
+  admin_tools:
+    enabled:
+      label: "管理工具"
+      desc: "/insomnia admin 的工具；reload 始终可用"
+  client_hud:
+    enabled:
+      label: "客户端模组条"
+      desc: "为 Vystorm 客户端模组显示疲劳条和提示"
+  web_page:
+    enabled:
+      label: "网页"
+      desc: "Core 网页界面中的疲劳页面；需要重启"
+  tutorial:
+    enabled:
+      label: "教程"
+      desc: "Core 主菜单中的教程；需要重启"
 
 # 客户端模组（HUD 条和原生面板）
 hud:
@@ -608,3 +721,15 @@ companion:
   error-target-busy: '{player} 已在共享另一个梦境。'
   error-full: '一个梦境最多可有 {max} 名同伴。'
   error-no-invite: '没有给你的有效邀请。'
+feature_off: "&e此功能已在本服务器上关闭。"
+placeholder:
+  fatigue: "玩家疲劳度，0 到 100，保留一位小数；疲劳关闭时为空"
+  fatigue_int: "取整后的疲劳度"
+  debt: "睡眠债，0 到 100，保留一位小数"
+  stage: "阶段：RESTED、TIRED、EXHAUSTED、OVERMUEDET 或 SLEEP_DEPRIVATION"
+  stage_name: "玩家语言中的阶段名称"
+  sleeping: "true 或 false：玩家正在睡觉；睡眠关闭时为空"
+  rested_minutes: "充分休息奖励剩余分钟数；奖励关闭时为空"
+  rested: "true 或 false：充分休息奖励生效中"
+  caffeine_seconds: "兴奋剂效果剩余秒数；兴奋剂关闭时为空"
+  caffeine_doses: "上次完整休息后服用的兴奋剂剂数"

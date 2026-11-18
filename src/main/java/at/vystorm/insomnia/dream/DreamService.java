@@ -163,7 +163,7 @@ public final class DreamService implements Listener {
     public void enter(Player player) {
         if(active.containsKey(player.getUniqueId())) { showDungeons(player); return; }
         stopNap(player);
-        if (!enabled) { tell(player, "dream.disabled"); return; }
+        if (!enabled) { tell(player, config.dreamEnabled() ? "dream.disabled" : at.vystorm.insomnia.command.InsomniaCommand.OFF); return; }
         if (!fatigue.ready(player.getUniqueId())) { tell(player, "data_loading"); return; }
         if (player.getGameMode() != GameMode.SURVIVAL) { tell(player, "dream.survival_only"); return; }
         if (activity.inCombat(player.getUniqueId(), System.currentTimeMillis())) { tell(player, "dream.in_combat"); return; }
@@ -697,6 +697,7 @@ public final class DreamService implements Listener {
 
     /** Choices change only the persisted campaign, never inventory or the active visit snapshot. */
     public void quest(Player player, String action) {
+        if (!config.dreamEnabled() || !config.dreamQuestsEnabled()) { tell(player, at.vystorm.insomnia.command.InsomniaCommand.OFF); return; }
         if (!questAvailable(player)) { tell(player, "quest.unavailable"); return; }
         try {
             String selected=action==null?"status":action.toLowerCase(Locale.ROOT);
@@ -798,7 +799,7 @@ public final class DreamService implements Listener {
 
     /** {@code /dream invite <player>}: the inviter and the target must both be in the dream. */
     public void invite(Player host, String name) {
-        if (!companionsEnabled()) { tell(host, "companion.disabled"); return; }
+        if (!companionsEnabled()) { tell(host, at.vystorm.insomnia.command.InsomniaCommand.OFF); return; }
         if (!active.containsKey(host.getUniqueId())) { tell(host, "companion.not-dreaming"); return; }
         Player target = name == null ? null : Bukkit.getPlayerExact(name);
         if (target == null || !active.containsKey(target.getUniqueId()) || !host.canSee(target)) { tell(host, "companion.target-not-dreaming", "player", name == null ? "?" : name); return; }
@@ -812,7 +813,7 @@ public final class DreamService implements Listener {
 
     /** {@code /dream join [player]}: accepts an invitation (the newest one without a name). */
     public void join(Player player, String name) {
-        if (!companionsEnabled()) { tell(player, "companion.disabled"); return; }
+        if (!companionsEnabled()) { tell(player, at.vystorm.insomnia.command.InsomniaCommand.OFF); return; }
         long now = System.currentTimeMillis();
         UUID host;
         if (name == null || name.isBlank()) {
@@ -925,6 +926,7 @@ public final class DreamService implements Listener {
 
     /** {@code /dream weekly}: this week's modifiers, the time left and the five fastest clears. */
     public void weekly(Player player) {
+        if (!config.dreamEnabled() || !config.dreamWeeklyEnabled()) { tell(player, at.vystorm.insomnia.command.InsomniaCommand.OFF); return; }
         if (!enabled || weekly == null) { tell(player, "weekly.disabled"); return; }
         List<WeeklyNightmare.Modifier> modifiers = weeklyModifiers();
         long left = WeeklyNightmare.weekEnd(weekly.week()) - System.currentTimeMillis();

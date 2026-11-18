@@ -27,9 +27,24 @@ In the dream, `/dream invite <player>` asks another dreamer to join you. Compani
 - **Safe dream visits:** Core persists the player's entry snapshot, isolates the visit inventory and returns the player through `/wake`. Dungeon loot enters the existing durable reward pouch. Dreams provide recovery for actual time spent, without a full Rested bonus.
 - **Menus and history:** personal status, up to 24 session history entries in pages, trigger explanations, a player-menu entry, a HUD and an administrator overview with targeted actions. Persistent personal settings control sleep prompts and sleep-debt reminders.
 
+## Feature switches (0.31.0)
+
+Every feature has its own on/off switch in `config.yml`, listed with a one-line description in all seven languages in `/vadmin features`. Changes apply at once, except `web_page.enabled`, `tutorial.enabled`, `integrations.*` and the dream world layout (`dream.world.*`), which apply at the next restart. Core adds new switches to an existing `config.yml` with their comments; a missing switch counts as on.
+
+- Master switch of the sleep: `sleep.enabled`. Off: beds behave as in vanilla (no sleep stages, no recovery from sleep, no dialog, no time acceleration, no naps, no new rested bonus). The Dream Realm keeps working through `/dream`. Stored fatigue is kept.
+- New in 0.31.0: `sleep.quality.enabled`, `sleep.quality.cozy.enabled`, `activity.enabled`, `hallucinations.effects.<effect>` (one per effect), `dream.world.sky_islands.enabled`, `dream.world.natural_accents.enabled`, `dream.world.natural_objects.enabled`, `dream.world.decorations.enabled`, `menu.enabled`, `admin_tools.enabled` (`/insomnia admin reload` always works), `client_hud.enabled`, `web_page.enabled`, `tutorial.enabled`.
+- Older keys keep their names and now also show in `/vadmin features`: `fatigue.exclude_creative`, `fatigue.exclude_spectator`, `sleep.cancel_vanilla_night_skip`, `sleep.wake_summary`, `sleep.dialog.day_naps`, `sleep.dialog.custom_time`, `sleep.acceleration.action_bar`, `player_menu.show_stage_to_players`, `integrations.cityclaim`, `integrations.bloodmoon`, `dream.world.dungeons_enabled`, `dream.world.ambient_light`.
+- Values that switched something off before (`activity.* : 1.0`, `cozy_per_furnishing: 0`, a hallucination weight of 0, a density of 0) keep that meaning.
+
+A command of a switched-off feature answers "This feature is switched off on this server."; its entry in tab completion and help disappears at once and comes back when the switch is on again.
+
+## Placeholders (0.31.0)
+
+With Vystorm Core 0.65.0 the plugin registers the namespace `sleep`: `fatigue`, `fatigue_int`, `debt`, `stage`, `stage_name`, `sleeping`, `rested_minutes`, `rested`, `caffeine_seconds`, `caffeine_doses`. Each works as `%vystorm_sleep_<key>%` (also through PlaceholderAPI) and as `{sleep:<key>}` in Vystorm texts; `/vadmin placeholders sleep` lists them. Examples: `%vystorm_sleep_fatigue_int%` shows `42`, `{sleep:stage_name}` shows `Tired`. A value of a switched-off feature is empty. All values answer on the server thread only.
+
 ## Installation
 
-Install Vystorm Core **0.64.0 or newer** and this JAR in `plugins/`. Use **Java 25**, the runtime used for acceptance. Spigot/CraftBukkit 26.2–26.3 are supported alongside the existing Paper/Purpur compatibility paths; common source and class-loading checks also cover Paper 1.20.6. The plugin emits Java 21 bytecode, but that alone is not a Java 21 runtime acceptance claim.
+Install Vystorm Core **0.65.0 or newer** and this JAR in `plugins/`. Use **Java 25**, the runtime used for acceptance. Spigot/CraftBukkit 26.2–26.3 are supported alongside the existing Paper/Purpur compatibility paths; common source and class-loading checks also cover Paper 1.20.6. The plugin emits Java 21 bytecode, but that alone is not a Java 21 runtime acceptance claim.
 
 The first start creates `config.yml`, `stimulants.yml`, `mobs.yml` and language files. English, German, Simplified Chinese, French, Brazilian Portuguese, Italian and Russian follow Core's player language settings. Native dialogs and other modern Paper functionality remain in use where available; guarded Bukkit/chat implementations serve the other supported runtimes. Materials and entity types absent from an older server are diagnosed.
 

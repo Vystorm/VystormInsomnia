@@ -75,7 +75,20 @@ public final class FatigueHud implements Listener {
         for (Player player : Bukkit.getOnlinePlayers()) update(player);
     }
 
+    private java.util.function.BooleanSupplier enabled = () -> true;
+
+    /** {@code client_hud.enabled} (0.31.0): while it is false no bar or toast is sent and bars already shown are removed. */
+    public void enabledWhen(java.util.function.BooleanSupplier enabled) { this.enabled = Objects.requireNonNull(enabled, "enabled"); }
+
     void update(Player player) {
+        if (!enabled.getAsBoolean()) {
+            if (sent.remove(player.getUniqueId()) != null | restedSent.remove(player.getUniqueId()) != null) {
+                ui.remove(player, FATIGUE);
+                ui.remove(player, DEBT);
+                ui.remove(player, RESTED);
+            }
+            return;
+        }
         if (!ui.available(player, ClientServices.CAP_HUD)) { sent.remove(player.getUniqueId()); return; }
         PlayerFatigueState state = fatigue.state(player.getUniqueId()).orElse(null);
         if (state == null) return;
@@ -115,7 +128,7 @@ public final class FatigueHud implements Listener {
      * mod, without toasts or with the UI hidden it returns {@code false} and the chat message stays.
      */
     public boolean stageChanged(Player player, InsomniaStage stage, String messageKey) {
-        if (!ui.available(player, ClientServices.CAP_TOASTS) || !ui.visible(player)) return false;
+        if (!enabled.getAsBoolean() || !ui.available(player, ClientServices.CAP_TOASTS) || !ui.visible(player)) return false;
         boolean shown = ui.toast(player, stageToast(texts.stageName(player, stage), texts.lang().plain(player, messageKey), stage));
         if (shown) update(player);
         return shown;

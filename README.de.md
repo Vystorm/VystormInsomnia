@@ -27,12 +27,14 @@ Wer lange wach bleibt, wird müde. VystormInsomnia gibt jedem Spieler einen Müd
 - **Menü.** Hauptmenü (`/vmenu`) → Charakter → Müdigkeit, oder einfach `/insomnia`. Eine Anleitung steht unter Tutorials → Müdigkeit & Schlaf.
 - **Client-Mod.** Mit der Vystorm-Client-Mod siehst du oben rechts Balken für Müdigkeit, Schlafschuld und die Restzeit des Ausgeruht-Bonus, Stufenwechsel kommen als Hinweis, und das Menü ist ein eigenes Panel. Ohne Mod läuft alles über Dialog und Chat.
 - **Im Browser.** Läuft die Webseite des Servers, zeigt `/web insomnia` deinen Zustand und den Verlauf der Sitzung als Diagramm.
-- **Deutsch, Englisch und vereinfachtes Chinesisch (zh_cn).** Alle Texte gibt es in diesen Sprachen, je nach Spielereinstellung.
+- **Sieben Sprachen.** Alle Texte gibt es auf Deutsch, Englisch, vereinfachtem Chinesisch, Französisch, brasilianischem Portugiesisch, Italienisch und Russisch, je nach Spielereinstellung.
+- **Alles schaltbar (0.31.0).** Jede Funktion hat einen eigenen Schalter in `config.yml`, mit einer Zeile Beschreibung in `/vadmin features`. `sleep.enabled` ist der Hauptschalter für den Schlaf: aus heißt Betten wie in Vanilla, die Traumwelt bleibt über `/dream` erreichbar. Ein ausgeschalteter Befehl antwortet „Diese Funktion ist auf diesem Server ausgeschaltet.“
+- **Platzhalter (0.31.0).** Namensraum `sleep`, zum Beispiel `%vystorm_sleep_fatigue_int%` oder `{sleep:stage_name}`.
 
 ## Installation
 
-- Paper oder Purpur 1.20.6 bis 26.x; Java 21 für 1.20.6, auf neueren Servern deren erforderliche Java-Version (26.x: Java 25)
-- Vystorm Core 0.64.0 oder neuer
+- Gebaut gegen Paper 26.2; die Prüfung `compat1206` übersetzt alle Quellen auch gegen Paper 1.20.6. Spigot 26.2 und 26.3 wurden zuletzt mit 0.25.0 gestartet (siehe unten). Java 21 für 1.20.6, auf neueren Servern deren erforderliche Java-Version (26.x: Java 25)
+- Vystorm Core 0.65.0 oder neuer
 - Optional: VystormCityClaim (besserer Schlaf in Städten und Mietobjekten), BloodMoon
 
 Die JAR in `plugins/` legen und den Server starten. `config.yml`, `stimulants.yml`, `mobs.yml` und die Sprachdateien werden beim ersten Start angelegt.
@@ -100,7 +102,7 @@ Beim ersten MySQL-Start wird `fatigue.yml` einmal übernommen und bleibt als Sic
 
 ## Für Entwickler
 
-Bauen mit JDK 25, einem lokal installierten Gradle 9.4.1 (das Repo hat keinen Wrapper) und Core 0.64.0 als Compile-Dependency. Alle Java-Quellen werden mit `--release 21` übersetzt:
+Bauen mit JDK 25, einem lokal installierten Gradle 9.4.1 (das Repo hat keinen Wrapper) und Core 0.65.0 als Compile-Dependency. Alle Java-Quellen werden mit `--release 21` übersetzt:
 
 ```bash
 gradle clean build --offline --warning-mode fail --max-workers=2 --no-daemon --project-cache-dir build/gradle-cache -PvystormCoreJar=/pfad/zu/Vystorm_Core.jar
@@ -116,7 +118,7 @@ Die verbleibende Traumzeit erscheint als Bossbar mit Minuten und Sekunden. Der B
 
 ## Lizenz
 
-VystormInsomnia ist kostenlos und steht unter der MIT-Lizenz, siehe [LICENSE](LICENSE).
+VystormInsomnia ist kostenlos. Versionen nach 0.29.1 stehen unter der GNU General Public License v3.0 (GPL-3.0), siehe [LICENSE](LICENSE). Version 0.29.1 und älter wurden unter der MIT-Lizenz veröffentlicht ([LICENSE-MIT-until-0.29.1.txt](LICENSE-MIT-until-0.29.1.txt)) und bleiben unter diesen Bedingungen verfügbar.
 
 
 ### Server compatibility (0.25.0-26.2)

@@ -166,6 +166,16 @@ setting:
     debt_per_minute:
       label: Dette de sommeil par minute
       desc: Augmentation de la dette de sommeil
+    pause-afk:
+      enabled:
+        label: "Pause en inactivité"
+        desc: "La fatigue ne monte pas pour les joueurs inactifs"
+    exclude_creative:
+      label: "Pause en créatif"
+      desc: "La fatigue ne monte pas en mode créatif"
+    exclude_spectator:
+      label: "Pause en spectateur"
+      desc: "La fatigue ne monte pas en mode spectateur"
   sleep:
     fatigue_recovery_per_second:
       label: Récupération dans le sommeil /s
@@ -205,6 +215,21 @@ setting:
       action_bar:
         label: Barre d' action
         desc: Montrez des dormeurs et de la vitesse à tout le monde
+    enabled:
+      label: "Sommeil"
+      desc: "Sommeil en temps réel au lit ; désactivé = lits comme en vanilla"
+    quality:
+      enabled:
+        label: "Qualité du sommeil"
+        desc: "Toit, lumière, monstres et météo changent la qualité du sommeil"
+      cozy:
+        enabled:
+          label: "Chambres douillettes"
+          desc: "Les meubles autour du lit améliorent le sommeil"
+    daytime:
+      enabled:
+        label: "Siestes"
+        desc: "Les joueurs peuvent faire la sieste au lit le jour"
   stimulants:
     enabled:
       label: Stimulants
@@ -222,6 +247,31 @@ setting:
     chance_sleep_deprivation:
       label: 'hallucination: privation de sommeil'
       desc: Possibilité par chèque
+    effects:
+      yawn:
+        label: "Hallucination : bâillement"
+        desc: "Un bâillement que seul le joueur fatigué entend"
+      footsteps:
+        label: "Hallucination : pas"
+        desc: "Des pas derrière le joueur"
+      creeper:
+        label: "Hallucination : creeper"
+        desc: "Un sifflement de creeper sans creeper"
+      door:
+        label: "Hallucination : porte"
+        desc: "Une porte claque là où il n'y en a pas"
+      darkness:
+        label: "Hallucination : obscurité"
+        desc: "La vue s'assombrit un instant"
+      blindness:
+        label: "Hallucination : cécité"
+        desc: "Courte cécité"
+      shadow:
+        label: "Hallucination : ombre"
+        desc: "Un souffle d'ombre à côté du joueur"
+      sight_loss:
+        label: "Hallucination : perte de vue"
+        desc: "Les autres joueurs disparaissent un instant de la vue"
   microsleep_grace: 'Grâce de récupération de microsleep: {seconds} secondes restantes.'
   microsleep_recovered: 'Microsleep interrompu : contrôle de récupération. {seconds} secondes de grâce ; la fatigue et la
     dette de sommeil sont préservées.'
@@ -283,6 +333,69 @@ setting:
     show_stage_to_players:
       label: D'autres voient la scène
       desc: Les joueurs voient à quel point un autre joueur semble fatigué (pas de nombres)
+  activity:
+    enabled:
+      label: "Facteurs d'activité"
+      desc: "Sprint, nage, minage et combat fatiguent plus vite"
+  dream:
+    enabled:
+      label: "Royaume des rêves"
+      desc: "Visites de rêve avec /dream, limite de temps et butin de rêve"
+    quests:
+      enabled:
+        label: "Campagne des rêves"
+        desc: "La campagne Le Rêve brisé avec quatre fins"
+    companions:
+      enabled:
+        label: "Rêves partagés"
+        desc: "Les rêveurs peuvent inviter jusqu'à trois compagnons"
+    weekly:
+      enabled:
+        label: "Cauchemar de la semaine"
+        desc: "Défi hebdomadaire avec classement et récompense"
+    world:
+      dungeons_enabled:
+        label: "Donjons du rêve"
+        desc: "Trois donjons dans le monde des rêves ; nécessite un redémarrage"
+      ambient_light:
+        label: "Lumière ambiante du rêve"
+        desc: "Lumière douce pour les plantes du rêve ; nécessite un redémarrage"
+      sky_islands:
+        enabled:
+          label: "Îles célestes"
+          desc: "Îles flottantes dans le monde des rêves ; nécessite un redémarrage"
+      natural_accents:
+        enabled:
+          label: "Plantes du rêve"
+          desc: "Plantes et touches de biome dans le monde des rêves ; nécessite un redémarrage"
+      natural_objects:
+        enabled:
+          label: "Objets du rêve"
+          desc: "Troncs, rochers, champignons et cristaux dans le monde des rêves ; nécessite un redémarrage"
+      decorations:
+        enabled:
+          label: "Décorations du rêve"
+          desc: "Décorations du monde des rêves ; nécessite un redémarrage"
+  menu:
+    enabled:
+      label: "Menu de fatigue"
+      desc: "Menu, /insomnia status, history et triggers"
+  admin_tools:
+    enabled:
+      label: "Outils d'administration"
+      desc: "Outils de /insomnia admin ; reload fonctionne toujours"
+  client_hud:
+    enabled:
+      label: "Barres du mod client"
+      desc: "Barres de fatigue et notifications pour le mod client Vystorm"
+  web_page:
+    enabled:
+      label: "Page web"
+      desc: "Page de fatigue dans l'interface web de Core ; nécessite un redémarrage"
+  tutorial:
+    enabled:
+      label: "Tutoriel"
+      desc: "Tutoriel dans le menu principal de Core ; nécessite un redémarrage"
 hud:
   rested: Repéré
   fatigue: Fatigue {value} % · {stage}
@@ -603,3 +716,15 @@ companion:
   error-target-busy: '{player} partage déjà un autre rêve.'
   error-full: 'Au plus {max} compagnons peuvent partager un rêve.'
   error-no-invite: 'Aucune invitation ouverte pour toi.'
+feature_off: "&eCette fonction est désactivée sur ce serveur."
+placeholder:
+  fatigue: "Fatigue du joueur, de 0 à 100 avec une décimale ; vide si la fatigue est désactivée"
+  fatigue_int: "Fatigue arrondie à un nombre entier"
+  debt: "Dette de sommeil, de 0 à 100 avec une décimale"
+  stage: "Stade : RESTED, TIRED, EXHAUSTED, OVERMUEDET ou SLEEP_DEPRIVATION"
+  stage_name: "Stade dans la langue du joueur"
+  sleeping: "true ou false : le joueur dort ; vide si le sommeil est désactivé"
+  rested_minutes: "Minutes restantes du bonus reposé ; vide si le bonus est désactivé"
+  rested: "true ou false : le bonus reposé est actif"
+  caffeine_seconds: "Secondes restantes de l'effet stimulant ; vide si les stimulants sont désactivés"
+  caffeine_doses: "Doses de stimulant depuis le dernier repos complet"

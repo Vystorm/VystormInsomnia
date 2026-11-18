@@ -48,6 +48,8 @@ public final class InsomniaCommand implements CommandExecutor, TabCompleter {
         this.menu = menu;
     }
 
+    /** The one message every switched-off feature answers with (0.31.0). */
+    public static final String OFF = "feature_off";
     public static final String USE = "insomnia.use";
     public static final String ADMIN = "insomnia.admin";
     /** First-level subcommands for players with {@link #USE}; "admin" needs {@link #ADMIN}. */
@@ -80,6 +82,10 @@ public final class InsomniaCommand implements CommandExecutor, TabCompleter {
         boolean adminCommand = args.length > 0 && args[0].equalsIgnoreCase("admin");
         if (!adminCommand && !sender.hasPermission(USE)) {
             sender.sendMessage(config.message(sender, "no_permission"));
+            return true;
+        }
+        if (!adminCommand && !config.menuEnabled()) {
+            sender.sendMessage(config.message(sender, OFF));
             return true;
         }
         if (menu != null && sender instanceof Player self && (args.length == 0 || args[0].equalsIgnoreCase("menu"))) {
@@ -149,6 +155,11 @@ public final class InsomniaCommand implements CommandExecutor, TabCompleter {
         String sub = args[1].toLowerCase(Locale.ROOT);
         if (!ADMIN_SUBCOMMANDS.contains(sub)) {
             sender.sendMessage(config.message(sender, "admin_usage"));
+            return true;
+        }
+        // admin_tools.enabled false (0.31.0): every admin tool is off; reload stays, it applies the switches.
+        if (!sub.equals("reload") && !config.adminToolsEnabled()) {
+            sender.sendMessage(config.message(sender, OFF));
             return true;
         }
         if (sub.equals("overview")) {
@@ -236,7 +247,7 @@ public final class InsomniaCommand implements CommandExecutor, TabCompleter {
         if (grace > 0) sender.sendMessage(config.message(sender, "microsleep_grace", "seconds", (grace + 999) / 1000));
         if (target.isOnline() && sleep != null) {
             org.bukkit.Location bed = nearbyBed(target);
-            if (bed != null) sender.sendMessage(sleep.cozyLine(sender, "status_cozy", sleep.comfortAt(bed)));
+            if (bed != null && config.cozyEnabled()) sender.sendMessage(sleep.cozyLine(sender, "status_cozy", sleep.comfortAt(bed)));
         }
         if (target.isOnline()) {
             String reason = fatigue.pausedReason(target);

@@ -38,7 +38,7 @@ class SleepQualityServiceTest {
     }
 
     private static InsomniaConfig qualityConfig(Map<String, Double> values) {
-        InsomniaConfig config = mock(InsomniaConfig.class);
+        InsomniaConfig config = at.vystorm.insomnia.SwitchDefaults.on(mock(InsomniaConfig.class));
         when(config.sleepQuality(anyString(), anyDouble())).thenAnswer(invocation ->
                 values.getOrDefault(invocation.getArgument(0, String.class), invocation.getArgument(1, Double.class)));
         return config;

@@ -50,6 +50,16 @@ dream:
     dungeons_enabled: true
     # Static invisible ambient light for vegetation; no runtime lighting task.
     ambient_light: true
+    # Landscape layers of the dream world (0.31.0). false = the layer is not built, whatever its density says.
+    # Like the densities, a change applies at the next restart and rebuilds only the dream world.
+    sky_islands:
+      enabled: true
+    natural_accents:
+      enabled: true
+    natural_objects:
+      enabled: true
+    decorations:
+      enabled: true
   # Reserved compatibility settings; the landscape-only layout currently generates no towers.
   towers:
     transition_millis: 750
@@ -107,6 +117,9 @@ fatigue:
   dirty_flush_seconds: 300
 
 activity:
+  # Activity factors: sprinting, swimming, mining, combat and bosses make players tired faster (0.31.0 switch).
+  # false = every activity counts as normal play, whatever the factors below say.
+  enabled: true
   normal: 1.0
   sprint: 1.2
   mining: 1.1
@@ -119,6 +132,11 @@ activity:
   boss_types: [WITHER, ENDER_DRAGON, WARDEN, ELDER_GUARDIAN]
 
 sleep:
+  # Master switch of the plugin's sleep (0.31.0). false = beds work as in vanilla: no sleep stages, no recovery of
+  # fatigue or sleep debt from sleep, no sleep dialog, no time acceleration, no naps and no new rested bonus.
+  # Fatigue then only drops at a campfire, so switch fatigue off as well if players should not get tired at all.
+  # The Dream Realm keeps working through /dream. Stored fatigue is kept.
+  enabled: true
   daytime:
     enabled: true
   falling_asleep_seconds: 10
@@ -165,6 +183,9 @@ sleep:
     # Show "x/y sleeping – time runs 6x faster" in the action bar of everyone in the world.
     action_bar: true
   quality:
+    # Sleep quality from roof, light, monsters, weather, towns and blood moon (0.31.0 switch).
+    # false = every sleep has the base quality below.
+    enabled: true
     base: 1.0
     roof_multiplier: 1.10
     exposed_multiplier: 0.85
@@ -180,6 +201,10 @@ sleep:
     # bookshelf, lantern/candle, painting/item frame, chest/barrel) adds this much quality.
     cozy_per_furnishing: 0.04
     cozy_radius: 4
+    # Cozy bedrooms (0.31.0 switch). false = furnishings add nothing and the coziness line is not shown.
+    # cozy_per_furnishing: 0 keeps its meaning.
+    cozy:
+      enabled: true
 
 stimulants:
   enabled: true
@@ -201,6 +226,17 @@ hallucinations:
     blindness: 8
     shadow: 10
     sight_loss: 6
+  # Single effects (0.31.0 switches). false = the effect never comes, whatever its weight; weight 0 keeps its meaning.
+  # /insomnia admin effect still shows any effect for testing.
+  effects:
+    yawn: true
+    footsteps: true
+    creeper: true
+    door: true
+    darkness: true
+    blindness: true
+    shadow: true
+    sight_loss: true
 
 microsleep:
   # One-time grace after interrupted microsleep; normal relogging does not renew it (0..300).
@@ -255,5 +291,32 @@ player_menu:
   show_stage_to_players: true
 
 integrations:
+  # Better sleep in CityClaim towns and rentals; worse sleep and more insomnia mobs during a BloodMoon. Restart needed.
   cityclaim: true
   bloodmoon: true
+
+# Fatigue menu and panel (Core main menu, Character), /insomnia, /insomnia status, history and triggers (0.31.0).
+# false = these answer "This feature is switched off on this server." and the menu entry is gone. Admin tools stay.
+menu:
+  enabled: true
+
+# Admin tools: /insomnia admin get, setfatigue, setdebt, sleep, effect, spawnmob and overview (0.31.0).
+# false = they answer that the feature is off. /insomnia admin reload always works.
+admin_tools:
+  enabled: true
+
+# Fatigue bars and stage toasts for players with the Vystorm client mod (0.31.0). false = nothing is sent and
+# bars already shown are removed; the chat messages stay.
+client_hud:
+  enabled: true
+
+# Fatigue page in Vystorm Core's web UI (0.31.0). Read at startup: a change needs a server restart.
+web_page:
+  enabled: true
+
+# Insomnia tutorial in the Vystorm Core main menu (0.31.0). A change needs a server restart.
+tutorial:
+  enabled: true
+
+# Switched-off commands disappear from tab completion and help at once and answer "This feature is switched off on
+# this server."

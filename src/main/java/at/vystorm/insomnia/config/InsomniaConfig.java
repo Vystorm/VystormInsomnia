@@ -291,7 +291,12 @@ public final class InsomniaConfig {
         return out;
     }
 
-    public double activity(String key, double fallback) { return main.getDouble("activity." + key, fallback); }
+    /** {@code activity.enabled} (0.31.0): off = every activity counts as normal play, whatever the factors say. */
+    public boolean activityEnabled() { return main.getBoolean("activity.enabled", true); }
+    public double activity(String key, double fallback) {
+        if (!activityEnabled() && !key.equals("normal")) return activity("normal", 1.0);
+        return main.getDouble("activity." + key, fallback);
+    }
     public long miningWindowMillis() { return main.getLong("activity.mining_window_seconds", 8L) * 1000L; }
     public long combatWindowMillis() { return main.getLong("activity.combat_window_seconds", 20L) * 1000L; }
     public long bossWindowMillis() { return main.getLong("activity.boss_window_seconds", 30L) * 1000L; }
@@ -303,11 +308,23 @@ public final class InsomniaConfig {
     public double sleepRecoveryPerSecond() { return main.getDouble("sleep.fatigue_recovery_per_second", 1.0); }
     public double debtRecoveryPerSecond() { return main.getDouble("sleep.debt_recovery_per_second", 0.5); }
     public long qualityRecheckMillis() { return main.getLong("sleep.quality_recheck_seconds", 10L) * 1000L; }
-    public boolean cancelVanillaNightSkip() { return main.getBoolean("sleep.cancel_vanilla_night_skip", false); }
+    /**
+     * {@code sleep.enabled} (0.31.0), the master switch of the plugin's sleep: off = beds behave as in vanilla, no
+     * sleep sessions, no recovery from sleep, no dialog, no time acceleration, no naps and no new rested bonus. The
+     * Dream Realm keeps working through {@code /dream}.
+     */
+    public boolean sleepEnabled() { return main.getBoolean("sleep.enabled", true); }
+    public boolean cancelVanillaNightSkip() { return sleepEnabled() && main.getBoolean("sleep.cancel_vanilla_night_skip", false); }
     public double sleepQuality(String key, double fallback) { return main.getDouble("sleep.quality." + key, fallback); }
+    /** {@code sleep.quality.enabled} (0.31.0): off = every sleep has the base quality (roof, light, monsters ... ignored). */
+    public boolean sleepQualityEnabled() { return main.getBoolean("sleep.quality.enabled", true); }
+    /** {@code sleep.quality.cozy.enabled} (0.31.0): off = furnishings add nothing and the coziness line is not shown. */
+    public boolean cozyEnabled() { return sleepQualityEnabled() && main.getBoolean("sleep.quality.cozy.enabled", true); }
+    /** Quality per furnishing type; 0 while coziness is switched off. */
+    public double cozyPerFurnishing() { return cozyEnabled() ? sleepQuality("cozy_per_furnishing", 0.04) : 0.0; }
 
     /** Sleep dialog when lying down (sleep until a time, dream realm, get up). */
-    public boolean sleepDialogEnabled() { return main.getBoolean("sleep.dialog.enabled", true); }
+    public boolean sleepDialogEnabled() { return sleepEnabled() && main.getBoolean("sleep.dialog.enabled", true); }
     public boolean sleepDialogDayNaps() { return main.getBoolean("sleep.dialog.day_naps", true); }
     public boolean sleepDialogCustomTime() { return main.getBoolean("sleep.dialog.custom_time", true); }
     /** Default clock times of the wake-up presets. */
@@ -319,13 +336,13 @@ public final class InsomniaConfig {
     }
 
     /** Time acceleration instead of the vanilla instant night skip. */
-    public boolean accelerationEnabled() { return main.getBoolean("sleep.acceleration.enabled", true); }
+    public boolean accelerationEnabled() { return sleepEnabled() && main.getBoolean("sleep.acceleration.enabled", true); }
     public double accelerationMinSpeed() { return main.getDouble("sleep.acceleration.min_speed", 2.0); }
     public double accelerationMaxSpeed() { return main.getDouble("sleep.acceleration.max_speed", 10.0); }
     public double accelerationCurve() { return main.getDouble("sleep.acceleration.curve", 1.0); }
     public List<String> accelerationWorlds() { return main.getStringList("sleep.acceleration.worlds"); }
     public boolean accelerationActionBar() { return main.getBoolean("sleep.acceleration.action_bar", true); }
-    public boolean wakeSummary() { return main.getBoolean("sleep.wake_summary", true); }
+    public boolean wakeSummary() { return sleepEnabled() && main.getBoolean("sleep.wake_summary", true); }
 
     public boolean stimulantsEnabled() { return main.getBoolean("stimulants.enabled", true); }
     public ConfigurationSection stimulants() { return stimulants.getConfigurationSection("stimulants"); }
@@ -333,7 +350,11 @@ public final class InsomniaConfig {
     public boolean hallucinationsEnabled() { return main.getBoolean("hallucinations.enabled", true); }
     public long hallucinationCheckMillis() { return main.getLong("hallucinations.check_interval_seconds", 10L) * 1000L; }
     public double hallucinationChance(String key, double fallback) { return main.getDouble("hallucinations." + key, fallback); }
-    public int hallucinationWeight(String key, int fallback) { return main.getInt("hallucinations.weights." + key, fallback); }
+    /** {@code hallucinations.effects.<effect>} (0.31.0): false = the effect never comes, whatever its weight. */
+    public boolean hallucinationEffectEnabled(String key) { return main.getBoolean("hallucinations.effects." + key, true); }
+    public int hallucinationWeight(String key, int fallback) {
+        return hallucinationEffectEnabled(key) ? main.getInt("hallucinations.weights." + key, fallback) : 0;
+    }
     public long sightLossTicks() { return main.getLong("hallucinations.sight_loss_seconds", 4L) * 20L; }
     public String yawnSound() { return main.getString("hallucinations.custom_yawn_sound", "vystorm:insomnia.yawn"); }
 
@@ -372,6 +393,17 @@ public final class InsomniaConfig {
     public double campfireFatiguePerSecond() { return Math.max(0.0, main.getDouble("rest.campfire.fatigue_per_second", 0.2)); }
     public double campfireMinFatigue() { return Math.clamp(main.getDouble("rest.campfire.min_fatigue", 30.0), 0.0, 100.0); }
 
+    /** {@code menu.enabled} (0.31.0): the fatigue menu and panel, {@code /insomnia}, {@code status}, {@code history}, {@code triggers}. */
+    public boolean menuEnabled() { return main.getBoolean("menu.enabled", true); }
+    /** {@code admin_tools.enabled} (0.31.0): {@code /insomnia admin ...} except {@code reload}. */
+    public boolean adminToolsEnabled() { return main.getBoolean("admin_tools.enabled", true); }
+    /** {@code client_hud.enabled} (0.31.0): fatigue bars and stage toasts for players with the Vystorm client mod. */
+    public boolean clientHudEnabled() { return main.getBoolean("client_hud.enabled", true); }
+    /** {@code web_page.enabled} (0.31.0): the page in Core's web UI; read at startup only. */
+    public boolean webPageEnabled() { return main.getBoolean("web_page.enabled", true); }
+    /** {@code tutorial.enabled} (0.31.0): the tutorial in Core's main menu; read at startup only. */
+    public boolean tutorialEnabled() { return main.getBoolean("tutorial.enabled", true); }
+
     public boolean playerMenuEnabled() { return main.getBoolean("player_menu.enabled", true); }
     public boolean playerMenuShowsStage() { return main.getBoolean("player_menu.show_stage_to_players", true); }
 
@@ -383,10 +415,11 @@ public final class InsomniaConfig {
 
     public boolean dreamEnabled() { return main.getBoolean("dream.enabled", true); }
     public boolean dreamQuestsEnabled() { return main.getBoolean("dream.quests.enabled", true); }
+    public boolean dreamCompanionsEnabled() { return main.getBoolean("dream.companions.enabled", true); }
     public List<String> dreamQuestRewards(String ending) {
         return main.getStringList("dream.quests.rewards." + ending);
     }
-    public boolean daytimeBedSleepEnabled() { return main.getBoolean("sleep.daytime.enabled", true); }
+    public boolean daytimeBedSleepEnabled() { return sleepEnabled() && main.getBoolean("sleep.daytime.enabled", true); }
     public double dreamMinimumFatigue() { return main.getDouble("dream.entry.minimum_fatigue", 40.0); }
     public List<String> dreamAllowedWorlds() { return main.getStringList("dream.entry.allowed_worlds"); }
     public List<String> dreamBlockedRegionKinds() { return main.getStringList("dream.entry.blocked_region_kinds"); }
@@ -403,11 +436,13 @@ public final class InsomniaConfig {
     public String dreamWorldId() { return main.getString("dream.world.id", "insomnia:dreamweite"); }
     public String dreamWorldName() { return main.getString("dream.world.name", "InsomniaDream"); }
     public boolean dreamAmbientLight() { return main.getBoolean("dream.world.ambient_light", true); }
-    public int dreamSkyIslandDensity() { return main.getInt("dream.world.sky_island_density", 100); }
+    // Landscape layers of the dream world (0.31.0 switches): false = 0, whatever the density says. Restart needed.
+    public int dreamSkyIslandDensity() { return layer("sky_islands", main.getInt("dream.world.sky_island_density", 100)); }
     public boolean dreamDungeonsEnabled() { return main.getBoolean("dream.world.dungeons_enabled", true); }
-    public int dreamNaturalObjectDensity() { return main.getInt("dream.world.natural_object_density", 65); }
-    public int dreamNaturalAccentDensity() { return main.getInt("dream.world.natural_accent_density", 65); }
-    public int dreamDecorationDensity() { return main.getInt("dream.world.decoration_density", 100); }
+    public int dreamNaturalObjectDensity() { return layer("natural_objects", main.getInt("dream.world.natural_object_density", 65)); }
+    public int dreamNaturalAccentDensity() { return layer("natural_accents", main.getInt("dream.world.natural_accent_density", 65)); }
+    public int dreamDecorationDensity() { return layer("decorations", main.getInt("dream.world.decoration_density", 100)); }
+    private int layer(String name, int density) { return main.getBoolean("dream.world." + name + ".enabled", true) ? density : 0; }
     public long dreamTowerDelayMillis() { return main.getInt("dream.towers.transition_millis", 750); }
     public long dreamTowerCooldownMillis() { return main.getInt("dream.towers.cooldown_seconds", 3) * 1000L; }
     public boolean dreamTowerEffects() { return main.getBoolean("dream.towers.effects", true); }
