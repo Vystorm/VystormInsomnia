@@ -33,7 +33,7 @@ Wer lange wach bleibt, wird müde. VystormInsomnia gibt jedem Spieler einen Müd
 
 ## Installation
 
-- Gebaut gegen Paper 26.2; die Prüfung `compat1206` übersetzt alle Quellen auch gegen Paper 1.20.6. Spigot 26.2 und 26.3 wurden zuletzt mit 0.25.0 gestartet (siehe unten). Java 21 für 1.20.6, auf neueren Servern deren erforderliche Java-Version (26.x: Java 25)
+- Gebaut gegen Paper 26.2; die Prüfung `compat1206` übersetzt alle Quellen auch gegen Paper 1.20.6. Getestet auf Paper und Purpur 26.2, Paper 1.20.6 und Spigot 26.2. Java 21 für 1.20.6, auf neueren Servern deren erforderliche Java-Version (26.x: Java 25)
 - Vystorm Core 0.65.0 oder neuer
 - Optional: VystormCityClaim (besserer Schlaf in Städten und Mietobjekten), BloodMoon
 
@@ -119,11 +119,3 @@ Die verbleibende Traumzeit erscheint als Bossbar mit Minuten und Sekunden. Der B
 ## Lizenz
 
 VystormInsomnia ist kostenlos. Versionen nach 0.29.1 stehen unter der GNU General Public License v3.0 (GPL-3.0), siehe [LICENSE](LICENSE). Version 0.29.1 und älter wurden unter der MIT-Lizenz veröffentlicht ([LICENSE-MIT-until-0.29.1.txt](LICENSE-MIT-until-0.29.1.txt)) und bleiben unter diesen Bedingungen verfügbar.
-
-
-### Server compatibility (0.25.0-26.2)
-
-Bukkit chat and entity lookup, cross-version gamerule lookup and shared message/teleport adapters preserve sleep and dream workflows. Compatibility adapters target Spigot/CraftBukkit 26.2 and 26.3 while preserving the existing Paper paths. Bukkit means a Bukkit API server implementation such as CraftBukkit, not an additional server distribution. Install Vystorm Core 0.51.0 or newer.
-
-Validation for this release: full automated build and tests pass, including the existing Paper 1.20.6 compatibility compilation. Both plugins enabled successfully on official Spigot 26.2 and 26.3 with Core 0.51.0; native gameplay checks exercised the Bukkit replacement paths.
-Insomnia retains its development status: the existing two-client Purpur play-through is still required for validating every multiplayer sleep/dream interaction. The native harness and regression tests do not replace that manual acceptance check.

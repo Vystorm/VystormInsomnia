@@ -724,6 +724,7 @@ companion:
   error-full: 'Höchstens {max} Begleiter können einen Traum teilen.'
   error-no-invite: 'Es gibt keine offene Einladung für dich.'
 feature_off: "&eDiese Funktion ist auf diesem Server ausgeschaltet."
+feature_needs: "&eDafür braucht es „{switch}“ ({path}), das auf diesem Server ausgeschaltet ist."
 placeholder:
   fatigue: "Müdigkeit des Spielers, 0 bis 100 mit einer Nachkommastelle; leer bei ausgeschalteter Müdigkeit"
   fatigue_int: "Müdigkeit als ganze Zahl"

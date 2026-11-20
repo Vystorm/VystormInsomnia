@@ -717,6 +717,7 @@ companion:
   error-full: 'Au plus {max} compagnons peuvent partager un rêve.'
   error-no-invite: 'Aucune invitation ouverte pour toi.'
 feature_off: "&eCette fonction est désactivée sur ce serveur."
+feature_needs: "&eCela nécessite « {switch} » ({path}), qui est désactivé sur ce serveur."
 placeholder:
   fatigue: "Fatigue du joueur, de 0 à 100 avec une décimale ; vide si la fatigue est désactivée"
   fatigue_int: "Fatigue arrondie à un nombre entier"

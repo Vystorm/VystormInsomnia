@@ -290,7 +290,7 @@ public final class VystormInsomniaPlugin extends JavaPlugin {
         try {
             config.reload();
         } catch (IllegalArgumentException invalid) {
-            core.high("Reload rejected, previous configuration stays active: " + invalid.getMessage());
+            getLogger().severe("Reload rejected, previous configuration stays active (no file was changed): " + invalid.getMessage());
             throw invalid;
         }
         stimulants.reload();

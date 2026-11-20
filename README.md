@@ -44,7 +44,7 @@ With Vystorm Core 0.65.0 the plugin registers the namespace `sleep`: `fatigue`, 
 
 ## Installation
 
-Install Vystorm Core **0.65.0 or newer** and this JAR in `plugins/`. Use **Java 25**, the runtime used for acceptance. Spigot/CraftBukkit 26.2–26.3 are supported alongside the existing Paper/Purpur compatibility paths; common source and class-loading checks also cover Paper 1.20.6. The plugin emits Java 21 bytecode, but that alone is not a Java 21 runtime acceptance claim.
+Install Vystorm Core **0.65.0 or newer** and this JAR in `plugins/`. Tested on Paper and Purpur 26.2, Paper 1.20.6 and Spigot 26.2. Use **Java 25** on 26.x servers and Java 21 on Paper 1.20.6.
 
 The first start creates `config.yml`, `stimulants.yml`, `mobs.yml` and language files. English, German, Simplified Chinese, French, Brazilian Portuguese, Italian and Russian follow Core's player language settings. Native dialogs and other modern Paper functionality remain in use where available; guarded Bukkit/chat implementations serve the other supported runtimes. Materials and entity types absent from an older server are diagnosed.
 

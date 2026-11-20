@@ -77,7 +77,10 @@ public final class InsomniaConfig {
         if (!file.isFile()) return yaml;
         try {
             yaml.load(file);
-        } catch (IOException | InvalidConfigurationException failure) {
+        } catch (InvalidConfigurationException failure) {
+            // line and column of the YAML error; the file itself is never changed (0.31.1)
+            throw new IllegalArgumentException(file.getName() + " has a YAML error at " + YamlCheck.describe(failure));
+        } catch (IOException failure) {
             throw new IllegalArgumentException(file.getName() + " cannot be read: " + firstLine(failure.getMessage()));
         }
         return yaml;
@@ -457,5 +460,17 @@ public final class InsomniaConfig {
     /** Chat message with prefix in the viewer's language (legacy {@code §} string). */
     public String message(CommandSender viewer, String key, Object... placeholders) {
         return texts == null ? key : texts.chat(viewer, key, placeholders);
+    }
+
+    /** Language key of the answer for a feature that is off because another switch is off (0.31.1). */
+    public static final String NEEDS = "feature_needs";
+
+    /**
+     * "This needs <name of the switch> (<path>), which is switched off on this server." for a command whose own switch
+     * is on but which depends on the switch {@code path}; the name is the switch's label from {@code setting.<path>.label}.
+     */
+    public String needs(CommandSender viewer, String path) {
+        String name = texts == null ? path : texts.plain(viewer, "setting." + path + ".label");
+        return message(viewer, NEEDS, "switch", name, "path", path);
     }
 }

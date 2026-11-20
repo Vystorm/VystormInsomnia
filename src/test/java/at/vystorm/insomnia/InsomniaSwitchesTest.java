@@ -106,6 +106,51 @@ class InsomniaSwitchesTest {
         }
     }
 
+    /**
+     * 0.31.1: every boolean that Core's {@code /vadmin features} lists for config.yml (keys named {@code enabled},
+     * top-level booleans, declared switches) has a readable name and a description in all seven languages, so the
+     * screen never shows a raw key path.
+     */
+    @Test void givenEveryFeatureCoreListsFromConfigYml_whenDescribed_thenAllSevenLanguagesHaveLabelAndDescription() {
+        YamlConfiguration config = yaml("config.yml");
+        List<String> listed = new ArrayList<>();
+        java.util.Set<String> housekeeping = java.util.Set.of("metrics", "debug", "verbose", "sound", "console-log", "placeholderapi", "update-check");
+        for (String path : config.getKeys(true)) {
+            if (!config.isBoolean(path)) continue;
+            boolean feature = path.equals("enabled") || path.endsWith(".enabled") || (path.indexOf('.') < 0 && !housekeeping.contains(path));
+            if (feature || InsomniaConfigEditor.DECLARED.contains(path)) listed.add(path);
+        }
+        assertTrue(listed.size() >= 30, "found " + listed);
+        for (String code : LANGUAGES) {
+            YamlConfiguration lang = yaml("lang/" + code + ".yml");
+            for (String path : listed) {
+                assertFalse(lang.getString("setting." + path + ".label", "").isBlank(), code + " label " + path);
+                assertFalse(lang.getString("setting." + path + ".desc", "").isBlank(), code + " desc " + path);
+            }
+            for (String path : listed)
+                assertTrue(InsomniaConfigEditor.DECLARED.contains(path) || InsomniaConfigEditor.ENTRIES.stream().anyMatch(e -> e.path().equals(path)),
+                        "registered with a label: " + path);
+        }
+    }
+
+    @Test void givenADependentFeature_whenItsBaseSwitchIsOff_thenEveryLanguageNamesTheSwitch() throws IOException {
+        for (String code : LANGUAGES) {
+            String text = yaml("lang/" + code + ".yml").getString(InsomniaConfig.NEEDS, "");
+            assertTrue(text.contains("{switch}") && text.contains("{path}"), code + " " + text);
+        }
+        InsomniaConfig config = with();
+        Messages texts = mock(Messages.class);
+        when(texts.plain(any(), org.mockito.ArgumentMatchers.eq("setting.dream.enabled.label"))).thenReturn("Dream Realm");
+        when(texts.chat(any(), anyString(), any(Object[].class))).thenAnswer(i -> {
+            Object[] all = i.getArguments();
+            StringBuilder out = new StringBuilder((String) all[1]);
+            for (int k = 2; k < all.length; k++) out.append('|').append(all[k]);
+            return out.toString();
+        });
+        config.bindMessages(texts);
+        assertEquals(InsomniaConfig.NEEDS + "|switch|Dream Realm|path|dream.enabled", config.needs(mock(Player.class), "dream.enabled"));
+    }
+
     @Test void givenOldConfigWithoutNewKeys_whenLoaded_thenBehavesAsBefore() throws IOException {
         YamlConfiguration old = yaml("config.yml");
         for (String path : NEW) old.set(path, null);

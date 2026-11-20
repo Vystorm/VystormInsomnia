@@ -712,6 +712,7 @@ companion:
   error-full: 'No máximo {max} companheiros podem compartilhar um sonho.'
   error-no-invite: 'Não há convite aberto para você.'
 feature_off: "&eEste recurso está desligado neste servidor."
+feature_needs: "&eIsto precisa de “{switch}” ({path}), que está desligado neste servidor."
 placeholder:
   fatigue: "Cansaço do jogador, de 0 a 100 com uma casa decimal; vazio com o cansaço desligado"
   fatigue_int: "Cansaço arredondado para número inteiro"

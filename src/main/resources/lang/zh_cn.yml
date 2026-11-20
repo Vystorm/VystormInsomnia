@@ -722,6 +722,7 @@ companion:
   error-full: '一个梦境最多可有 {max} 名同伴。'
   error-no-invite: '没有给你的有效邀请。'
 feature_off: "&e此功能已在本服务器上关闭。"
+feature_needs: "&e这需要 “{switch}”（{path}），但它已在本服务器上关闭。"
 placeholder:
   fatigue: "玩家疲劳度，0 到 100，保留一位小数；疲劳关闭时为空"
   fatigue_int: "取整后的疲劳度"

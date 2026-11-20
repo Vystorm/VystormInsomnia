@@ -97,7 +97,8 @@ public final class InsomniaMenu {
      * {@code Lang.ref}s ({@code setting.<path>.label|desc}) so Core shows them in each admin's language.
      */
     public static ConfigSettings settings(Plugin plugin, java.util.function.Function<String, String> ref) {
-        return ConfigSettings.of(plugin)
+        // never saved over a config.yml with a YAML error (Core's ConfigSettings.of(plugin) would write getConfig() over it)
+        return ConfigSettings.of(plugin::getConfig, () -> at.vystorm.insomnia.config.YamlCheck.saveConfig(plugin))
                 .toggle("fatigue.enabled", ref.apply("setting.fatigue.enabled.label"), ref.apply("setting.fatigue.enabled.desc"))
                 .decimal("fatigue.base_per_minute", ref.apply("setting.fatigue.base_per_minute.label"), ref.apply("setting.fatigue.base_per_minute.desc"), 0.0D, 1.0D, 0.005D)
                 .decimal("fatigue.debt_per_minute", ref.apply("setting.fatigue.debt_per_minute.label"), ref.apply("setting.fatigue.debt_per_minute.desc"), 0.0D, 1.0D, 0.0025D)

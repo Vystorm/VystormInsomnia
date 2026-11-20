@@ -165,6 +165,8 @@ public final class DreamService implements Listener {
         stopNap(player);
         if (!enabled) { tell(player, config.dreamEnabled() ? "dream.disabled" : at.vystorm.insomnia.command.InsomniaCommand.OFF); return; }
         if (!fatigue.ready(player.getUniqueId())) { tell(player, "data_loading"); return; }
+        // Fatigue off: it never rises, so a player below the entry fatigue could never dream (0.31.1).
+        if (!config.fatigueEnabled() && fatigue.fatigue(player.getUniqueId()) < config.dreamMinimumFatigue()) { needs(player, "fatigue.enabled"); return; }
         if (player.getGameMode() != GameMode.SURVIVAL) { tell(player, "dream.survival_only"); return; }
         if (activity.inCombat(player.getUniqueId(), System.currentTimeMillis())) { tell(player, "dream.in_combat"); return; }
         if (api.worldGenerator().worlds().visits().inVisit(player.getUniqueId()) || api.worldGenerator().worlds().visits().hasSnapshot(player.getUniqueId())) { tell(player, "dream.recovery_pending"); return; }
@@ -697,7 +699,8 @@ public final class DreamService implements Listener {
 
     /** Choices change only the persisted campaign, never inventory or the active visit snapshot. */
     public void quest(Player player, String action) {
-        if (!config.dreamEnabled() || !config.dreamQuestsEnabled()) { tell(player, at.vystorm.insomnia.command.InsomniaCommand.OFF); return; }
+        if (!config.dreamQuestsEnabled()) { tell(player, at.vystorm.insomnia.command.InsomniaCommand.OFF); return; }
+        if (!config.dreamEnabled()) { needs(player, "dream.enabled"); return; }
         if (!questAvailable(player)) { tell(player, "quest.unavailable"); return; }
         try {
             String selected=action==null?"status":action.toLowerCase(Locale.ROOT);
@@ -800,6 +803,7 @@ public final class DreamService implements Listener {
     /** {@code /dream invite <player>}: the inviter and the target must both be in the dream. */
     public void invite(Player host, String name) {
         if (!companionsEnabled()) { tell(host, at.vystorm.insomnia.command.InsomniaCommand.OFF); return; }
+        if (!config.dreamEnabled()) { needs(host, "dream.enabled"); return; }
         if (!active.containsKey(host.getUniqueId())) { tell(host, "companion.not-dreaming"); return; }
         Player target = name == null ? null : Bukkit.getPlayerExact(name);
         if (target == null || !active.containsKey(target.getUniqueId()) || !host.canSee(target)) { tell(host, "companion.target-not-dreaming", "player", name == null ? "?" : name); return; }
@@ -814,6 +818,7 @@ public final class DreamService implements Listener {
     /** {@code /dream join [player]}: accepts an invitation (the newest one without a name). */
     public void join(Player player, String name) {
         if (!companionsEnabled()) { tell(player, at.vystorm.insomnia.command.InsomniaCommand.OFF); return; }
+        if (!config.dreamEnabled()) { needs(player, "dream.enabled"); return; }
         long now = System.currentTimeMillis();
         UUID host;
         if (name == null || name.isBlank()) {
@@ -867,7 +872,8 @@ public final class DreamService implements Listener {
     private void loadWeekly() {
         if (!config.dreamWeeklyEnabled()) { weekly = null; return; }
         long week = WeeklyNightmare.week(System.currentTimeMillis());
-        org.bukkit.configuration.file.YamlConfiguration yaml = org.bukkit.configuration.file.YamlConfiguration.loadConfiguration(weeklyFile());
+        // a weekly file with a YAML error is copied aside first: saveWeekly() writes it again
+        org.bukkit.configuration.file.YamlConfiguration yaml = at.vystorm.insomnia.config.YamlCheck.loadData(weeklyFile().toPath(), plugin.getLogger());
         Map<String, String> rows = new HashMap<>();
         var section = yaml.getConfigurationSection("times");
         if (section != null && yaml.getLong("week", Long.MIN_VALUE) == week) for (String id : section.getKeys(false)) rows.put(id, section.getString(id, ""));
@@ -926,7 +932,8 @@ public final class DreamService implements Listener {
 
     /** {@code /dream weekly}: this week's modifiers, the time left and the five fastest clears. */
     public void weekly(Player player) {
-        if (!config.dreamEnabled() || !config.dreamWeeklyEnabled()) { tell(player, at.vystorm.insomnia.command.InsomniaCommand.OFF); return; }
+        if (!config.dreamWeeklyEnabled()) { tell(player, at.vystorm.insomnia.command.InsomniaCommand.OFF); return; }
+        if (!config.dreamEnabled()) { needs(player, "dream.enabled"); return; }
         if (!enabled || weekly == null) { tell(player, "weekly.disabled"); return; }
         List<WeeklyNightmare.Modifier> modifiers = weeklyModifiers();
         long left = WeeklyNightmare.weekEnd(weekly.week()) - System.currentTimeMillis();
@@ -940,6 +947,8 @@ public final class DreamService implements Listener {
     }
 
     private void tell(Player player, String key, Object... args) { player.sendMessage(config.message(player, key, args)); }
+    /** The feature itself is on but needs the switch {@code path}, which is off (0.31.1). */
+    private void needs(Player player, String path) { player.sendMessage(config.needs(player, path)); }
 
     private void showDungeons(Player player) {
         for(var dungeon:generator.layout().dungeons()) {

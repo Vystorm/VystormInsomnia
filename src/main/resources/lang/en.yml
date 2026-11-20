@@ -722,6 +722,7 @@ companion:
   error-full: 'At most {max} companions can share one dream.'
   error-no-invite: 'There is no open invitation for you.'
 feature_off: "&eThis feature is switched off on this server."
+feature_needs: "&eThis needs “{switch}” ({path}), which is switched off on this server."
 placeholder:
   fatigue: "Fatigue of the player, 0 to 100 with one decimal; empty with fatigue off"
   fatigue_int: "Fatigue rounded to a whole number"

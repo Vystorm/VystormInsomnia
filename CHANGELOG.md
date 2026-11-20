@@ -1,3 +1,11 @@
+## 0.31.1-26.2 — 2026-11-20
+
+- Fixed: when `config.yml`, `stimulants.yml` or `mobs.yml` has a YAML mistake, the answer of `/insomnia reload` and the console now name the line and column of the mistake (before, only "while parsing a block mapping"). The file is never changed and the previous settings stay active; the settings menu no longer saves over a broken `config.yml`.
+- Fixed: a `data/weekly-nightmare.yml` with a YAML mistake is copied to `weekly-nightmare.yml.broken-<date-time>` before the plugin writes it again.
+- A dream command whose own switch is on but which depends on another switch now says which switch is missing: `/dream quest`, `/dream weekly`, `/dream invite` and `/dream join` answer "This needs “Dream Realm” (dream.enabled), which is switched off on this server." while `dream.enabled` is off. Seven languages, language key `feature_needs`.
+- `/dream` with `fatigue.enabled` off: a player below the entry fatigue now hears that the dream needs the fatigue switch, instead of "You are not tired enough", which could never change while fatigue does not rise.
+- README: the supported servers are written as tested: Paper and Purpur 26.2, Paper 1.20.6 and Spigot 26.2. An outdated English block from 0.25.0 at the end of the German README is gone.
+
 ## 0.31.0-26.2 — 2026-11-18
 
 - Requires Vystorm Core 0.65.0. Update Core before you update this plugin.
