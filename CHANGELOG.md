@@ -1,3 +1,9 @@
+## 0.31.2-26.2 — 2026-11-20
+
+- With `storage.type: yaml`, a player who leaves no longer makes the plugin rewrite the whole `data/fatigue.yml` at once. Their values are kept in memory and written together with everyone else who left in the same few seconds, so a wave of quits (for example after an event) costs one write instead of one per player.
+- A player who rejoins before the write gets their values back as before. A clean stop or restart writes everything. After a crash, players who left in the last 5 or 6 seconds before it fall back to the last periodic save (`dirty_flush_seconds`), as players who were still online always did.
+- The file format is unchanged, so you can go back to 0.31.1 at any time. MySQL storage is not affected.
+
 ## 0.31.1-26.2 — 2026-11-20
 
 - Fixed: when `config.yml`, `stimulants.yml` or `mobs.yml` has a YAML mistake, the answer of `/insomnia reload` and the console now name the line and column of the mistake (before, only "while parsing a block mapping"). The file is never changed and the previous settings stay active; the settings menu no longer saves over a broken `config.yml`.

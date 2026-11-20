@@ -278,6 +278,7 @@ public final class VystormInsomniaPlugin extends JavaPlugin {
         tickGuard.run("mobs", now, () -> mobs.tick(now));
         if (hud != null) tickGuard.run("hud", now, hud::tick);
         if (web != null) tickGuard.run("web", now, () -> web.tick(now));
+        tickGuard.run("quit-saves", now, () -> persistence.flushPending(now));
         if (now >= nextDirtyFlushAt) {
             nextDirtyFlushAt = now + config.dirtyFlushSeconds() * 1000L;
             tickGuard.run("persistence", now, () -> persistence.flushDirty(fatigue.states()));

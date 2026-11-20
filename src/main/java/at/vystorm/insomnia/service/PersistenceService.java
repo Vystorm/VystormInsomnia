@@ -36,6 +36,9 @@ public final class PersistenceService {
     private static final int WRITE_ATTEMPTS = 3;
     private static final long LOAD_RETRY_MILLIS = 500L;
     private static final int LOAD_FAILURE_ATTEMPTS = 5;
+    /** File mode: how long the record of a player who left may wait in memory before data/fatigue.yml is written. */
+    static final long QUIT_WRITE_DELAY_MILLIS = 5_000L;
+    private long pendingSince;
 
     private final Plugin plugin;
     private final CoreBridge core;
@@ -217,10 +220,24 @@ public final class PersistenceService {
     /** Final save when the player leaves; MySQL also releases this server's claim so the next server can load. */
     public void saveAndRelease(PlayerFatigueState state) {
         if (synchronous()) {
-            save(state, true);
+            // File mode: the record is kept in memory and written with the next write, at the latest
+            // QUIT_WRITE_DELAY_MILLIS later (flushPending), so a wave of quits rewrites data/fatigue.yml once.
+            requireLoaded();
+            if (!yaml.pending()) pendingSince = System.currentTimeMillis();
+            yaml.put(List.of(PlayerRecord.of(state)));
+            state.clearDirty();
             return;
         }
         submit(List.of(state), Set.of(state.playerUuid()));
+    }
+
+    /**
+     * File mode: writes the records of players who left once the oldest of them waited
+     * {@link #QUIT_WRITE_DELAY_MILLIS}. Called every second from the runtime task. MySQL: nothing to do.
+     */
+    public void flushPending(long now) {
+        if (!synchronous() || yaml == null || !yaml.pending()) return;
+        if (now - pendingSince >= QUIT_WRITE_DELAY_MILLIS) yaml.flush();
     }
 
     /** MySQL: drops the claim of a player whose load finished after they left. */

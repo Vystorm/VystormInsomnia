@@ -114,6 +114,51 @@ class PersistenceServiceTest {
         assertEquals("{not json", backend.value, "the unreadable content is never overwritten");
     }
 
+    @Test
+    void manyQuitsInARowWriteTheFileOnceAfterTheDelay() {
+        MemoryBackend backend = new MemoryBackend();
+        PersistenceService persistence = storage(backend);
+        persistence.loadStorage();
+        int before = backend.writes;
+        long start = System.currentTimeMillis();
+        java.util.List<UUID> players = new java.util.ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            UUID id = UUID.randomUUID();
+            players.add(id);
+            PlayerFatigueState state = new PlayerFatigueState(id, 1_000L);
+            state.fatigue(40.0 + i);
+            persistence.saveAndRelease(state);
+            assertFalse(state.dirty());
+        }
+        assertEquals(before, backend.writes, "a quit does not rewrite the whole file at once");
+        assertEquals(43.0, persistence.load(players.get(3), 2_000L).rawFatigue(), "a player who rejoins at once gets the kept record");
+        persistence.flushPending(start + PersistenceService.QUIT_WRITE_DELAY_MILLIS - 1_000L);
+        assertEquals(before, backend.writes);
+        persistence.flushPending(System.currentTimeMillis() + PersistenceService.QUIT_WRITE_DELAY_MILLIS);
+        assertEquals(before + 1, backend.writes, "twenty quits are one write");
+        persistence.flushPending(System.currentTimeMillis() + 60_000L);
+        assertEquals(before + 1, backend.writes, "nothing left to write");
+
+        PersistenceService reader = storage(backend);
+        reader.loadStorage();
+        for (int i = 0; i < 20; i++) assertEquals(40.0 + i, reader.load(players.get(i), 2_000L).rawFatigue());
+    }
+
+    @Test
+    void shutdownWritesPlayersWhoLeftEvenWithNobodyOnline() {
+        MemoryBackend backend = new MemoryBackend();
+        PersistenceService persistence = storage(backend);
+        persistence.loadStorage();
+        UUID id = UUID.randomUUID();
+        PlayerFatigueState state = new PlayerFatigueState(id, 1_000L);
+        state.fatigue(77.0);
+        persistence.saveAndRelease(state);
+        persistence.saveAll(java.util.List.of());
+        PersistenceService reader = storage(backend);
+        reader.loadStorage();
+        assertEquals(77.0, reader.load(id, 2_000L).rawFatigue());
+    }
+
     private static PersistenceService storage(MemoryBackend backend) {
         Plugin plugin = mock(Plugin.class);
         when(plugin.getDataFolder()).thenReturn(new File("build/test-persistence"));

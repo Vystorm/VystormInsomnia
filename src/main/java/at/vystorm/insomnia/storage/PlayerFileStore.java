@@ -32,6 +32,7 @@ public final class PlayerFileStore {
 
     private final VersionedStore<PlayerFile> store;
     private final PlayerFile state;
+    private boolean pending;
 
     /** Loads the document right away. @throws VersionedStore.CorruptStoreException when it is unreadable */
     public PlayerFileStore(VersionedStore<PlayerFile> store) {
@@ -70,10 +71,29 @@ public final class PlayerFileStore {
         return out;
     }
 
-    /** Puts the records and saves the document once. */
+    /** Puts the records and saves the document once (together with any records only {@link #put} so far). */
     public void write(Collection<PlayerRecord> records) {
-        if (records.isEmpty()) return;
+        if (records.isEmpty() && !pending) return;
         for (PlayerRecord record : records) state.players.put(record.uuid().toString(), record);
         store.save(state);
+        pending = false;
+    }
+
+    /**
+     * Puts the records in memory without writing the file; {@link #read} sees them at once, the next {@link #write}
+     * or {@link #flush} saves them. Used for players who leave, so many quits in a row cost one write.
+     */
+    public void put(Collection<PlayerRecord> records) {
+        if (records.isEmpty()) return;
+        for (PlayerRecord record : records) state.players.put(record.uuid().toString(), record);
+        pending = true;
+    }
+
+    /** True while records given to {@link #put} are not saved yet. */
+    public boolean pending() { return pending; }
+
+    /** Saves the document if {@link #put} left records unsaved. */
+    public void flush() {
+        if (pending) write(List.of());
     }
 }
